@@ -10,7 +10,8 @@
 	<h1>申請 列表</h1>
 	<p>
 		<a href="${pageContext.request.contextPath}/requests/new">新增申請</a> | <a
-			href="${pageContext.request.contextPath}/books">管理書籍</a>
+			href="${pageContext.request.contextPath}/books">管理書籍</a> | 
+			<a href="${pageContext.request.contextPath}/procurement">採購清單</a>
 	</p>
 	<p>
 		<a href="${pageContext.request.contextPath}/requests">全部</a> <a

@@ -14,7 +14,9 @@
 		</c:if>
 		<a href="${pageContext.request.contextPath}/authors">管理作者</a> | <a
 			href="${pageContext.request.contextPath}/categories">管理分類</a> | <a
-			href="${pageContext.request.contextPath}/books/export?keyword=${keyword}">匯出 Excel</a>
+			href="${pageContext.request.contextPath}/books/export?keyword=${keyword}">匯出 Excel</a> | 
+			<a href="${pageContext.request.contextPath}/requests">新書申請</a> | 
+			<a href="${pageContext.request.contextPath}/procurement">採購清單</a>
 		<c:if test="${sessionScope.currentUser.role == 'ADMIN'}">
 			| <a href="${pageContext.request.contextPath}/audit-logs">稽核紀錄</a>
 		</c:if>
