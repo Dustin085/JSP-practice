@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.jsppractice.mapper.CategoryMapper">
+	<select id="findAll" resultType="com.example.jsppractice.model.Category">
+		SELECT *
+		FROM categories c
+		ORDER BY c.id
+	</select>
+
+	<select id="findAllPaged" resultType="com.example.jsppractice.model.Category">
+		SELECT *
+		FROM categories c
+		ORDER BY c.id
+		LIMIT #{pageReq.pageSize}
+		OFFSET #{pageReq.offset}
+	</select>
+
+	<select id="count" resultType="long">
+		SELECT COUNT(*) FROM categories
+	</select>
+
+	<select id="findById" resultType="com.example.jsppractice.model.Category">
+		SELECT *
+		FROM categories c
+		WHERE c.id = #{id}
+	</select>
+	
+	<select id="findBooksByCategoryId" resultType="com.example.jsppractice.model.Book">
+		SELECT b.*
+		FROM books b
+		JOIN books_categories bc ON b.id = bc.book_id
+		WHERE bc.category_id = #{id}
+	</select>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO categories (name)
+		VALUES (#{name})
+	</insert>
+
+	<update id="update">
+		UPDATE categories
+		SET name = #{name}
+		WHERE id = #{id}
+	</update>
+
+	<delete id="deleteById">
+		DELETE FROM categories WHERE id = #{id}
+	</delete>
+</mapper>

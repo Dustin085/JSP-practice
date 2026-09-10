@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.jsppractice.mapper.AuditLogMapper">
+
+	<resultMap id="auditLogResultMap" type="com.example.jsppractice.model.AuditLog">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id" />
+		<result property="auditedAt" column="audited_at" />
+		<result property="action" column="action" />
+		<result property="entityType" column="entity_type" />
+		<result property="entityId" column="entity_id" />
+		<result property="detail" column="detail"
+			typeHandler="com.example.jsppractice.mapper.typehandler.JsonMapTypeHandler" />
+	</resultMap>
+
+	<select id="findAllPaged" resultMap="auditLogResultMap">
+		SELECT *
+		FROM audit_logs
+		ORDER BY audited_at DESC
+		LIMIT #{pageReq.pageSize}
+		OFFSET #{pageReq.offset}
+	</select>
+
+	<select id="count" resultType="long">
+		SELECT COUNT(*) FROM audit_logs
+	</select>
+
+	<select id="findByEntity" resultMap="auditLogResultMap">
+		SELECT *
+		FROM audit_logs
+		WHERE entity_type = #{entityType}
+		AND entity_id = #{entityId}
+		ORDER BY audited_at DESC
+	</select>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail)
+		VALUES (#{userId}, #{auditedAt}, #{action}, #{entityType}, #{entityId},
+			#{detail,typeHandler=com.example.jsppractice.mapper.typehandler.JsonMapTypeHandler})
+	</insert>
+
+</mapper>
