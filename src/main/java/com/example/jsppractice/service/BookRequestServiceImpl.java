@@ -1,7 +1,7 @@
 package com.example.jsppractice.service;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,7 +53,7 @@ public class BookRequestServiceImpl implements BookRequestService {
 	@Transactional
 	public BookRequest submit(User requestUser, List<BookRequestBookInfo> bookInfos, String idempotencyKey) {
 		// 建立 BookRequest，並且寫入
-		LocalDateTime now = LocalDateTime.now();
+		Instant now = Instant.now();
 		BookRequest bookRequest = BookRequest.builder()
 				.requesterId(requestUser.getId())
 				.status(BookRequestStatus.PENDING)
@@ -114,7 +114,7 @@ public class BookRequestServiceImpl implements BookRequestService {
 	@Override
 	@Transactional
 	public BookRequest approve(Long requestId, User currentUser) {
-		LocalDateTime now = LocalDateTime.now();
+		Instant now = Instant.now();
 		int approveResult = bookRequestMapper.approve(requestId, currentUser.getId(), now);
 		BookRequest bookRequest = bookRequestMapper.findById(requestId)
 				.orElseThrow(() -> new NoSuchElementException(BOOK_REQUEST_NOT_FOUND_MESSAGE));
@@ -171,7 +171,7 @@ public class BookRequestServiceImpl implements BookRequestService {
 	@Override
 	@Transactional
 	public BookRequest reject(Long requestId, User currentUser) {
-		LocalDateTime now = LocalDateTime.now();
+		Instant now = Instant.now();
 		int rejectResult = bookRequestMapper.reject(requestId, currentUser.getId(), now);
 		BookRequest bookRequest = bookRequestMapper.findById(requestId)
 				.orElseThrow(() -> new NoSuchElementException(BOOK_REQUEST_NOT_FOUND_MESSAGE));

@@ -1,6 +1,6 @@
 package com.example.jsppractice.model;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,9 +21,9 @@ public class BookRequest {
 
 	private BookRequestStatus status;
 
-	private LocalDateTime requestedAt;
+	private Instant requestedAt;
 
-	private LocalDateTime approvedAt;
+	private Instant approvedAt;
 
 	private String idempotencyKey;
 }

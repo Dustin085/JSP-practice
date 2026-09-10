@@ -1,6 +1,6 @@
 package com.example.jsppractice.mapper;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,10 +22,10 @@ public interface BookRequestMapper {
 	List<BookRequestSummary> findSummary(@Param("status") BookRequestStatus status);
 
 	int approve(@Param("bookRequestId") Long bookRequestId, @Param("approverId") Long approverId,
-			@Param("approvedAt") LocalDateTime approvedAt);
+			@Param("approvedAt") Instant approvedAt);
 
 	int reject(@Param("bookRequestId") Long bookRequestId, @Param("approverId") Long approverId,
-			@Param("approvedAt") LocalDateTime approvedAt);
+			@Param("approvedAt") Instant approvedAt);
 
 	void insert(BookRequest bookRequest);
 }

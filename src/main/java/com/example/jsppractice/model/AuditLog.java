@@ -1,7 +1,9 @@
 package com.example.jsppractice.model;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.Map;
+
+import com.example.jsppractice.util.DisplayTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,7 +19,7 @@ public class AuditLog {
 
 	private Long userId;
 
-	private LocalDateTime auditedAt;
+	private Instant auditedAt;
 
 	private AuditActionType action;
 
@@ -26,4 +28,8 @@ public class AuditLog {
 	private Long entityId;
 
 	private Map<String, Object> detail; // {status:{oldValue: "PENDING", newValue: "APPROVED"}}
+
+	public String getAuditedAtDisplay() {
+		return DisplayTime.format(auditedAt);
+	}
 }

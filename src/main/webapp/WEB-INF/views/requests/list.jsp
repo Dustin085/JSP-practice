@@ -42,8 +42,8 @@
 						</c:forEach>
 					</ul>
 				</td>
-				<td>${request.requestedAt}</td>
-				<td>${request.approvedAt}</td>
+				<td>${request.requestedAtDisplay}</td>
+				<td>${request.approvedAtDisplay}</td>
 				<td>
 					<c:if test="${sessionScope.currentUser.role == 'ADMIN' && request.status == 'PENDING'}">
 						<form

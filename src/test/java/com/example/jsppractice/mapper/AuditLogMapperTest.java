@@ -2,7 +2,7 @@ package com.example.jsppractice.mapper;
 
 import static org.junit.Assert.assertEquals;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -71,7 +71,7 @@ public class AuditLogMapperTest {
 		Map<String, Object> detail = new HashMap<>();
 		detail.put("status", statusChange);
 
-		AuditLog auditLog = AuditLog.builder().userId(userId).auditedAt(LocalDateTime.now())
+		AuditLog auditLog = AuditLog.builder().userId(userId).auditedAt(Instant.now())
 				.action(AuditActionType.APPROVE).entityType(AuditEntityType.BOOK_REQUEST).entityId(42L).detail(detail)
 				.build();
 
@@ -93,7 +93,7 @@ public class AuditLogMapperTest {
 	public void findAllPagedAndCountRespectPageSize() {
 		Long userId = insertUser("auditor@example.com");
 		for (int i = 0; i < 3; i++) {
-			auditLogMapper.insert(AuditLog.builder().userId(userId).auditedAt(LocalDateTime.now())
+			auditLogMapper.insert(AuditLog.builder().userId(userId).auditedAt(Instant.now())
 					.action(AuditActionType.APPROVE).entityType(AuditEntityType.BOOK_REQUEST).entityId((long) i)
 					.detail(Collections.emptyMap()).build());
 		}

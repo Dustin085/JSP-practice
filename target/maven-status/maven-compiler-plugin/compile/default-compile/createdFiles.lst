@@ -1,6 +1,7 @@
 com\example\jsppractice\model\Category.class
 com\example\jsppractice\model\Author.class
 com\example\jsppractice\service\UserService.class
+com\example\jsppractice\util\DisplayTime.class
 com\example\jsppractice\service\BookRequestService$BookRequestBookInfo.class
 com\example\jsppractice\controller\RegisterController.class
 com\example\jsppractice\service\BookService.class

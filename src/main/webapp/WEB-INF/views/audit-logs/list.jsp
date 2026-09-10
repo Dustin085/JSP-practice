@@ -21,7 +21,7 @@
 		<c:forEach var="log" items="${auditLogs}">
 			<tr>
 				<td>${log.id}</td>
-				<td>${log.auditedAt}</td>
+				<td>${log.auditedAtDisplay}</td>
 				<td>${log.userId}</td>
 				<td>${log.action}</td>
 				<td>${log.entityType}</td>

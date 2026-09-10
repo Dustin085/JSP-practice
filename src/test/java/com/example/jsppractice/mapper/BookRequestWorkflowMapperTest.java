@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -76,7 +76,7 @@ public class BookRequestWorkflowMapperTest {
 	public void bookRequestInsertAndFindByStatusWork() {
 		Long requesterId = insertUser("requester@example.com");
 		BookRequest bookRequest = BookRequest.builder().requesterId(requesterId).status(BookRequestStatus.PENDING)
-				.requestedAt(LocalDateTime.now()).idempotencyKey(UUID.randomUUID().toString()).build();
+				.requestedAt(Instant.now()).idempotencyKey(UUID.randomUUID().toString()).build();
 
 		bookRequestMapper.insert(bookRequest);
 
@@ -94,10 +94,10 @@ public class BookRequestWorkflowMapperTest {
 		Long requesterId = insertUser("requester5@example.com");
 		Long approverId = insertUser("approver5@example.com");
 		BookRequest bookRequest = BookRequest.builder().requesterId(requesterId).status(BookRequestStatus.PENDING)
-				.requestedAt(LocalDateTime.now()).idempotencyKey(UUID.randomUUID().toString()).build();
+				.requestedAt(Instant.now()).idempotencyKey(UUID.randomUUID().toString()).build();
 		bookRequestMapper.insert(bookRequest);
 
-		int affectedRows = bookRequestMapper.approve(bookRequest.getId(), approverId, LocalDateTime.now());
+		int affectedRows = bookRequestMapper.approve(bookRequest.getId(), approverId, Instant.now());
 
 		assertEquals(1, affectedRows);
 	}
@@ -106,7 +106,7 @@ public class BookRequestWorkflowMapperTest {
 	public void findSummaryGroupsMultipleItemsUnderOneRequestWithoutDuplicatingRows() {
 		Long requesterId = insertUser("summaryRequester@example.com");
 		BookRequest bookRequest = BookRequest.builder().requesterId(requesterId).status(BookRequestStatus.PENDING)
-				.requestedAt(LocalDateTime.now()).idempotencyKey(UUID.randomUUID().toString()).build();
+				.requestedAt(Instant.now()).idempotencyKey(UUID.randomUUID().toString()).build();
 		bookRequestMapper.insert(bookRequest);
 
 		BookRequestItem item1 = BookRequestItem.builder().bookRequestId(bookRequest.getId()).title("Effective Java")
@@ -128,10 +128,10 @@ public class BookRequestWorkflowMapperTest {
 	public void findSummaryFiltersByStatusAndHandlesRequestWithNoItems() {
 		Long requesterId = insertUser("summaryRequester2@example.com");
 		BookRequest pendingRequest = BookRequest.builder().requesterId(requesterId)
-				.status(BookRequestStatus.PENDING).requestedAt(LocalDateTime.now()).idempotencyKey(UUID.randomUUID().toString()).build();
+				.status(BookRequestStatus.PENDING).requestedAt(Instant.now()).idempotencyKey(UUID.randomUUID().toString()).build();
 		bookRequestMapper.insert(pendingRequest);
 		BookRequest approvedRequest = BookRequest.builder().requesterId(requesterId)
-				.status(BookRequestStatus.APPROVED).requestedAt(LocalDateTime.now()).idempotencyKey(UUID.randomUUID().toString()).build();
+				.status(BookRequestStatus.APPROVED).requestedAt(Instant.now()).idempotencyKey(UUID.randomUUID().toString()).build();
 		bookRequestMapper.insert(approvedRequest);
 
 		List<BookRequestSummary> pendingOnly = bookRequestMapper.findSummary(BookRequestStatus.PENDING);
@@ -145,7 +145,7 @@ public class BookRequestWorkflowMapperTest {
 	public void bookRequestItemInsertAndFindByBookRequestIdWork() {
 		Long requesterId = insertUser("requester3@example.com");
 		BookRequest bookRequest = BookRequest.builder().requesterId(requesterId).status(BookRequestStatus.PENDING)
-				.requestedAt(LocalDateTime.now()).idempotencyKey(UUID.randomUUID().toString()).build();
+				.requestedAt(Instant.now()).idempotencyKey(UUID.randomUUID().toString()).build();
 		bookRequestMapper.insert(bookRequest);
 
 		BookRequestItem item = BookRequestItem.builder().bookRequestId(bookRequest.getId()).title("Effective Java")
@@ -162,7 +162,7 @@ public class BookRequestWorkflowMapperTest {
 	public void procurementItemInsertAndUpdateWork() {
 		Long requesterId = insertUser("requester4@example.com");
 		BookRequest bookRequest = BookRequest.builder().requesterId(requesterId).status(BookRequestStatus.APPROVED)
-				.requestedAt(LocalDateTime.now()).idempotencyKey(UUID.randomUUID().toString()).build();
+				.requestedAt(Instant.now()).idempotencyKey(UUID.randomUUID().toString()).build();
 		bookRequestMapper.insert(bookRequest);
 		BookRequestItem item = BookRequestItem.builder().bookRequestId(bookRequest.getId()).title("Clean Code").build();
 		bookRequestItemMapper.insert(item);
@@ -177,7 +177,7 @@ public class BookRequestWorkflowMapperTest {
 		Long procuredBy = insertUser("procurement@example.com");
 		procurementItem.setStatus(ProcurementStatus.COMPLETED);
 		procurementItem.setProcuredBy(procuredBy);
-		procurementItem.setProcuredAt(LocalDateTime.now());
+		procurementItem.setProcuredAt(Instant.now());
 		procurementItemMapper.update(procurementItem);
 
 		ProcurementItem found = procurementItemMapper.findById(procurementItem.getId()).get();
@@ -189,7 +189,7 @@ public class BookRequestWorkflowMapperTest {
 	public void findSummaryJoinsBookRequestItemDetailsAndFiltersByStatus() {
 		Long requesterId = insertUser("requester5@example.com");
 		BookRequest bookRequest = BookRequest.builder().requesterId(requesterId).status(BookRequestStatus.APPROVED)
-				.requestedAt(LocalDateTime.now()).idempotencyKey(UUID.randomUUID().toString()).build();
+				.requestedAt(Instant.now()).idempotencyKey(UUID.randomUUID().toString()).build();
 		bookRequestMapper.insert(bookRequest);
 
 		BookRequestItem item = BookRequestItem.builder().bookRequestId(bookRequest.getId()).title("Effective Java")

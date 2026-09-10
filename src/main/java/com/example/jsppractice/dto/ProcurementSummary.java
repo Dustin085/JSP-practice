@@ -1,6 +1,6 @@
 package com.example.jsppractice.dto;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 import com.example.jsppractice.model.BookRequestItem;
 import com.example.jsppractice.model.ProcurementStatus;
@@ -21,7 +21,7 @@ public class ProcurementSummary {
 
 	private Long procuredBy;
 
-	private LocalDateTime procuredAt;
+	private Instant procuredAt;
 
 	private Long bookId;
 

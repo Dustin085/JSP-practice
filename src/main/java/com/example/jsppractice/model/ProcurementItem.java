@@ -1,6 +1,6 @@
 package com.example.jsppractice.model;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,7 +21,7 @@ public class ProcurementItem {
 
 	private Long procuredBy;
 
-	private LocalDateTime procuredAt;
+	private Instant procuredAt;
 
 	private Long bookId;
 

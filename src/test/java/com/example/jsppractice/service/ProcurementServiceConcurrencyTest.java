@@ -3,7 +3,7 @@ package com.example.jsppractice.service;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.Callable;
@@ -86,7 +86,7 @@ public class ProcurementServiceConcurrencyTest {
 	public void onlyOneConcurrentCallerCanCompleteTheSameProcurementItem() throws Exception {
 		Long requesterId = insertUser("requester@example.com");
 		BookRequest bookRequest = BookRequest.builder().requesterId(requesterId).status(BookRequestStatus.APPROVED)
-				.requestedAt(LocalDateTime.now()).idempotencyKey(UUID.randomUUID().toString()).build();
+				.requestedAt(Instant.now()).idempotencyKey(UUID.randomUUID().toString()).build();
 		bookRequestMapper.insert(bookRequest);
 
 		BookRequestItem item = BookRequestItem.builder().bookRequestId(bookRequest.getId()).title("Effective Java")

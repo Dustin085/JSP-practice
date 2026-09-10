@@ -1,11 +1,12 @@
 package com.example.jsppractice.dto;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.List;
 
 import com.example.jsppractice.model.BookRequest;
 import com.example.jsppractice.model.BookRequestItem;
 import com.example.jsppractice.model.BookRequestStatus;
+import com.example.jsppractice.util.DisplayTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,9 +26,9 @@ public class BookRequestSummary {
 
 	private BookRequestStatus status;
 
-	private LocalDateTime requestedAt;
+	private Instant requestedAt;
 
-	private LocalDateTime approvedAt;
+	private Instant approvedAt;
 
 	private List<BookRequestItem> bookRequestItems;
 
@@ -36,5 +37,13 @@ public class BookRequestSummary {
 				.approverId(bookRequest.getApproverId()).status(bookRequest.getStatus())
 				.requestedAt(bookRequest.getRequestedAt()).approvedAt(bookRequest.getApprovedAt())
 				.bookRequestItems(bookRequestItems).build();
+	}
+
+	public String getRequestedAtDisplay() {
+		return DisplayTime.format(requestedAt);
+	}
+
+	public String getApprovedAtDisplay() {
+		return DisplayTime.format(approvedAt);
 	}
 }

@@ -1,6 +1,6 @@
 package com.example.jsppractice.service;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -63,7 +63,7 @@ public class ProcurementServiceImpl implements ProcurementService {
 				.authorId(bookRequestItem.getAuthorId()).publishedYear(bookRequestItem.getPublishedYear()).build());
 
 		ProcurementStatus oldStatus = procurementItem.getStatus();
-		LocalDateTime now = LocalDateTime.now();
+		Instant now = Instant.now();
 		procurementItem.setStatus(ProcurementStatus.COMPLETED);
 		procurementItem.setBookId(book.getId());
 		procurementItem.setProcuredBy(currentUser.getId());
