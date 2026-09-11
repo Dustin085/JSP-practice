@@ -119,7 +119,7 @@ public class BookRequestServiceImpl implements BookRequestService {
 		BookRequest bookRequest = bookRequestMapper.findById(requestId)
 				.orElseThrow(() -> new NoSuchElementException(BOOK_REQUEST_NOT_FOUND_MESSAGE));
 		if (approveResult == 0) {
-			validateBookRequest(bookRequest, currentUser);
+			validateBookRequest(bookRequest, currentUser, AuditActionType.APPROVE);
 		}
 
 		// 產生採購清單
@@ -176,7 +176,7 @@ public class BookRequestServiceImpl implements BookRequestService {
 		BookRequest bookRequest = bookRequestMapper.findById(requestId)
 				.orElseThrow(() -> new NoSuchElementException(BOOK_REQUEST_NOT_FOUND_MESSAGE));
 		if (rejectResult == 0) {
-			validateBookRequest(bookRequest, currentUser);
+			validateBookRequest(bookRequest, currentUser, AuditActionType.REJECT);
 		}
 
 		// audit log
@@ -221,17 +221,39 @@ public class BookRequestServiceImpl implements BookRequestService {
 		return bookRequestMapper.findSummary(status);
 	}
 
-	private void validateBookRequest(BookRequest bookRequest, User currentUser) {
+	private void validateBookRequest(BookRequest bookRequest, User currentUser, AuditActionType attemptedAction) {
 		if (bookRequest.getRequesterId().equals(currentUser.getId())) {
 			log.warn("審核被拒絕，審核人與申請人相同：requestId={}, userId={}", bookRequest.getId(), currentUser.getId());
+			recordValidationFailure(bookRequest, currentUser, attemptedAction, "審查人與請求人必須為不同人");
 			throw new SelfReviewNotAllowedException("審查人與請求人必須為不同人");
 		}
 		if (bookRequest.getStatus() == BookRequestStatus.APPROVED) {
+			recordValidationFailure(bookRequest, currentUser, attemptedAction, "此請求已被同意");
 			throw new BookRequestAlreadyProcessedException("此請求已被同意");
 		}
 		if (bookRequest.getStatus() == BookRequestStatus.REJECTED) {
+			recordValidationFailure(bookRequest, currentUser, attemptedAction, "此請求已被拒絕");
 			throw new BookRequestAlreadyProcessedException("此請求已被拒絕");
 		}
+	}
+
+	// 失敗嘗試也要留稽核紀錄：用 REQUIRES_NEW 寫入，即使外層 approve/reject 的交易最後
+	// 因為丟出例外而 rollback，這筆失敗紀錄依然會單獨提交、不會跟著消失。
+	private void recordValidationFailure(BookRequest bookRequest, User currentUser, AuditActionType attemptedAction,
+			String reason) {
+		Map<String, Object> detail = new HashMap<>();
+		detail.put("result", "FAILED");
+		detail.put("reason", reason);
+
+		AuditLog auditLog = AuditLog.builder()
+				.userId(currentUser.getId())
+				.auditedAt(Instant.now())
+				.action(attemptedAction)
+				.entityType(AuditEntityType.BOOK_REQUEST)
+				.entityId(bookRequest.getId())
+				.detail(detail)
+				.build();
+		auditService.createWhenFailure(auditLog);
 	}
 
 }

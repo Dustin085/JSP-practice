@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.jsppractice.mapper.AuditLogMapper;
@@ -58,6 +59,13 @@ public class AuditServiceImpl implements AuditService {
 	@Transactional(readOnly = true)
 	public List<AuditLog> findByEntity(AuditEntityType entityType, Long entityId) {
 		return auditLogMapper.findByEntity(entityType, entityId);
+	}
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	public AuditLog createWhenFailure(AuditLog auditLog) {
+		auditLogMapper.insert(auditLog);
+		return auditLog;
 	}
 
 }

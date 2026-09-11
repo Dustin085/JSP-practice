@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.example.jsppractice.mapper.AuditLogMapperTest" time="0.059" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.example.jsppractice.mapper.AuditLogMapperTest" time="0.067" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="26"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="TW"/>
     <property name="sun.boot.library.path" value="C:\Users\dusti\scoop\apps\openjdk\current\bin"/>
-    <property name="sun.java.command" value="C:\Users\dusti\AppData\Local\Temp\surefire5091806065529769016\surefirebooter-20260911132645995_3.jar C:\Users\dusti\AppData\Local\Temp\surefire5091806065529769016 2026-09-11T13-26-45_896-jvmRun1 surefire-20260911132645995_1tmp surefire_0-20260911132645995_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\dusti\AppData\Local\Temp\surefire756570164922814928\surefirebooter-20260911133717638_3.jar C:\Users\dusti\AppData\Local\Temp\surefire756570164922814928 2026-09-11T13-37-17_538-jvmRun1 surefire-20260911133717638_1tmp surefire_0-20260911133717638_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\dusti\eclipse-workspace\JSP-practice\target\test-classes;C:\Users\dusti\eclipse-workspace\JSP-practice\target\classes;C:\Users\dusti\.m2\repository\org\springframework\spring-webmvc\5.3.39\spring-webmvc-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-aop\5.3.39\spring-aop-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-beans\5.3.39\spring-beans-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-context\5.3.39\spring-context-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-core\5.3.39\spring-core-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-jcl\5.3.39\spring-jcl-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-expression\5.3.39\spring-expression-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-web\5.3.39\spring-web-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-jdbc\5.3.39\spring-jdbc-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-tx\5.3.39\spring-tx-5.3.39.jar;C:\Users\dusti\.m2\repository\javax\servlet\javax.servlet-api\4.0.1\javax.servlet-api-4.0.1.jar;C:\Users\dusti\.m2\repository\javax\servlet\jsp\javax.servlet.jsp-api\2.3.3\javax.servlet.jsp-api-2.3.3.jar;C:\Users\dusti\.m2\repository\javax\servlet\jstl\1.2\jstl-1.2.jar;C:\Users\dusti\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.17.2\jackson-databind-2.17.2.jar;C:\Users\dusti\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.17.2\jackson-annotations-2.17.2.jar;C:\Users\dusti\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.17.2\jackson-core-2.17.2.jar;C:\Users\dusti\.m2\repository\javax\validation\validation-api\2.0.1.Final\validation-api-2.0.1.Final.jar;C:\Users\dusti\.m2\repository\org\hibernate\validator\hibernate-validator\6.2.5.Final\hibernate-validator-6.2.5.Final.jar;C:\Users\dusti\.m2\repository\jakarta\validation\jakarta.validation-api\2.0.2\jakarta.validation-api-2.0.2.jar;C:\Users\dusti\.m2\repository\org\jboss\logging\jboss-logging\3.4.1.Final\jboss-logging-3.4.1.Final.jar;C:\Users\dusti\.m2\repository\com\fasterxml\classmate\1.5.1\classmate-1.5.1.jar;C:\Users\dusti\.m2\repository\org\glassfish\javax.el\3.0.1-b12\javax.el-3.0.1-b12.jar;C:\Users\dusti\.m2\repository\org\projectlombok\lombok\1.18.46\lombok-1.18.46.jar;C:\Users\dusti\.m2\repository\org\springframework\security\spring-security-crypto\5.8.13\spring-security-crypto-5.8.13.jar;C:\Users\dusti\.m2\repository\com\h2database\h2\2.3.232\h2-2.3.232.jar;C:\Users\dusti\.m2\repository\org\apache\poi\poi-ooxml\5.2.5\poi-ooxml-5.2.5.jar;C:\Users\dusti\.m2\repository\org\apache\poi\poi\5.2.5\poi-5.2.5.jar;C:\Users\dusti\.m2\repository\commons-codec\commons-codec\1.16.0\commons-codec-1.16.0.jar;C:\Users\dusti\.m2\repository\org\apache\commons\commons-math3\3.6.1\commons-math3-3.6.1.jar;C:\Users\dusti\.m2\repository\com\zaxxer\SparseBitSet\1.3\SparseBitSet-1.3.jar;C:\Users\dusti\.m2\repository\org\apache\poi\poi-ooxml-lite\5.2.5\poi-ooxml-lite-5.2.5.jar;C:\Users\dusti\.m2\repository\org\apache\xmlbeans\xmlbeans\5.2.0\xmlbeans-5.2.0.jar;C:\Users\dusti\.m2\repository\org\apache\commons\commons-compress\1.25.0\commons-compress-1.25.0.jar;C:\Users\dusti\.m2\repository\commons-io\commons-io\2.15.0\commons-io-2.15.0.jar;C:\Users\dusti\.m2\repository\com\github\virtuald\curvesapi\1.08\curvesapi-1.08.jar;C:\Users\dusti\.m2\repository\org\apache\logging\log4j\log4j-api\2.21.1\log4j-api-2.21.1.jar;C:\Users\dusti\.m2\repository\org\apache\commons\commons-collections4\4.4\commons-collections4-4.4.jar;C:\Users\dusti\.m2\repository\ch\qos\logback\logback-classic\1.2.13\logback-classic-1.2.13.jar;C:\Users\dusti\.m2\repository\ch\qos\logback\logback-core\1.2.13\logback-core-1.2.13.jar;C:\Users\dusti\.m2\repository\org\slf4j\slf4j-api\1.7.32\slf4j-api-1.7.32.jar;C:\Users\dusti\.m2\repository\org\mybatis\mybatis\3.5.16\mybatis-3.5.16.jar;C:\Users\dusti\.m2\repository\org\mybatis\mybatis-spring\2.1.2\mybatis-spring-2.1.2.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-test\5.3.39\spring-test-5.3.39.jar;C:\Users\dusti\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\dusti\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\dusti\.m2\repository\org\mockito\mockito-core\5.23.0\mockito-core-5.23.0.jar;C:\Users\dusti\.m2\repository\net\bytebuddy\byte-buddy\1.17.7\byte-buddy-1.17.7.jar;C:\Users\dusti\.m2\repository\net\bytebuddy\byte-buddy-agent\1.17.7\byte-buddy-agent-1.17.7.jar;C:\Users\dusti\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -32,7 +32,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\dusti\AppData\Local\Temp\surefire5091806065529769016\surefirebooter-20260911132645995_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\dusti\AppData\Local\Temp\surefire756570164922814928\surefirebooter-20260911133717638_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="26.0.2+10-55"/>
@@ -61,46 +61,46 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="70.0"/>
   </properties>
-  <testcase name="insertThenFindByEntityRoundTripsDetailJson" classname="com.example.jsppractice.mapper.AuditLogMapperTest" time="0.02">
-    <system-out><![CDATA[13:26:50.247 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-13:26:50.248 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 4(Long), 2026-09-11 13:26:50.2472602(Timestamp), APPROVE(String), BOOK_REQUEST(String), 42(Long), [B@c79915a(byte[])
-13:26:50.249 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-13:26:50.250 [main] DEBUG c.e.j.m.AuditLogMapper.findByEntity - ==>  Preparing: SELECT * FROM audit_logs WHERE entity_type = ? AND entity_id = ? ORDER BY audited_at DESC
-13:26:50.250 [main] DEBUG c.e.j.m.AuditLogMapper.findByEntity - ==> Parameters: BOOK_REQUEST(String), 42(Long)
-13:26:50.253 [main] DEBUG c.e.j.m.AuditLogMapper.findByEntity - <==      Total: 1
+  <testcase name="insertThenFindByEntityRoundTripsDetailJson" classname="com.example.jsppractice.mapper.AuditLogMapperTest" time="0.026">
+    <system-out><![CDATA[13:37:21.857 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+13:37:21.859 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 4(Long), 2026-09-11 13:37:21.8568235(Timestamp), APPROVE(String), BOOK_REQUEST(String), 42(Long), [B@be9cc86(byte[])
+13:37:21.860 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+13:37:21.862 [main] DEBUG c.e.j.m.AuditLogMapper.findByEntity - ==>  Preparing: SELECT * FROM audit_logs WHERE entity_type = ? AND entity_id = ? ORDER BY audited_at DESC
+13:37:21.863 [main] DEBUG c.e.j.m.AuditLogMapper.findByEntity - ==> Parameters: BOOK_REQUEST(String), 42(Long)
+13:37:21.867 [main] DEBUG c.e.j.m.AuditLogMapper.findByEntity - <==      Total: 1
 ]]></system-out>
   </testcase>
-  <testcase name="findNextReturnsRowsOlderThanCursorInDescendingIdOrder" classname="com.example.jsppractice.mapper.AuditLogMapperTest" time="0.02">
-    <system-out><![CDATA[13:26:50.268 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-13:26:50.269 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 5(Long), 2026-09-11 13:26:50.2683688(Timestamp), APPROVE(String), BOOK_REQUEST(String), 0(Long), [B@51097500(byte[])
-13:26:50.269 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-13:26:50.270 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-13:26:50.270 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 5(Long), 2026-09-11 13:26:50.2693674(Timestamp), APPROVE(String), BOOK_REQUEST(String), 1(Long), [B@1885905b(byte[])
-13:26:50.270 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-13:26:50.271 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-13:26:50.271 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 5(Long), 2026-09-11 13:26:50.2703684(Timestamp), APPROVE(String), BOOK_REQUEST(String), 2(Long), [B@52463255(byte[])
-13:26:50.271 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-13:26:50.275 [main] DEBUG c.e.j.mapper.AuditLogMapper.findNext - ==>  Preparing: SELECT * FROM audit_logs ORDER BY id DESC LIMIT ?
-13:26:50.275 [main] DEBUG c.e.j.mapper.AuditLogMapper.findNext - ==> Parameters: 2(Integer)
-13:26:50.276 [main] DEBUG c.e.j.mapper.AuditLogMapper.findNext - <==      Total: 2
-13:26:50.277 [main] DEBUG c.e.j.mapper.AuditLogMapper.findNext - ==>  Preparing: SELECT * FROM audit_logs WHERE id < ? ORDER BY id DESC LIMIT ?
-13:26:50.278 [main] DEBUG c.e.j.mapper.AuditLogMapper.findNext - ==> Parameters: 27(Long), 2(Integer)
-13:26:50.278 [main] DEBUG c.e.j.mapper.AuditLogMapper.findNext - <==      Total: 1
+  <testcase name="findNextReturnsRowsOlderThanCursorInDescendingIdOrder" classname="com.example.jsppractice.mapper.AuditLogMapperTest" time="0.023">
+    <system-out><![CDATA[13:37:21.881 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+13:37:21.882 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 5(Long), 2026-09-11 13:37:21.8818226(Timestamp), APPROVE(String), BOOK_REQUEST(String), 0(Long), [B@38394e76(byte[])
+13:37:21.883 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+13:37:21.883 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+13:37:21.885 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 5(Long), 2026-09-11 13:37:21.8839591(Timestamp), APPROVE(String), BOOK_REQUEST(String), 1(Long), [B@c4ca86a(byte[])
+13:37:21.885 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+13:37:21.885 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+13:37:21.885 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 5(Long), 2026-09-11 13:37:21.8851502(Timestamp), APPROVE(String), BOOK_REQUEST(String), 2(Long), [B@51097500(byte[])
+13:37:21.886 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+13:37:21.889 [main] DEBUG c.e.j.mapper.AuditLogMapper.findNext - ==>  Preparing: SELECT * FROM audit_logs ORDER BY id DESC LIMIT ?
+13:37:21.889 [main] DEBUG c.e.j.mapper.AuditLogMapper.findNext - ==> Parameters: 2(Integer)
+13:37:21.890 [main] DEBUG c.e.j.mapper.AuditLogMapper.findNext - <==      Total: 2
+13:37:21.892 [main] DEBUG c.e.j.mapper.AuditLogMapper.findNext - ==>  Preparing: SELECT * FROM audit_logs WHERE id < ? ORDER BY id DESC LIMIT ?
+13:37:21.892 [main] DEBUG c.e.j.mapper.AuditLogMapper.findNext - ==> Parameters: 27(Long), 2(Integer)
+13:37:21.893 [main] DEBUG c.e.j.mapper.AuditLogMapper.findNext - <==      Total: 1
 ]]></system-out>
   </testcase>
-  <testcase name="findPreviousReturnsRowsNewerThanCursorInAscendingIdOrder" classname="com.example.jsppractice.mapper.AuditLogMapperTest" time="0.016">
-    <system-out><![CDATA[13:26:50.289 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-13:26:50.289 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 6(Long), 2026-09-11 13:26:50.2894434(Timestamp), APPROVE(String), BOOK_REQUEST(String), 0(Long), [B@370a935f(byte[])
-13:26:50.290 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-13:26:50.290 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-13:26:50.291 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 6(Long), 2026-09-11 13:26:50.2909421(Timestamp), APPROVE(String), BOOK_REQUEST(String), 1(Long), [B@7e36d508(byte[])
-13:26:50.291 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-13:26:50.292 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-13:26:50.292 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 6(Long), 2026-09-11 13:26:50.2919501(Timestamp), APPROVE(String), BOOK_REQUEST(String), 2(Long), [B@3c2f310c(byte[])
-13:26:50.293 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-13:26:50.294 [main] DEBUG c.e.j.m.AuditLogMapper.findPrevious - ==>  Preparing: SELECT * FROM audit_logs WHERE id > ? ORDER BY id ASC LIMIT ?
-13:26:50.295 [main] DEBUG c.e.j.m.AuditLogMapper.findPrevious - ==> Parameters: 29(Long), 2(Integer)
-13:26:50.296 [main] DEBUG c.e.j.m.AuditLogMapper.findPrevious - <==      Total: 2
+  <testcase name="findPreviousReturnsRowsNewerThanCursorInAscendingIdOrder" classname="com.example.jsppractice.mapper.AuditLogMapperTest" time="0.015">
+    <system-out><![CDATA[13:37:21.903 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+13:37:21.904 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 6(Long), 2026-09-11 13:37:21.9034237(Timestamp), APPROVE(String), BOOK_REQUEST(String), 0(Long), [B@2b30b627(byte[])
+13:37:21.904 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+13:37:21.905 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+13:37:21.905 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 6(Long), 2026-09-11 13:37:21.9054222(Timestamp), APPROVE(String), BOOK_REQUEST(String), 1(Long), [B@684430c1(byte[])
+13:37:21.906 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+13:37:21.906 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+13:37:21.906 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 6(Long), 2026-09-11 13:37:21.9064219(Timestamp), APPROVE(String), BOOK_REQUEST(String), 2(Long), [B@370a935f(byte[])
+13:37:21.907 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+13:37:21.908 [main] DEBUG c.e.j.m.AuditLogMapper.findPrevious - ==>  Preparing: SELECT * FROM audit_logs WHERE id > ? ORDER BY id ASC LIMIT ?
+13:37:21.909 [main] DEBUG c.e.j.m.AuditLogMapper.findPrevious - ==> Parameters: 29(Long), 2(Integer)
+13:37:21.910 [main] DEBUG c.e.j.m.AuditLogMapper.findPrevious - <==      Total: 2
 ]]></system-out>
   </testcase>
 </testsuite>

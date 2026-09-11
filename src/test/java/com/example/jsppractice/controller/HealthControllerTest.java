@@ -1,7 +1,6 @@
 package com.example.jsppractice.controller;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -63,7 +62,7 @@ public class HealthControllerTest {
 
 	@Test
 	public void returnsDownWithServiceUnavailableWhenDbQueryFails() throws Exception {
-		when(jdbcTemplate.queryForObject(eq("SELECT 1"), any(Class.class)))
+		when(jdbcTemplate.queryForObject(eq("SELECT 1"), eq(Integer.class)))
 				.thenThrow(new DataAccessResourceFailureException("connection refused"));
 
 		MvcResult result = mockMvc.perform(get("/health")).andExpect(status().isServiceUnavailable()).andReturn();

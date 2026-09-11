@@ -51,6 +51,7 @@ public class ProcurementServiceImpl implements ProcurementService {
 		ProcurementItem procurementItem = procurementItemMapper.findByIdForUpdate(procurementItemId)
 				.orElseThrow(() -> new NoSuchElementException(PROCUREMENT_ITEM_NOT_FOUND_MESSAGE));
 		if (procurementItem.getStatus() == ProcurementStatus.COMPLETED) {
+			recordCompletionFailure(procurementItem, currentUser, "無法修改已完成的採購清單");
 			throw new ProcurementAlreadyCompletedException("無法修改已完成的採購清單");
 		}
 
@@ -97,6 +98,23 @@ public class ProcurementServiceImpl implements ProcurementService {
 	@Override
 	public List<ProcurementItem> findByStatus(ProcurementStatus status) {
 		return procurementItemMapper.findByStatus(status);
+	}
+
+	// 失敗嘗試也要留稽核紀錄：用 REQUIRES_NEW 寫入，即使外層交易最後 rollback 也不會跟著消失。
+	private void recordCompletionFailure(ProcurementItem procurementItem, User currentUser, String reason) {
+		Map<String, Object> detail = new HashMap<>();
+		detail.put("result", "FAILED");
+		detail.put("reason", reason);
+
+		AuditLog auditLog = AuditLog.builder()
+				.userId(currentUser.getId())
+				.auditedAt(Instant.now())
+				.action(AuditActionType.COMPLETE_PROCUREMENT)
+				.entityType(AuditEntityType.PROCUREMENT_ITEM)
+				.entityId(procurementItem.getId())
+				.detail(detail)
+				.build();
+		auditService.createWhenFailure(auditLog);
 	}
 
 	@Override

@@ -14,4 +14,6 @@ public interface AuditService {
 	AuditLog create(AuditLog auditLog);
 
 	List<AuditLog> findByEntity(AuditEntityType entityType, Long entityId);
+
+	AuditLog createWhenFailure(AuditLog auditLog);
 }
