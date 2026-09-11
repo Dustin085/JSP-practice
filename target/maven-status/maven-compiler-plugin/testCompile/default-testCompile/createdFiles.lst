@@ -7,6 +7,7 @@ com\example\jsppractice\helper\DataBaseCleaner.class
 com\example\jsppractice\controller\LoginControllerTest.class
 com\example\jsppractice\mapper\BookRequestWorkflowMapperTest.class
 com\example\jsppractice\controller\LogoutControllerTest.class
+com\example\jsppractice\controller\HealthControllerTest.class
 com\example\jsppractice\interceptor\LoginCheckInterceptorTest.class
 com\example\jsppractice\mapper\UserMapperTest.class
 com\example\jsppractice\model\BookValidationTest.class
