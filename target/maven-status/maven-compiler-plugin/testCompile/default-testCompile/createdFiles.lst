@@ -1,5 +1,6 @@
 com\example\jsppractice\mapper\AuditLogMapperTest.class
 com\example\jsppractice\config\DataSeederTest.class
+com\example\jsppractice\mapper\ReconciliationMapperTest.class
 com\example\jsppractice\controller\RegisterControllerTest.class
 com\example\jsppractice\service\AuthServiceImplTest.class
 com\example\jsppractice\service\ProcurementServiceConcurrencyTest.class

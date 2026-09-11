@@ -111,3 +111,28 @@ CREATE TABLE IF NOT EXISTS procurement_items (
     FOREIGN KEY (book_id)
     REFERENCES books(id)
 );
+
+CREATE TABLE IF NOT EXISTS reconciliations (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    reconciled_at TIMESTAMP NOT NULL,
+    reconciliation_type VARCHAR(50) NOT NULL
+        CONSTRAINT chk_reconciliation_type CHECK (reconciliation_type IN ('BOOK_REQUEST_PROCUREMENT', 'PROCUREMENT_BOOK')),
+    status VARCHAR(30) NOT NULL
+        CONSTRAINT chk_reconciliation_status CHECK (status IN ('COMPLETED_NO_DISCREPANCY', 'COMPLETED_WITH_DISCREPANCY', 'FAILED'))
+);
+
+CREATE TABLE IF NOT EXISTS reconciliation_items (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    reconciliation_id BIGINT NOT NULL,
+    entity_type VARCHAR(100) NOT NULL,
+    entity_id BIGINT NOT NULL,
+    discrepancy_type VARCHAR(30) NOT NULL
+        CONSTRAINT chk_reconciliation_item_discrepancy_type CHECK (discrepancy_type IN ('ONLY_IN_SOURCE', 'ONLY_IN_TARGET', 'MISMATCHED')),
+    detail JSON NOT NULL,
+
+    CONSTRAINT fk_reconciliation_item_reconciliation
+    FOREIGN KEY (reconciliation_id)
+    REFERENCES reconciliations(id)
+);
+
+CREATE INDEX idx_reconciliation_item_reconciliation ON reconciliation_items(reconciliation_id);
