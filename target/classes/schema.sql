@@ -128,6 +128,8 @@ CREATE TABLE IF NOT EXISTS reconciliation_items (
     entity_id BIGINT NOT NULL,
     discrepancy_type VARCHAR(30) NOT NULL
         CONSTRAINT chk_reconciliation_item_discrepancy_type CHECK (discrepancy_type IN ('ONLY_IN_SOURCE', 'ONLY_IN_TARGET', 'MISMATCHED')),
+    status VARCHAR(20) NOT NULL
+        CONSTRAINT chk_reconciliation_item_status CHECK (status IN ('UNRESOLVED', 'RESOLVED', 'WRITTEN_OFF')),
     detail JSON NOT NULL,
 
     CONSTRAINT fk_reconciliation_item_reconciliation
@@ -136,3 +138,4 @@ CREATE TABLE IF NOT EXISTS reconciliation_items (
 );
 
 CREATE INDEX idx_reconciliation_item_reconciliation ON reconciliation_items(reconciliation_id);
+CREATE INDEX idx_reconciliation_item_entity ON reconciliation_items(entity_type, entity_id);

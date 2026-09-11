@@ -2,15 +2,19 @@ package com.example.jsppractice.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.jsppractice.dto.ReconciliationSummary;
 import com.example.jsppractice.model.Reconciliation;
+import com.example.jsppractice.model.User;
 import com.example.jsppractice.service.ReconciliationService;
 
 @Controller
@@ -41,6 +45,31 @@ public class ReconciliationController {
 	public String reconcileProcurementItems(RedirectAttributes redirectAttributes) {
 		Reconciliation result = reconciliationService.reconcileProcurementItems();
 		redirectAttributes.addFlashAttribute("flashMessage", "採購/書籍對帳完成，結果：" + result.getStatus());
+		return "redirect:/reconciliations";
+	}
+
+	@PostMapping("/items/{id}/resolve")
+	public String resolve(@PathVariable Long id, HttpSession session, RedirectAttributes redirectAttributes) {
+		User currentUser = (User) session.getAttribute("currentUser");
+		reconciliationService.resolve(id, currentUser);
+		redirectAttributes.addFlashAttribute("flashMessage", "已標記為已處理");
+		return "redirect:/reconciliations";
+	}
+
+	@PostMapping("/items/{id}/write-off")
+	public String writeOff(@PathVariable Long id, HttpSession session, RedirectAttributes redirectAttributes) {
+		User currentUser = (User) session.getAttribute("currentUser");
+		reconciliationService.writeOff(id, currentUser);
+		redirectAttributes.addFlashAttribute("flashMessage", "已沖銷，下次對帳不會再回報這筆");
+		return "redirect:/reconciliations";
+	}
+
+	@PostMapping("/items/{id}/backfill-procurement-item")
+	public String backfillProcurementItem(@PathVariable Long id, HttpSession session,
+			RedirectAttributes redirectAttributes) {
+		User currentUser = (User) session.getAttribute("currentUser");
+		reconciliationService.backfillProcurementItem(id, currentUser);
+		redirectAttributes.addFlashAttribute("flashMessage", "已補建對應的採購項目");
 		return "redirect:/reconciliations";
 	}
 }

@@ -1,14 +1,23 @@
 package com.example.jsppractice.config;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.example.jsppractice.mapper.BookRequestItemMapper;
+import com.example.jsppractice.mapper.BookRequestMapper;
+import com.example.jsppractice.mapper.ProcurementItemMapper;
 import com.example.jsppractice.model.Author;
 import com.example.jsppractice.model.Book;
+import com.example.jsppractice.model.BookRequest;
+import com.example.jsppractice.model.BookRequestItem;
+import com.example.jsppractice.model.BookRequestStatus;
 import com.example.jsppractice.model.Category;
+import com.example.jsppractice.model.ProcurementItem;
+import com.example.jsppractice.model.ProcurementStatus;
 import com.example.jsppractice.model.RoleType;
 import com.example.jsppractice.model.User;
 import com.example.jsppractice.service.AuthService;
@@ -28,10 +37,14 @@ public class DataSeeder {
 	private final UserService userService;
 	private final PasswordEncoder passwordEncoder;
 	private final BookRequestService bookRequestService;
+	private final BookRequestMapper bookRequestMapper;
+	private final BookRequestItemMapper bookRequestItemMapper;
+	private final ProcurementItemMapper procurementItemMapper;
 
 	public DataSeeder(AuthorService authorService, CategoryService categoryService, BookService bookService,
 			AuthService authService, UserService userService, PasswordEncoder passwordEncoder,
-			BookRequestService bookRequestService) {
+			BookRequestService bookRequestService, BookRequestMapper bookRequestMapper,
+			BookRequestItemMapper bookRequestItemMapper, ProcurementItemMapper procurementItemMapper) {
 		this.authorService = authorService;
 		this.categoryService = categoryService;
 		this.bookService = bookService;
@@ -39,6 +52,9 @@ public class DataSeeder {
 		this.userService = userService;
 		this.passwordEncoder = passwordEncoder;
 		this.bookRequestService = bookRequestService;
+		this.bookRequestMapper = bookRequestMapper;
+		this.bookRequestItemMapper = bookRequestItemMapper;
+		this.procurementItemMapper = procurementItemMapper;
 	}
 
 	public void seed() {
@@ -80,6 +96,31 @@ public class DataSeeder {
 		userService.save(procurementStaff);
 
 		seedBookRequests(requester, admin);
+		seedReconciliationDiscrepancies(requester);
+	}
+
+	// 故意繞過 BookRequestServiceImpl/ProcurementServiceImpl 正常的核准/採購流程，
+	// 直接用 mapper 造出「已核准卻缺採購項目」「已完成採購卻缺書籍」這兩種資料不一致，
+	// 因為正常流程本來就會保證這兩件事一致，唯一能製造出落差的方式就是繞過它、直接動資料庫，
+	// 這樣才有東西讓 /reconciliations 的兩個對帳功能可以在瀏覽器上測試。
+	private void seedReconciliationDiscrepancies(User requester) {
+		BookRequest orphanApproval = BookRequest.builder().requesterId(requester.getId())
+				.status(BookRequestStatus.APPROVED).requestedAt(Instant.now()).idempotencyKey(newIdempotencyKey())
+				.build();
+		bookRequestMapper.insert(orphanApproval);
+		bookRequestItemMapper.insert(BookRequestItem.builder().bookRequestId(orphanApproval.getId())
+				.title("[測試用] 已核准但缺採購項目").build());
+
+		BookRequest anotherApproval = BookRequest.builder().requesterId(requester.getId())
+				.status(BookRequestStatus.APPROVED).requestedAt(Instant.now()).idempotencyKey(newIdempotencyKey())
+				.build();
+		bookRequestMapper.insert(anotherApproval);
+		BookRequestItem brokenItem = BookRequestItem.builder().bookRequestId(anotherApproval.getId())
+				.title("[測試用] 已完成採購但缺書籍紀錄").build();
+		bookRequestItemMapper.insert(brokenItem);
+		procurementItemMapper.insert(
+				ProcurementItem.builder().bookRequestItemId(brokenItem.getId()).status(ProcurementStatus.COMPLETED)
+						.build());
 	}
 
 	private void seedBookRequests(User requester, User admin) {

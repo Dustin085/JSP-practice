@@ -17,6 +17,7 @@ import com.example.jsppractice.model.ProcurementItem;
 import com.example.jsppractice.model.Reconciliation;
 import com.example.jsppractice.model.ReconciliationDiscrepancyType;
 import com.example.jsppractice.model.ReconciliationItem;
+import com.example.jsppractice.model.ReconciliationItemStatus;
 import com.example.jsppractice.model.ReconciliationStatus;
 import com.example.jsppractice.model.ReconciliationType;
 
@@ -65,6 +66,7 @@ public class ReconciliationChecker {
 						.entityType(AuditEntityType.BOOK_REQUEST_ITEM)
 						.entityId(item.getId())
 						.discrepancyType(ReconciliationDiscrepancyType.ONLY_IN_SOURCE)
+						.status(ReconciliationItemStatus.UNRESOLVED)
 						.detail(Map.of("reason", "找不到對應的 procurement_item"))
 						.build();
 				reconciliationItemMapper.insert(reconciliationItem);
@@ -98,6 +100,7 @@ public class ReconciliationChecker {
 						.entityType(AuditEntityType.PROCUREMENT_ITEM)
 						.entityId(item.getId())
 						.discrepancyType(ReconciliationDiscrepancyType.ONLY_IN_SOURCE)
+						.status(ReconciliationItemStatus.UNRESOLVED)
 						.detail(Map.of("reason", "找不到對應的 book"))
 						.build();
 				reconciliationItemMapper.insert(reconciliationItem);

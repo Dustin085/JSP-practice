@@ -24,6 +24,10 @@
 		bri.id = pi.book_request_item_id
 		WHERE br.status = 'APPROVED' AND pi.id
 		IS NULL
+		AND NOT EXISTS (
+			SELECT 1 FROM reconciliation_items ri
+			WHERE ri.entity_type = 'BOOK_REQUEST_ITEM' AND ri.entity_id = bri.id AND ri.status = 'WRITTEN_OFF'
+		)
 	</select>
 
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">

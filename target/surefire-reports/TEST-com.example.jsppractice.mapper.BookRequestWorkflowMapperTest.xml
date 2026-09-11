@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.example.jsppractice.mapper.BookRequestWorkflowMapperTest" time="0.07" tests="7" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.example.jsppractice.mapper.BookRequestWorkflowMapperTest" time="0.049" tests="7" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="26"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="TW"/>
     <property name="sun.boot.library.path" value="C:\Users\dusti\scoop\apps\openjdk\current\bin"/>
-    <property name="sun.java.command" value="C:\Users\dusti\AppData\Local\Temp\surefire7127004356198342298\surefirebooter-20260911162943258_3.jar C:\Users\dusti\AppData\Local\Temp\surefire7127004356198342298 2026-09-11T16-29-43_107-jvmRun1 surefire-20260911162943258_1tmp surefire_0-20260911162943258_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\dusti\AppData\Local\Temp\surefire16699898803982204723\surefirebooter-20260911173625161_3.jar C:\Users\dusti\AppData\Local\Temp\surefire16699898803982204723 2026-09-11T17-36-25_031-jvmRun1 surefire-20260911173625161_1tmp surefire_0-20260911173625161_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\dusti\eclipse-workspace\JSP-practice\target\test-classes;C:\Users\dusti\eclipse-workspace\JSP-practice\target\classes;C:\Users\dusti\.m2\repository\org\springframework\spring-webmvc\5.3.39\spring-webmvc-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-aop\5.3.39\spring-aop-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-beans\5.3.39\spring-beans-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-context\5.3.39\spring-context-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-core\5.3.39\spring-core-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-jcl\5.3.39\spring-jcl-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-expression\5.3.39\spring-expression-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-web\5.3.39\spring-web-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-jdbc\5.3.39\spring-jdbc-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-tx\5.3.39\spring-tx-5.3.39.jar;C:\Users\dusti\.m2\repository\javax\servlet\javax.servlet-api\4.0.1\javax.servlet-api-4.0.1.jar;C:\Users\dusti\.m2\repository\javax\servlet\jsp\javax.servlet.jsp-api\2.3.3\javax.servlet.jsp-api-2.3.3.jar;C:\Users\dusti\.m2\repository\javax\servlet\jstl\1.2\jstl-1.2.jar;C:\Users\dusti\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.17.2\jackson-databind-2.17.2.jar;C:\Users\dusti\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.17.2\jackson-annotations-2.17.2.jar;C:\Users\dusti\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.17.2\jackson-core-2.17.2.jar;C:\Users\dusti\.m2\repository\javax\validation\validation-api\2.0.1.Final\validation-api-2.0.1.Final.jar;C:\Users\dusti\.m2\repository\org\hibernate\validator\hibernate-validator\6.2.5.Final\hibernate-validator-6.2.5.Final.jar;C:\Users\dusti\.m2\repository\jakarta\validation\jakarta.validation-api\2.0.2\jakarta.validation-api-2.0.2.jar;C:\Users\dusti\.m2\repository\org\jboss\logging\jboss-logging\3.4.1.Final\jboss-logging-3.4.1.Final.jar;C:\Users\dusti\.m2\repository\com\fasterxml\classmate\1.5.1\classmate-1.5.1.jar;C:\Users\dusti\.m2\repository\org\glassfish\javax.el\3.0.1-b12\javax.el-3.0.1-b12.jar;C:\Users\dusti\.m2\repository\org\projectlombok\lombok\1.18.46\lombok-1.18.46.jar;C:\Users\dusti\.m2\repository\org\springframework\security\spring-security-crypto\5.8.13\spring-security-crypto-5.8.13.jar;C:\Users\dusti\.m2\repository\com\h2database\h2\2.3.232\h2-2.3.232.jar;C:\Users\dusti\.m2\repository\org\apache\poi\poi-ooxml\5.2.5\poi-ooxml-5.2.5.jar;C:\Users\dusti\.m2\repository\org\apache\poi\poi\5.2.5\poi-5.2.5.jar;C:\Users\dusti\.m2\repository\commons-codec\commons-codec\1.16.0\commons-codec-1.16.0.jar;C:\Users\dusti\.m2\repository\org\apache\commons\commons-math3\3.6.1\commons-math3-3.6.1.jar;C:\Users\dusti\.m2\repository\com\zaxxer\SparseBitSet\1.3\SparseBitSet-1.3.jar;C:\Users\dusti\.m2\repository\org\apache\poi\poi-ooxml-lite\5.2.5\poi-ooxml-lite-5.2.5.jar;C:\Users\dusti\.m2\repository\org\apache\xmlbeans\xmlbeans\5.2.0\xmlbeans-5.2.0.jar;C:\Users\dusti\.m2\repository\org\apache\commons\commons-compress\1.25.0\commons-compress-1.25.0.jar;C:\Users\dusti\.m2\repository\commons-io\commons-io\2.15.0\commons-io-2.15.0.jar;C:\Users\dusti\.m2\repository\com\github\virtuald\curvesapi\1.08\curvesapi-1.08.jar;C:\Users\dusti\.m2\repository\org\apache\logging\log4j\log4j-api\2.21.1\log4j-api-2.21.1.jar;C:\Users\dusti\.m2\repository\org\apache\commons\commons-collections4\4.4\commons-collections4-4.4.jar;C:\Users\dusti\.m2\repository\ch\qos\logback\logback-classic\1.2.13\logback-classic-1.2.13.jar;C:\Users\dusti\.m2\repository\ch\qos\logback\logback-core\1.2.13\logback-core-1.2.13.jar;C:\Users\dusti\.m2\repository\org\slf4j\slf4j-api\1.7.32\slf4j-api-1.7.32.jar;C:\Users\dusti\.m2\repository\org\mybatis\mybatis\3.5.16\mybatis-3.5.16.jar;C:\Users\dusti\.m2\repository\org\mybatis\mybatis-spring\2.1.2\mybatis-spring-2.1.2.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-test\5.3.39\spring-test-5.3.39.jar;C:\Users\dusti\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\dusti\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\dusti\.m2\repository\org\mockito\mockito-core\5.23.0\mockito-core-5.23.0.jar;C:\Users\dusti\.m2\repository\net\bytebuddy\byte-buddy\1.17.7\byte-buddy-1.17.7.jar;C:\Users\dusti\.m2\repository\net\bytebuddy\byte-buddy-agent\1.17.7\byte-buddy-agent-1.17.7.jar;C:\Users\dusti\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -32,7 +32,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\dusti\AppData\Local\Temp\surefire7127004356198342298\surefirebooter-20260911162943258_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\dusti\AppData\Local\Temp\surefire16699898803982204723\surefirebooter-20260911173625161_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="26.0.2+10-55"/>
@@ -61,106 +61,106 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="70.0"/>
   </properties>
-  <testcase name="bookRequestItemInsertAndFindByBookRequestIdWork" classname="com.example.jsppractice.mapper.BookRequestWorkflowMapperTest" time="0.004">
-    <system-out><![CDATA[16:29:48.221 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-16:29:48.221 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 7(Long), PENDING(String), 2026-09-11 16:29:48.2218278(Timestamp), 47501875-c619-48c8-9f9f-8bf4e12e6efa(String)
-16:29:48.221 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
-16:29:48.221 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
-16:29:48.221 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 13(Long), Effective Java(String), 9780134685991(String), null, 2018(Integer), 1200.00(BigDecimal)
-16:29:48.221 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
-16:29:48.221 [main] DEBUG c.e.j.m.B.findByBookRequestId - ==>  Preparing: SELECT * FROM book_request_items WHERE book_request_id = ?
-16:29:48.221 [main] DEBUG c.e.j.m.B.findByBookRequestId - ==> Parameters: 13(Long)
-16:29:48.230 [main] DEBUG c.e.j.m.B.findByBookRequestId - <==      Total: 1
+  <testcase name="bookRequestItemInsertAndFindByBookRequestIdWork" classname="com.example.jsppractice.mapper.BookRequestWorkflowMapperTest" time="0.001">
+    <system-out><![CDATA[17:36:29.942 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:36:29.942 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 7(Long), PENDING(String), 2026-09-11 17:36:29.9422294(Timestamp), 1b890e12-c24d-477a-9fdf-ec138035b40d(String)
+17:36:29.943 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
+17:36:29.943 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
+17:36:29.943 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 15(Long), Effective Java(String), 9780134685991(String), null, 2018(Integer), 1200.00(BigDecimal)
+17:36:29.943 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
+17:36:29.944 [main] DEBUG c.e.j.m.B.findByBookRequestId - ==>  Preparing: SELECT * FROM book_request_items WHERE book_request_id = ?
+17:36:29.944 [main] DEBUG c.e.j.m.B.findByBookRequestId - ==> Parameters: 15(Long)
+17:36:29.944 [main] DEBUG c.e.j.m.B.findByBookRequestId - <==      Total: 1
 ]]></system-out>
   </testcase>
-  <testcase name="procurementItemInsertAndUpdateWork" classname="com.example.jsppractice.mapper.BookRequestWorkflowMapperTest" time="0.015">
-    <system-out><![CDATA[16:29:48.237 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-16:29:48.237 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 8(Long), APPROVED(String), 2026-09-11 16:29:48.2373493(Timestamp), 98708e52-bb07-4c0e-beff-65aa5b1afd36(String)
-16:29:48.237 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
-16:29:48.237 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
-16:29:48.237 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 14(Long), Clean Code(String), null, null, null, null
-16:29:48.237 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
-16:29:48.237 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==>  Preparing: INSERT INTO procurement_items (book_request_item_id, status) VALUES (?, ?)
-16:29:48.237 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==> Parameters: 16(Long), PENDING(String)
-16:29:48.237 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - <==    Updates: 1
-16:29:48.237 [main] DEBUG c.e.j.m.P.findByStatus - ==>  Preparing: SELECT * FROM procurement_items WHERE status = ?
-16:29:48.243 [main] DEBUG c.e.j.m.P.findByStatus - ==> Parameters: PENDING(String)
-16:29:48.244 [main] DEBUG c.e.j.m.P.findByStatus - <==      Total: 1
-16:29:48.244 [main] DEBUG c.e.j.m.ProcurementItemMapper.update - ==>  Preparing: UPDATE procurement_items SET status = ?, procured_by = ?, procured_at = ?, book_id = ? WHERE id = ?
-16:29:48.244 [main] DEBUG c.e.j.m.ProcurementItemMapper.update - ==> Parameters: COMPLETED(String), 9(Long), 2026-09-11 16:29:48.244844(Timestamp), null, 6(Long)
-16:29:48.244 [main] DEBUG c.e.j.m.ProcurementItemMapper.update - <==    Updates: 1
-16:29:48.244 [main] DEBUG c.e.j.m.P.findById - ==>  Preparing: SELECT * FROM procurement_items WHERE id = ?
-16:29:48.244 [main] DEBUG c.e.j.m.P.findById - ==> Parameters: 6(Long)
-16:29:48.244 [main] DEBUG c.e.j.m.P.findById - <==      Total: 1
+  <testcase name="procurementItemInsertAndUpdateWork" classname="com.example.jsppractice.mapper.BookRequestWorkflowMapperTest" time="0.009">
+    <system-out><![CDATA[17:36:29.950 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:36:29.950 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 8(Long), APPROVED(String), 2026-09-11 17:36:29.9502339(Timestamp), 55629552-2837-4d03-b0e0-78c06757bbd9(String)
+17:36:29.950 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
+17:36:29.951 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
+17:36:29.951 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 16(Long), Clean Code(String), null, null, null, null
+17:36:29.951 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
+17:36:29.951 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==>  Preparing: INSERT INTO procurement_items (book_request_item_id, status) VALUES (?, ?)
+17:36:29.951 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==> Parameters: 18(Long), PENDING(String)
+17:36:29.951 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - <==    Updates: 1
+17:36:29.952 [main] DEBUG c.e.j.m.P.findByStatus - ==>  Preparing: SELECT * FROM procurement_items WHERE status = ?
+17:36:29.952 [main] DEBUG c.e.j.m.P.findByStatus - ==> Parameters: PENDING(String)
+17:36:29.952 [main] DEBUG c.e.j.m.P.findByStatus - <==      Total: 1
+17:36:29.953 [main] DEBUG c.e.j.m.ProcurementItemMapper.update - ==>  Preparing: UPDATE procurement_items SET status = ?, procured_by = ?, procured_at = ?, book_id = ? WHERE id = ?
+17:36:29.953 [main] DEBUG c.e.j.m.ProcurementItemMapper.update - ==> Parameters: COMPLETED(String), 9(Long), 2026-09-11 17:36:29.9532443(Timestamp), null, 7(Long)
+17:36:29.954 [main] DEBUG c.e.j.m.ProcurementItemMapper.update - <==    Updates: 1
+17:36:29.954 [main] DEBUG c.e.j.m.P.findById - ==>  Preparing: SELECT * FROM procurement_items WHERE id = ?
+17:36:29.954 [main] DEBUG c.e.j.m.P.findById - ==> Parameters: 7(Long)
+17:36:29.954 [main] DEBUG c.e.j.m.P.findById - <==      Total: 1
 ]]></system-out>
   </testcase>
-  <testcase name="bookRequestInsertAndFindByStatusWork" classname="com.example.jsppractice.mapper.BookRequestWorkflowMapperTest" time="0.0">
-    <system-out><![CDATA[16:29:48.252 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-16:29:48.252 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 10(Long), PENDING(String), 2026-09-11 16:29:48.2529844(Timestamp), cc6aa601-248f-4759-b867-ffd119ea476f(String)
-16:29:48.252 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
-16:29:48.252 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==>  Preparing: SELECT * FROM book_requests WHERE id = ?
-16:29:48.252 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==> Parameters: 15(Long)
-16:29:48.252 [main] DEBUG c.e.j.m.BookRequestMapper.findById - <==      Total: 1
-16:29:48.252 [main] DEBUG c.e.j.m.B.findByStatus - ==>  Preparing: SELECT * FROM book_requests WHERE status = ? ORDER BY requested_at
-16:29:48.252 [main] DEBUG c.e.j.m.B.findByStatus - ==> Parameters: PENDING(String)
-16:29:48.252 [main] DEBUG c.e.j.m.B.findByStatus - <==      Total: 1
+  <testcase name="bookRequestInsertAndFindByStatusWork" classname="com.example.jsppractice.mapper.BookRequestWorkflowMapperTest" time="0.004">
+    <system-out><![CDATA[17:36:29.958 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:36:29.958 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 10(Long), PENDING(String), 2026-09-11 17:36:29.9572457(Timestamp), 637fe058-4e96-4539-8014-6109ee0ae53c(String)
+17:36:29.958 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
+17:36:29.958 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==>  Preparing: SELECT * FROM book_requests WHERE id = ?
+17:36:29.958 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==> Parameters: 17(Long)
+17:36:29.959 [main] DEBUG c.e.j.m.BookRequestMapper.findById - <==      Total: 1
+17:36:29.959 [main] DEBUG c.e.j.m.B.findByStatus - ==>  Preparing: SELECT * FROM book_requests WHERE status = ? ORDER BY requested_at
+17:36:29.959 [main] DEBUG c.e.j.m.B.findByStatus - ==> Parameters: PENDING(String)
+17:36:29.960 [main] DEBUG c.e.j.m.B.findByStatus - <==      Total: 1
 ]]></system-out>
   </testcase>
-  <testcase name="findSummaryJoinsBookRequestItemDetailsAndFiltersByStatus" classname="com.example.jsppractice.mapper.BookRequestWorkflowMapperTest" time="0.02">
-    <system-out><![CDATA[16:29:48.252 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-16:29:48.252 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 11(Long), APPROVED(String), 2026-09-11 16:29:48.2529844(Timestamp), 1d5a7918-63a9-4c8f-aabd-caeaf9e18dbc(String)
-16:29:48.252 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
-16:29:48.252 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
-16:29:48.252 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 16(Long), Effective Java(String), 9780134685991(String), null, 2018(Integer), 1200.00(BigDecimal)
-16:29:48.252 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
-16:29:48.252 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==>  Preparing: INSERT INTO procurement_items (book_request_item_id, status) VALUES (?, ?)
-16:29:48.252 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==> Parameters: 17(Long), PENDING(String)
-16:29:48.252 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - <==    Updates: 1
-16:29:48.252 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
-16:29:48.252 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 16(Long), Clean Code(String), null, null, null, null
-16:29:48.252 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
-16:29:48.252 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==>  Preparing: INSERT INTO procurement_items (book_request_item_id, status) VALUES (?, ?)
-16:29:48.252 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==> Parameters: 18(Long), COMPLETED(String)
-16:29:48.252 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - <==    Updates: 1
-16:29:48.252 [main] DEBUG c.e.j.m.P.findSummary - ==>  Preparing: SELECT p.*, b.title,b.isbn,b.author_id,b.published_year,b.estimated_price FROM procurement_items p JOIN book_request_items b ON p.book_request_item_id = b.id WHERE p.status = ?
-16:29:48.252 [main] DEBUG c.e.j.m.P.findSummary - ==> Parameters: PENDING(String)
-16:29:48.252 [main] DEBUG c.e.j.m.P.findSummary - <==      Total: 1
+  <testcase name="findSummaryJoinsBookRequestItemDetailsAndFiltersByStatus" classname="com.example.jsppractice.mapper.BookRequestWorkflowMapperTest" time="0.007">
+    <system-out><![CDATA[17:36:29.963 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:36:29.963 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 11(Long), APPROVED(String), 2026-09-11 17:36:29.9622529(Timestamp), 2e2bd2b5-9298-4a0f-95ba-1de32030de9a(String)
+17:36:29.963 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
+17:36:29.963 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
+17:36:29.963 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 18(Long), Effective Java(String), 9780134685991(String), null, 2018(Integer), 1200.00(BigDecimal)
+17:36:29.963 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
+17:36:29.964 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==>  Preparing: INSERT INTO procurement_items (book_request_item_id, status) VALUES (?, ?)
+17:36:29.964 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==> Parameters: 19(Long), PENDING(String)
+17:36:29.964 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - <==    Updates: 1
+17:36:29.964 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
+17:36:29.964 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 18(Long), Clean Code(String), null, null, null, null
+17:36:29.965 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
+17:36:29.965 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==>  Preparing: INSERT INTO procurement_items (book_request_item_id, status) VALUES (?, ?)
+17:36:29.965 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==> Parameters: 20(Long), COMPLETED(String)
+17:36:29.965 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - <==    Updates: 1
+17:36:29.965 [main] DEBUG c.e.j.m.P.findSummary - ==>  Preparing: SELECT p.*, b.title,b.isbn,b.author_id,b.published_year,b.estimated_price FROM procurement_items p JOIN book_request_items b ON p.book_request_item_id = b.id WHERE p.status = ?
+17:36:29.966 [main] DEBUG c.e.j.m.P.findSummary - ==> Parameters: PENDING(String)
+17:36:29.966 [main] DEBUG c.e.j.m.P.findSummary - <==      Total: 1
 ]]></system-out>
   </testcase>
-  <testcase name="findSummaryFiltersByStatusAndHandlesRequestWithNoItems" classname="com.example.jsppractice.mapper.BookRequestWorkflowMapperTest" time="0.002">
-    <system-out><![CDATA[16:29:48.274 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-16:29:48.274 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 12(Long), PENDING(String), 2026-09-11 16:29:48.274501(Timestamp), 79cb774d-d875-435b-8461-a0c5ae128e0c(String)
-16:29:48.274 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
-16:29:48.274 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-16:29:48.274 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 12(Long), APPROVED(String), 2026-09-11 16:29:48.274501(Timestamp), b3b2e1fe-fa3b-4139-8e66-bbef2e9df2a7(String)
-16:29:48.274 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
-16:29:48.274 [main] DEBUG c.e.j.m.B.findSummary - ==>  Preparing: SELECT br.id, br.requester_id, br.approver_id, br.status, br.requested_at, br.approved_at, bri.id AS item_id, bri.book_request_id, bri.title AS item_title, bri.isbn AS item_isbn, bri.author_id AS item_author_id, bri.published_year AS item_published_year, bri.estimated_price AS item_estimated_price FROM book_requests br LEFT JOIN book_request_items bri ON bri.book_request_id = br.id WHERE br.status = ? ORDER BY br.requested_at
-16:29:48.274 [main] DEBUG c.e.j.m.B.findSummary - ==> Parameters: PENDING(String)
-16:29:48.274 [main] DEBUG c.e.j.m.B.findSummary - <==      Total: 1
+  <testcase name="findSummaryFiltersByStatusAndHandlesRequestWithNoItems" classname="com.example.jsppractice.mapper.BookRequestWorkflowMapperTest" time="0.007">
+    <system-out><![CDATA[17:36:29.970 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:36:29.971 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 12(Long), PENDING(String), 2026-09-11 17:36:29.9703514(Timestamp), 16e9f837-779f-484b-9f1e-8c63e5ab848f(String)
+17:36:29.971 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
+17:36:29.971 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:36:29.971 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 12(Long), APPROVED(String), 2026-09-11 17:36:29.9713559(Timestamp), 65ba341f-cdd9-4c45-a85e-d9660fcd0916(String)
+17:36:29.971 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
+17:36:29.972 [main] DEBUG c.e.j.m.B.findSummary - ==>  Preparing: SELECT br.id, br.requester_id, br.approver_id, br.status, br.requested_at, br.approved_at, bri.id AS item_id, bri.book_request_id, bri.title AS item_title, bri.isbn AS item_isbn, bri.author_id AS item_author_id, bri.published_year AS item_published_year, bri.estimated_price AS item_estimated_price FROM book_requests br LEFT JOIN book_request_items bri ON bri.book_request_id = br.id WHERE br.status = ? ORDER BY br.requested_at
+17:36:29.972 [main] DEBUG c.e.j.m.B.findSummary - ==> Parameters: PENDING(String)
+17:36:29.973 [main] DEBUG c.e.j.m.B.findSummary - <==      Total: 1
 ]]></system-out>
   </testcase>
-  <testcase name="approveMapperMethodBindsParametersCorrectly" classname="com.example.jsppractice.mapper.BookRequestWorkflowMapperTest" time="0.014">
-    <system-out><![CDATA[16:29:48.284 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-16:29:48.284 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 13(Long), PENDING(String), 2026-09-11 16:29:48.2847259(Timestamp), 046b47f2-57aa-4caf-833f-d8d1545eaaf2(String)
-16:29:48.284 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
-16:29:48.284 [main] DEBUG c.e.j.m.BookRequestMapper.approve - ==>  Preparing: UPDATE book_requests SET status = 'APPROVED', approver_id = ?, approved_at = ? WHERE id = ? AND status = 'PENDING' AND requester_id != ?
-16:29:48.286 [main] DEBUG c.e.j.m.BookRequestMapper.approve - ==> Parameters: 14(Long), 2026-09-11 16:29:48.2847259(Timestamp), 19(Long), 14(Long)
-16:29:48.286 [main] DEBUG c.e.j.m.BookRequestMapper.approve - <==    Updates: 1
+  <testcase name="approveMapperMethodBindsParametersCorrectly" classname="com.example.jsppractice.mapper.BookRequestWorkflowMapperTest" time="0.008">
+    <system-out><![CDATA[17:36:29.978 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:36:29.978 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 13(Long), PENDING(String), 2026-09-11 17:36:29.9783509(Timestamp), 80e6214e-e1e0-44ac-b7db-119321471427(String)
+17:36:29.979 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
+17:36:29.979 [main] DEBUG c.e.j.m.BookRequestMapper.approve - ==>  Preparing: UPDATE book_requests SET status = 'APPROVED', approver_id = ?, approved_at = ? WHERE id = ? AND status = 'PENDING' AND requester_id != ?
+17:36:29.980 [main] DEBUG c.e.j.m.BookRequestMapper.approve - ==> Parameters: 14(Long), 2026-09-11 17:36:29.9793518(Timestamp), 21(Long), 14(Long)
+17:36:29.980 [main] DEBUG c.e.j.m.BookRequestMapper.approve - <==    Updates: 1
 ]]></system-out>
   </testcase>
-  <testcase name="findSummaryGroupsMultipleItemsUnderOneRequestWithoutDuplicatingRows" classname="com.example.jsppractice.mapper.BookRequestWorkflowMapperTest" time="0.012">
-    <system-out><![CDATA[16:29:48.288 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-16:29:48.288 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 15(Long), PENDING(String), 2026-09-11 16:29:48.288957(Timestamp), 36e177f3-eb3a-4937-9a8b-e93feb698563(String)
-16:29:48.288 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
-16:29:48.294 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
-16:29:48.294 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 20(Long), Effective Java(String), null, null, null, null
-16:29:48.294 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
-16:29:48.294 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
-16:29:48.294 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 20(Long), Clean Code(String), null, null, null, null
-16:29:48.294 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
-16:29:48.294 [main] DEBUG c.e.j.m.B.findSummary - ==>  Preparing: SELECT br.id, br.requester_id, br.approver_id, br.status, br.requested_at, br.approved_at, bri.id AS item_id, bri.book_request_id, bri.title AS item_title, bri.isbn AS item_isbn, bri.author_id AS item_author_id, bri.published_year AS item_published_year, bri.estimated_price AS item_estimated_price FROM book_requests br LEFT JOIN book_request_items bri ON bri.book_request_id = br.id ORDER BY br.requested_at
-16:29:48.294 [main] DEBUG c.e.j.m.B.findSummary - ==> Parameters: 
-16:29:48.294 [main] DEBUG c.e.j.m.B.findSummary - <==      Total: 2
+  <testcase name="findSummaryGroupsMultipleItemsUnderOneRequestWithoutDuplicatingRows" classname="com.example.jsppractice.mapper.BookRequestWorkflowMapperTest" time="0.01">
+    <system-out><![CDATA[17:36:29.987 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:36:29.988 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 15(Long), PENDING(String), 2026-09-11 17:36:29.9873535(Timestamp), 6717aaee-3f09-497f-b196-7050e436a9bd(String)
+17:36:29.989 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
+17:36:29.990 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
+17:36:29.990 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 22(Long), Effective Java(String), null, null, null, null
+17:36:29.990 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
+17:36:29.991 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
+17:36:29.991 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 22(Long), Clean Code(String), null, null, null, null
+17:36:29.991 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
+17:36:29.992 [main] DEBUG c.e.j.m.B.findSummary - ==>  Preparing: SELECT br.id, br.requester_id, br.approver_id, br.status, br.requested_at, br.approved_at, bri.id AS item_id, bri.book_request_id, bri.title AS item_title, bri.isbn AS item_isbn, bri.author_id AS item_author_id, bri.published_year AS item_published_year, bri.estimated_price AS item_estimated_price FROM book_requests br LEFT JOIN book_request_items bri ON bri.book_request_id = br.id ORDER BY br.requested_at
+17:36:29.992 [main] DEBUG c.e.j.m.B.findSummary - ==> Parameters: 
+17:36:29.993 [main] DEBUG c.e.j.m.B.findSummary - <==      Total: 2
 ]]></system-out>
   </testcase>
 </testsuite>

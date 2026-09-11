@@ -42,7 +42,29 @@
 					<c:if test="${empty reconciliation.reconciliationItems}">-</c:if>
 					<ul>
 						<c:forEach var="item" items="${reconciliation.reconciliationItems}">
-							<li>${item.entityType} #${item.entityId}（${item.discrepancyType}）：${item.detail.reason}</li>
+							<li>${item.entityType} #${item.entityId}（${item.discrepancyType}）：${item.detail.reason}
+								【${item.status}】
+								<c:if test="${item.status == 'UNRESOLVED'}">
+									<form action="${pageContext.request.contextPath}/reconciliations/items/${item.id}/resolve"
+										method="post" style="display: inline">
+										<%@ include file="/WEB-INF/views/common/csrfTokenInput.jsp"%>
+										<button type="submit" onclick="return confirm('確定標記為已處理?')">標記已處理</button>
+									</form>
+									<form action="${pageContext.request.contextPath}/reconciliations/items/${item.id}/write-off"
+										method="post" style="display: inline">
+										<%@ include file="/WEB-INF/views/common/csrfTokenInput.jsp"%>
+										<button type="submit" onclick="return confirm('確定沖銷?沖銷後下次對帳不會再回報這筆')">沖銷</button>
+									</form>
+									<c:if test="${item.entityType == 'BOOK_REQUEST_ITEM'}">
+										<form
+											action="${pageContext.request.contextPath}/reconciliations/items/${item.id}/backfill-procurement-item"
+											method="post" style="display: inline">
+											<%@ include file="/WEB-INF/views/common/csrfTokenInput.jsp"%>
+											<button type="submit" onclick="return confirm('確定補建對應的採購項目?')">補建</button>
+										</form>
+									</c:if>
+								</c:if>
+							</li>
 						</c:forEach>
 					</ul>
 				</td>

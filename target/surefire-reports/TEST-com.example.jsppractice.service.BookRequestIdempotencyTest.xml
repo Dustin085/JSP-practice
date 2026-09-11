@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.example.jsppractice.service.BookRequestIdempotencyTest" time="0.119" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.example.jsppractice.service.BookRequestIdempotencyTest" time="0.103" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="26"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="TW"/>
     <property name="sun.boot.library.path" value="C:\Users\dusti\scoop\apps\openjdk\current\bin"/>
-    <property name="sun.java.command" value="C:\Users\dusti\AppData\Local\Temp\surefire7127004356198342298\surefirebooter-20260911162943258_3.jar C:\Users\dusti\AppData\Local\Temp\surefire7127004356198342298 2026-09-11T16-29-43_107-jvmRun1 surefire-20260911162943258_1tmp surefire_0-20260911162943258_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\dusti\AppData\Local\Temp\surefire16699898803982204723\surefirebooter-20260911173625161_3.jar C:\Users\dusti\AppData\Local\Temp\surefire16699898803982204723 2026-09-11T17-36-25_031-jvmRun1 surefire-20260911173625161_1tmp surefire_0-20260911173625161_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\dusti\eclipse-workspace\JSP-practice\target\test-classes;C:\Users\dusti\eclipse-workspace\JSP-practice\target\classes;C:\Users\dusti\.m2\repository\org\springframework\spring-webmvc\5.3.39\spring-webmvc-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-aop\5.3.39\spring-aop-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-beans\5.3.39\spring-beans-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-context\5.3.39\spring-context-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-core\5.3.39\spring-core-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-jcl\5.3.39\spring-jcl-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-expression\5.3.39\spring-expression-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-web\5.3.39\spring-web-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-jdbc\5.3.39\spring-jdbc-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-tx\5.3.39\spring-tx-5.3.39.jar;C:\Users\dusti\.m2\repository\javax\servlet\javax.servlet-api\4.0.1\javax.servlet-api-4.0.1.jar;C:\Users\dusti\.m2\repository\javax\servlet\jsp\javax.servlet.jsp-api\2.3.3\javax.servlet.jsp-api-2.3.3.jar;C:\Users\dusti\.m2\repository\javax\servlet\jstl\1.2\jstl-1.2.jar;C:\Users\dusti\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.17.2\jackson-databind-2.17.2.jar;C:\Users\dusti\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.17.2\jackson-annotations-2.17.2.jar;C:\Users\dusti\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.17.2\jackson-core-2.17.2.jar;C:\Users\dusti\.m2\repository\javax\validation\validation-api\2.0.1.Final\validation-api-2.0.1.Final.jar;C:\Users\dusti\.m2\repository\org\hibernate\validator\hibernate-validator\6.2.5.Final\hibernate-validator-6.2.5.Final.jar;C:\Users\dusti\.m2\repository\jakarta\validation\jakarta.validation-api\2.0.2\jakarta.validation-api-2.0.2.jar;C:\Users\dusti\.m2\repository\org\jboss\logging\jboss-logging\3.4.1.Final\jboss-logging-3.4.1.Final.jar;C:\Users\dusti\.m2\repository\com\fasterxml\classmate\1.5.1\classmate-1.5.1.jar;C:\Users\dusti\.m2\repository\org\glassfish\javax.el\3.0.1-b12\javax.el-3.0.1-b12.jar;C:\Users\dusti\.m2\repository\org\projectlombok\lombok\1.18.46\lombok-1.18.46.jar;C:\Users\dusti\.m2\repository\org\springframework\security\spring-security-crypto\5.8.13\spring-security-crypto-5.8.13.jar;C:\Users\dusti\.m2\repository\com\h2database\h2\2.3.232\h2-2.3.232.jar;C:\Users\dusti\.m2\repository\org\apache\poi\poi-ooxml\5.2.5\poi-ooxml-5.2.5.jar;C:\Users\dusti\.m2\repository\org\apache\poi\poi\5.2.5\poi-5.2.5.jar;C:\Users\dusti\.m2\repository\commons-codec\commons-codec\1.16.0\commons-codec-1.16.0.jar;C:\Users\dusti\.m2\repository\org\apache\commons\commons-math3\3.6.1\commons-math3-3.6.1.jar;C:\Users\dusti\.m2\repository\com\zaxxer\SparseBitSet\1.3\SparseBitSet-1.3.jar;C:\Users\dusti\.m2\repository\org\apache\poi\poi-ooxml-lite\5.2.5\poi-ooxml-lite-5.2.5.jar;C:\Users\dusti\.m2\repository\org\apache\xmlbeans\xmlbeans\5.2.0\xmlbeans-5.2.0.jar;C:\Users\dusti\.m2\repository\org\apache\commons\commons-compress\1.25.0\commons-compress-1.25.0.jar;C:\Users\dusti\.m2\repository\commons-io\commons-io\2.15.0\commons-io-2.15.0.jar;C:\Users\dusti\.m2\repository\com\github\virtuald\curvesapi\1.08\curvesapi-1.08.jar;C:\Users\dusti\.m2\repository\org\apache\logging\log4j\log4j-api\2.21.1\log4j-api-2.21.1.jar;C:\Users\dusti\.m2\repository\org\apache\commons\commons-collections4\4.4\commons-collections4-4.4.jar;C:\Users\dusti\.m2\repository\ch\qos\logback\logback-classic\1.2.13\logback-classic-1.2.13.jar;C:\Users\dusti\.m2\repository\ch\qos\logback\logback-core\1.2.13\logback-core-1.2.13.jar;C:\Users\dusti\.m2\repository\org\slf4j\slf4j-api\1.7.32\slf4j-api-1.7.32.jar;C:\Users\dusti\.m2\repository\org\mybatis\mybatis\3.5.16\mybatis-3.5.16.jar;C:\Users\dusti\.m2\repository\org\mybatis\mybatis-spring\2.1.2\mybatis-spring-2.1.2.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-test\5.3.39\spring-test-5.3.39.jar;C:\Users\dusti\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\dusti\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\dusti\.m2\repository\org\mockito\mockito-core\5.23.0\mockito-core-5.23.0.jar;C:\Users\dusti\.m2\repository\net\bytebuddy\byte-buddy\1.17.7\byte-buddy-1.17.7.jar;C:\Users\dusti\.m2\repository\net\bytebuddy\byte-buddy-agent\1.17.7\byte-buddy-agent-1.17.7.jar;C:\Users\dusti\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -32,7 +32,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\dusti\AppData\Local\Temp\surefire7127004356198342298\surefirebooter-20260911162943258_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\dusti\AppData\Local\Temp\surefire16699898803982204723\surefirebooter-20260911173625161_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="26.0.2+10-55"/>
@@ -61,48 +61,48 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="70.0"/>
   </properties>
-  <testcase name="concurrentSubmitsWithSameIdempotencyKeyOnlyCreateOneBookRequest" classname="com.example.jsppractice.service.BookRequestIdempotencyTest" time="0.103">
-    <system-out><![CDATA[16:29:48.669 [pool-2-thread-2] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-16:29:48.669 [pool-2-thread-2] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 19(Long), PENDING(String), 2026-09-11 16:29:48.6693023(Timestamp), c2f9ce09-3ad7-454a-812f-8a7a2a8afa73(String)
-16:29:48.672 [pool-2-thread-2] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
-16:29:48.672 [pool-2-thread-1] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-16:29:48.672 [pool-2-thread-2] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
-16:29:48.672 [pool-2-thread-1] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 19(Long), PENDING(String), 2026-09-11 16:29:48.6693023(Timestamp), c2f9ce09-3ad7-454a-812f-8a7a2a8afa73(String)
-16:29:48.672 [pool-2-thread-2] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 21(Long), Effective Java(String), null, null, null, null
-16:29:48.672 [pool-2-thread-2] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
-16:29:48.674 [pool-2-thread-2] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-16:29:48.674 [pool-2-thread-2] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 19(Long), 2026-09-11 16:29:48.6693023(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 21(Long), [B@6345d070(byte[])
-16:29:48.674 [pool-2-thread-2] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-16:29:48.677 [pool-2-thread-2] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=21, requesterId=19, 書籍數=1
-16:29:48.761 [pool-2-thread-1] WARN  c.e.j.service.BookRequestServiceImpl - 偵測到重複送出，直接回傳原始請求：idempotencyKey=c2f9ce09-3ad7-454a-812f-8a7a2a8afa73
-16:29:48.761 [pool-2-thread-1] DEBUG c.e.j.m.B.findByIdempotencyKey - ==>  Preparing: SELECT * FROM book_requests WHERE idempotency_key = ?
-16:29:48.761 [pool-2-thread-1] DEBUG c.e.j.m.B.findByIdempotencyKey - ==> Parameters: c2f9ce09-3ad7-454a-812f-8a7a2a8afa73(String)
-16:29:48.763 [pool-2-thread-1] DEBUG c.e.j.m.B.findByIdempotencyKey - <==      Total: 1
-16:29:48.763 [main] DEBUG c.e.j.m.BookRequestMapper.findAll - ==>  Preparing: SELECT * FROM book_requests
-16:29:48.763 [main] DEBUG c.e.j.m.BookRequestMapper.findAll - ==> Parameters: 
-16:29:48.766 [main] DEBUG c.e.j.m.BookRequestMapper.findAll - <==      Total: 1
+  <testcase name="concurrentSubmitsWithSameIdempotencyKeyOnlyCreateOneBookRequest" classname="com.example.jsppractice.service.BookRequestIdempotencyTest" time="0.091">
+    <system-out><![CDATA[17:36:30.273 [pool-2-thread-2] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:36:30.273 [pool-2-thread-1] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:36:30.275 [pool-2-thread-2] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 19(Long), PENDING(String), 2026-09-11 17:36:30.27361(Timestamp), fc758e1f-4b77-4309-920a-685c56523c1a(String)
+17:36:30.275 [pool-2-thread-1] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 19(Long), PENDING(String), 2026-09-11 17:36:30.27361(Timestamp), fc758e1f-4b77-4309-920a-685c56523c1a(String)
+17:36:30.275 [pool-2-thread-2] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
+17:36:30.276 [pool-2-thread-2] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
+17:36:30.276 [pool-2-thread-2] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 23(Long), Effective Java(String), null, null, null, null
+17:36:30.276 [pool-2-thread-2] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
+17:36:30.276 [pool-2-thread-2] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:36:30.277 [pool-2-thread-2] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 19(Long), 2026-09-11 17:36:30.27361(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 23(Long), [B@4f9fa39e(byte[])
+17:36:30.277 [pool-2-thread-2] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:36:30.277 [pool-2-thread-2] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=23, requesterId=19, 書籍數=1
+17:36:30.356 [pool-2-thread-1] WARN  c.e.j.service.BookRequestServiceImpl - 偵測到重複送出，直接回傳原始請求：idempotencyKey=fc758e1f-4b77-4309-920a-685c56523c1a
+17:36:30.357 [pool-2-thread-1] DEBUG c.e.j.m.B.findByIdempotencyKey - ==>  Preparing: SELECT * FROM book_requests WHERE idempotency_key = ?
+17:36:30.357 [pool-2-thread-1] DEBUG c.e.j.m.B.findByIdempotencyKey - ==> Parameters: fc758e1f-4b77-4309-920a-685c56523c1a(String)
+17:36:30.358 [pool-2-thread-1] DEBUG c.e.j.m.B.findByIdempotencyKey - <==      Total: 1
+17:36:30.359 [main] DEBUG c.e.j.m.BookRequestMapper.findAll - ==>  Preparing: SELECT * FROM book_requests
+17:36:30.359 [main] DEBUG c.e.j.m.BookRequestMapper.findAll - ==> Parameters: 
+17:36:30.360 [main] DEBUG c.e.j.m.BookRequestMapper.findAll - <==      Total: 1
 ]]></system-out>
   </testcase>
-  <testcase name="sameKeySubmittedTwiceSequentiallyOnlyCreatesOneBookRequest" classname="com.example.jsppractice.service.BookRequestIdempotencyTest" time="0.016">
-    <system-out><![CDATA[16:29:48.772 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-16:29:48.774 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 20(Long), PENDING(String), 2026-09-11 16:29:48.7726368(Timestamp), 333c11ae-2828-40fd-9530-ec784b7db335(String)
-16:29:48.774 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
-16:29:48.774 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
-16:29:48.774 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 30(Long), Effective Java(String), null, null, null, null
-16:29:48.774 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
-16:29:48.774 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-16:29:48.777 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 20(Long), 2026-09-11 16:29:48.7726368(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 30(Long), [B@5d24703e(byte[])
-16:29:48.777 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-16:29:48.777 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=30, requesterId=20, 書籍數=1
-16:29:48.777 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-16:29:48.777 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 20(Long), PENDING(String), 2026-09-11 16:29:48.7770038(Timestamp), 333c11ae-2828-40fd-9530-ec784b7db335(String)
-16:29:48.779 [main] WARN  c.e.j.service.BookRequestServiceImpl - 偵測到重複送出，直接回傳原始請求：idempotencyKey=333c11ae-2828-40fd-9530-ec784b7db335
-16:29:48.779 [main] DEBUG c.e.j.m.B.findByIdempotencyKey - ==>  Preparing: SELECT * FROM book_requests WHERE idempotency_key = ?
-16:29:48.779 [main] DEBUG c.e.j.m.B.findByIdempotencyKey - ==> Parameters: 333c11ae-2828-40fd-9530-ec784b7db335(String)
-16:29:48.779 [main] DEBUG c.e.j.m.B.findByIdempotencyKey - <==      Total: 1
-16:29:48.781 [main] DEBUG c.e.j.m.BookRequestMapper.findAll - ==>  Preparing: SELECT * FROM book_requests
-16:29:48.781 [main] DEBUG c.e.j.m.BookRequestMapper.findAll - ==> Parameters: 
-16:29:48.781 [main] DEBUG c.e.j.m.BookRequestMapper.findAll - <==      Total: 1
+  <testcase name="sameKeySubmittedTwiceSequentiallyOnlyCreatesOneBookRequest" classname="com.example.jsppractice.service.BookRequestIdempotencyTest" time="0.01">
+    <system-out><![CDATA[17:36:30.365 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:36:30.365 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 20(Long), PENDING(String), 2026-09-11 17:36:30.3653354(Timestamp), 4c5daf7b-e09f-476a-b5d1-4a4c20b53b5c(String)
+17:36:30.366 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
+17:36:30.366 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
+17:36:30.366 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 31(Long), Effective Java(String), null, null, null, null
+17:36:30.366 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
+17:36:30.366 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:36:30.367 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 20(Long), 2026-09-11 17:36:30.3653354(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 31(Long), [B@61c4fc34(byte[])
+17:36:30.367 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:36:30.367 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=31, requesterId=20, 書籍數=1
+17:36:30.367 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:36:30.367 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 20(Long), PENDING(String), 2026-09-11 17:36:30.3678619(Timestamp), 4c5daf7b-e09f-476a-b5d1-4a4c20b53b5c(String)
+17:36:30.368 [main] WARN  c.e.j.service.BookRequestServiceImpl - 偵測到重複送出，直接回傳原始請求：idempotencyKey=4c5daf7b-e09f-476a-b5d1-4a4c20b53b5c
+17:36:30.368 [main] DEBUG c.e.j.m.B.findByIdempotencyKey - ==>  Preparing: SELECT * FROM book_requests WHERE idempotency_key = ?
+17:36:30.368 [main] DEBUG c.e.j.m.B.findByIdempotencyKey - ==> Parameters: 4c5daf7b-e09f-476a-b5d1-4a4c20b53b5c(String)
+17:36:30.369 [main] DEBUG c.e.j.m.B.findByIdempotencyKey - <==      Total: 1
+17:36:30.370 [main] DEBUG c.e.j.m.BookRequestMapper.findAll - ==>  Preparing: SELECT * FROM book_requests
+17:36:30.370 [main] DEBUG c.e.j.m.BookRequestMapper.findAll - ==> Parameters: 
+17:36:30.370 [main] DEBUG c.e.j.m.BookRequestMapper.findAll - <==      Total: 1
 ]]></system-out>
   </testcase>
 </testsuite>

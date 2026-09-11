@@ -2,10 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.jsppractice.mapper.ReconciliationItemMapper">
 
+	<resultMap id="reconciliationItemResultMap" type="com.example.jsppractice.model.ReconciliationItem">
+		<id column="id" property="id" />
+		<result column="reconciliation_id" property="reconciliationId" />
+		<result column="entity_type" property="entityType" />
+		<result column="entity_id" property="entityId" />
+		<result column="discrepancy_type" property="discrepancyType" />
+		<result column="status" property="status" />
+		<result column="detail" property="detail"
+			typeHandler="com.example.jsppractice.mapper.typehandler.JsonMapTypeHandler" />
+	</resultMap>
+
+	<select id="findById" resultMap="reconciliationItemResultMap">
+		SELECT * FROM reconciliation_items WHERE id = #{id}
+	</select>
+
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO reconciliation_items (reconciliation_id, entity_type, entity_id, discrepancy_type, detail)
-		VALUES (#{reconciliationId}, #{entityType}, #{entityId}, #{discrepancyType},
+		INSERT INTO reconciliation_items (reconciliation_id, entity_type, entity_id, discrepancy_type, status, detail)
+		VALUES (#{reconciliationId}, #{entityType}, #{entityId}, #{discrepancyType}, #{status},
 			#{detail,typeHandler=com.example.jsppractice.mapper.typehandler.JsonMapTypeHandler})
 	</insert>
+
+	<update id="updateStatus">
+		UPDATE reconciliation_items SET status = #{status} WHERE id = #{id}
+	</update>
 
 </mapper>

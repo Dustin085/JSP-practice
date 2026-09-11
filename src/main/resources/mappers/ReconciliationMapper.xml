@@ -13,6 +13,7 @@
 			<result column="entity_type" property="entityType" />
 			<result column="entity_id" property="entityId" />
 			<result column="discrepancy_type" property="discrepancyType" />
+			<result column="item_status" property="status" />
 			<result column="detail" property="detail"
 				typeHandler="com.example.jsppractice.mapper.typehandler.JsonMapTypeHandler" />
 		</collection>
@@ -20,7 +21,8 @@
 
 	<select id="findSummary" resultMap="reconciliationSummaryResultMap">
 		SELECT r.id, r.reconciled_at, r.reconciliation_type, r.status,
-			ri.id AS item_id, ri.reconciliation_id, ri.entity_type, ri.entity_id, ri.discrepancy_type, ri.detail
+			ri.id AS item_id, ri.reconciliation_id, ri.entity_type, ri.entity_id, ri.discrepancy_type,
+			ri.status AS item_status, ri.detail
 		FROM reconciliations r
 		LEFT JOIN reconciliation_items ri ON ri.reconciliation_id = r.id
 		ORDER BY r.id DESC

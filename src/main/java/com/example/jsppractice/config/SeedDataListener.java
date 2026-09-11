@@ -8,6 +8,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import com.example.jsppractice.mapper.BookRequestItemMapper;
+import com.example.jsppractice.mapper.BookRequestMapper;
+import com.example.jsppractice.mapper.ProcurementItemMapper;
 import com.example.jsppractice.service.AuthService;
 import com.example.jsppractice.service.AuthorService;
 import com.example.jsppractice.service.BookRequestService;
@@ -28,7 +31,8 @@ public class SeedDataListener implements ServletContextListener {
 		new DataSeeder(context.getBean(AuthorService.class), context.getBean(CategoryService.class),
 				context.getBean(BookService.class), context.getBean(AuthService.class),
 				context.getBean(UserService.class), context.getBean(PasswordEncoder.class),
-				context.getBean(BookRequestService.class)).seed();
+				context.getBean(BookRequestService.class), context.getBean(BookRequestMapper.class),
+				context.getBean(BookRequestItemMapper.class), context.getBean(ProcurementItemMapper.class)).seed();
 	}
 
 	@Override

@@ -22,5 +22,7 @@ public class ReconciliationItem {
 
 	private ReconciliationDiscrepancyType discrepancyType;
 
+	private ReconciliationItemStatus status;
+
 	private Map<String, Object> detail; // {reason: "找不到對應的 procurement_item"}
 }

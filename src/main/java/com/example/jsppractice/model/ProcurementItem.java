@@ -26,7 +26,9 @@ public class ProcurementItem {
 	private Long bookId;
 
 	public static ProcurementItem from(BookRequestItem bookRequestItem) {
-		return ProcurementItem.builder().bookRequestItemId(bookRequestItem.getId()).status(ProcurementStatus.PENDING)
+		return ProcurementItem.builder()
+				.bookRequestItemId(bookRequestItem.getId())
+				.status(ProcurementStatus.PENDING)
 				.build();
 	}
 }

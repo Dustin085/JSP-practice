@@ -22,6 +22,7 @@ import com.example.jsppractice.model.AuditEntityType;
 import com.example.jsppractice.model.Reconciliation;
 import com.example.jsppractice.model.ReconciliationDiscrepancyType;
 import com.example.jsppractice.model.ReconciliationItem;
+import com.example.jsppractice.model.ReconciliationItemStatus;
 import com.example.jsppractice.model.ReconciliationStatus;
 import com.example.jsppractice.model.ReconciliationType;
 
@@ -77,7 +78,8 @@ public class ReconciliationMapperTest {
 
 		ReconciliationItem item = ReconciliationItem.builder().reconciliationId(reconciliation.getId())
 				.entityType(AuditEntityType.BOOK_REQUEST_ITEM).entityId(99L)
-				.discrepancyType(ReconciliationDiscrepancyType.ONLY_IN_SOURCE).detail(detail).build();
+				.discrepancyType(ReconciliationDiscrepancyType.ONLY_IN_SOURCE)
+				.status(ReconciliationItemStatus.UNRESOLVED).detail(detail).build();
 
 		reconciliationItemMapper.insert(item);
 
@@ -88,5 +90,28 @@ public class ReconciliationMapperTest {
 		assertEquals("BOOK_REQUEST_ITEM", row.get("ENTITY_TYPE"));
 		assertEquals(99L, ((Number) row.get("ENTITY_ID")).longValue());
 		assertEquals("ONLY_IN_SOURCE", row.get("DISCREPANCY_TYPE"));
+		assertEquals("UNRESOLVED", row.get("STATUS"));
+	}
+
+	@Test
+	public void findByIdReturnsItemWithStatus() {
+		Reconciliation reconciliation = Reconciliation.builder().reconciledAt(Instant.now())
+				.reconciliationType(ReconciliationType.PROCUREMENT_BOOK)
+				.status(ReconciliationStatus.COMPLETED_WITH_DISCREPANCY).build();
+		reconciliationMapper.insert(reconciliation);
+
+		ReconciliationItem item = ReconciliationItem.builder().reconciliationId(reconciliation.getId())
+				.entityType(AuditEntityType.PROCUREMENT_ITEM).entityId(5L)
+				.discrepancyType(ReconciliationDiscrepancyType.ONLY_IN_SOURCE)
+				.status(ReconciliationItemStatus.UNRESOLVED).detail(Map.of("reason", "找不到對應的 book")).build();
+		reconciliationItemMapper.insert(item);
+
+		ReconciliationItem found = reconciliationItemMapper.findById(item.getId()).get();
+		assertEquals(ReconciliationItemStatus.UNRESOLVED, found.getStatus());
+
+		reconciliationItemMapper.updateStatus(item.getId(), ReconciliationItemStatus.WRITTEN_OFF);
+
+		ReconciliationItem updated = reconciliationItemMapper.findById(item.getId()).get();
+		assertEquals(ReconciliationItemStatus.WRITTEN_OFF, updated.getStatus());
 	}
 }

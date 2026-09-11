@@ -58,6 +58,10 @@
 		pi.book_id = b.id
 		WHERE pi.status = 'COMPLETED'
 		AND b.id IS NULL
+		AND NOT EXISTS (
+			SELECT 1 FROM reconciliation_items ri
+			WHERE ri.entity_type = 'PROCUREMENT_ITEM' AND ri.entity_id = pi.id AND ri.status = 'WRITTEN_OFF'
+		)
 	</select>
 
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
