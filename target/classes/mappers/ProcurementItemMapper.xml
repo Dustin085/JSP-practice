@@ -50,6 +50,16 @@
 		WHERE p.status = #{status}
 	</select>
 
+	<select id="findCompletedWithoutBook"
+		resultType="com.example.jsppractice.model.ProcurementItem">
+		SELECT pi.*
+		FROM procurement_items pi
+		LEFT JOIN books b ON
+		pi.book_id = b.id
+		WHERE pi.status = 'COMPLETED'
+		AND b.id IS NULL
+	</select>
+
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
 		INSERT
 		INTO procurement_items (book_request_item_id, status)

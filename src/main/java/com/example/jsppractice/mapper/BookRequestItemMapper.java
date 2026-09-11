@@ -10,5 +10,7 @@ public interface BookRequestItemMapper {
 
 	List<BookRequestItem> findByBookRequestId(Long bookRequestId);
 
+	List<BookRequestItem> findApprovedWithoutProcurementItem();
+
 	void insert(BookRequestItem bookRequestItem);
 }

@@ -2,6 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.jsppractice.mapper.ReconciliationMapper">
 
+	<resultMap type="com.example.jsppractice.dto.ReconciliationSummary" id="reconciliationSummaryResultMap">
+		<id column="id" property="id" />
+		<result column="reconciled_at" property="reconciledAt" />
+		<result column="reconciliation_type" property="reconciliationType" />
+		<result column="status" property="status" />
+		<collection property="reconciliationItems" ofType="com.example.jsppractice.model.ReconciliationItem">
+			<id column="item_id" property="id" />
+			<result column="reconciliation_id" property="reconciliationId" />
+			<result column="entity_type" property="entityType" />
+			<result column="entity_id" property="entityId" />
+			<result column="discrepancy_type" property="discrepancyType" />
+			<result column="detail" property="detail"
+				typeHandler="com.example.jsppractice.mapper.typehandler.JsonMapTypeHandler" />
+		</collection>
+	</resultMap>
+
+	<select id="findSummary" resultMap="reconciliationSummaryResultMap">
+		SELECT r.id, r.reconciled_at, r.reconciliation_type, r.status,
+			ri.id AS item_id, ri.reconciliation_id, ri.entity_type, ri.entity_id, ri.discrepancy_type, ri.detail
+		FROM reconciliations r
+		LEFT JOIN reconciliation_items ri ON ri.reconciliation_id = r.id
+		ORDER BY r.id DESC
+	</select>
+
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO reconciliations (reconciled_at, reconciliation_type, status)
 		VALUES (#{reconciledAt}, #{reconciliationType}, #{status})

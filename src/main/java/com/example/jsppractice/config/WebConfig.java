@@ -24,10 +24,10 @@ public class WebConfig implements WebMvcConfigurer {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new LoginCheckInterceptor()).addPathPatterns("/books/**", "/authors/**",
-				"/categories/**", "/requests/**", "/procurement/**", "/audit-logs/**");
+				"/categories/**", "/requests/**", "/procurement/**", "/audit-logs/**", "/reconciliations/**");
 		registry.addInterceptor(new CsrfInterceptor()).addPathPatterns("/books/**", "/authors/**", "/categories/**",
-				"/requests/**", "/procurement/**", "/audit-logs/**");
+				"/requests/**", "/procurement/**", "/audit-logs/**", "/reconciliations/**");
 		registry.addInterceptor(new RoleAccessInterceptor()).addPathPatterns("/books/**", "/authors/**",
-				"/categories/**", "/requests/**", "/procurement/**", "/audit-logs/**");
+				"/categories/**", "/requests/**", "/procurement/**", "/audit-logs/**", "/reconciliations/**");
 	}
 }

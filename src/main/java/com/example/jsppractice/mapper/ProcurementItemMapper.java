@@ -19,6 +19,8 @@ public interface ProcurementItemMapper {
 
 	List<ProcurementSummary> findSummary(@Param("status") ProcurementStatus status);
 
+	List<ProcurementItem> findCompletedWithoutBook();
+
 	void insert(ProcurementItem procurementItem);
 
 	void update(ProcurementItem procurementItem);

@@ -43,7 +43,10 @@ public class RoleAccessInterceptor implements HandlerInterceptor {
 			new RoleAccessRule(null, "/categories/**", Set.of(RoleType.ADMIN)),
 
 			// 稽核紀錄僅限 ADMIN 查看
-			new RoleAccessRule(null, "/audit-logs/**", Set.of(RoleType.ADMIN)));
+			new RoleAccessRule(null, "/audit-logs/**", Set.of(RoleType.ADMIN)),
+
+			// 對帳僅限 ADMIN 查看/觸發
+			new RoleAccessRule(null, "/reconciliations/**", Set.of(RoleType.ADMIN)));
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
