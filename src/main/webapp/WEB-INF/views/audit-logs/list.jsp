@@ -31,12 +31,11 @@
 		</c:forEach>
 	</table>
 	<p>
-		<c:if test="${pageNumber > 0}">
-			<a href="${pageContext.request.contextPath}/audit-logs?page=${pageNumber - 1}">上一頁</a>
+		<c:if test="${hasPrev}">
+			<a href="${pageContext.request.contextPath}/audit-logs?before=${prevCursor}">上一頁</a>
 		</c:if>
-		第 ${pageNumber + 1} / ${totalPages} 頁
-		<c:if test="${pageNumber + 1 < totalPages}">
-			<a href="${pageContext.request.contextPath}/audit-logs?page=${pageNumber + 1}">下一頁</a>
+		<c:if test="${hasNext}">
+			<a href="${pageContext.request.contextPath}/audit-logs?after=${nextCursor}">下一頁</a>
 		</c:if>
 	</p>
 	<p><a href="${pageContext.request.contextPath}/books">回 Book 列表</a></p>

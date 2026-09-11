@@ -4,11 +4,12 @@ import java.util.List;
 
 import com.example.jsppractice.model.AuditEntityType;
 import com.example.jsppractice.model.AuditLog;
-import com.example.jsppractice.model.PageReq;
-import com.example.jsppractice.model.PageRes;
+import com.example.jsppractice.model.CursorPage;
 
 public interface AuditService {
-	PageRes<AuditLog> findAll(PageReq pageReq);
+	CursorPage<AuditLog> findNextPage(Long cursorId, int pageSize);
+
+	CursorPage<AuditLog> findPreviousPage(Long cursorId, int pageSize);
 
 	AuditLog create(AuditLog auditLog);
 

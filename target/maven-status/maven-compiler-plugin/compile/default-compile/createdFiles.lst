@@ -10,6 +10,7 @@ com\example\jsppractice\service\BookExporter.class
 com\example\jsppractice\mapper\AuditLogMapper.class
 com\example\jsppractice\mapper\ProcurementItemMapper.class
 com\example\jsppractice\exception\InvalidCredentialsException.class
+com\example\jsppractice\model\CursorPage.class
 com\example\jsppractice\config\DataSeeder.class
 com\example\jsppractice\model\ProcurementItem$ProcurementItemBuilder.class
 com\example\jsppractice\exception\GlobalExceptionHandler.class

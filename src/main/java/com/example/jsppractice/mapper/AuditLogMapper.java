@@ -6,12 +6,11 @@ import org.apache.ibatis.annotations.Param;
 
 import com.example.jsppractice.model.AuditEntityType;
 import com.example.jsppractice.model.AuditLog;
-import com.example.jsppractice.model.PageReq;
 
 public interface AuditLogMapper {
-	List<AuditLog> findAllPaged(@Param("pageReq") PageReq pageReq);
+	List<AuditLog> findNext(@Param("cursorId") Long cursorId, @Param("limit") int limit);
 
-	long count();
+	List<AuditLog> findPrevious(@Param("cursorId") Long cursorId, @Param("limit") int limit);
 
 	List<AuditLog> findByEntity(@Param("entityType") AuditEntityType entityType, @Param("entityId") Long entityId);
 

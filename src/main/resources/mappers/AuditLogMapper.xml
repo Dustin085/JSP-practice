@@ -13,16 +13,25 @@
 			typeHandler="com.example.jsppractice.mapper.typehandler.JsonMapTypeHandler" />
 	</resultMap>
 
-	<select id="findAllPaged" resultMap="auditLogResultMap">
+	<!-- 往舊資料翻頁（下一頁）：只抓比 cursorId 更舊（id 更小）的紀錄 -->
+	<select id="findNext" resultMap="auditLogResultMap">
 		SELECT *
 		FROM audit_logs
-		ORDER BY audited_at DESC
-		LIMIT #{pageReq.pageSize}
-		OFFSET #{pageReq.offset}
+		<where>
+			<if test="cursorId != null">id &lt; #{cursorId}</if>
+		</where>
+		ORDER BY id DESC
+		LIMIT #{limit}
 	</select>
 
-	<select id="count" resultType="long">
-		SELECT COUNT(*) FROM audit_logs
+	<!-- 往新資料翻頁（上一頁）：只抓比 cursorId 更新（id 更大）的紀錄，
+	     用 ASC 排序才能正確抓到「緊接在 cursorId 之後」的那幾筆，取回後由 service 端反轉成 DESC 顯示 -->
+	<select id="findPrevious" resultMap="auditLogResultMap">
+		SELECT *
+		FROM audit_logs
+		WHERE id &gt; #{cursorId}
+		ORDER BY id ASC
+		LIMIT #{limit}
 	</select>
 
 	<select id="findByEntity" resultMap="auditLogResultMap">

@@ -71,12 +71,14 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public PageRes<BookSummary> search(String keyWord, PageReq pageReq) {
 		long totalElements = bookMapper.countBySearch(keyWord);
 		if (totalElements == 0) {
 			return new PageRes<>(List.of(), pageReq.pageNumber(), pageReq.pageSize(), 0);
 		}
 
+		// 先找出 ids 可以達到 Deferred Join 的效果，只搜尋 id 達到索引覆蓋避免 OFFSET 造成大量回表
 		List<Long> ids = bookMapper.findIdsBySearch(keyWord, pageReq);
 		if (ids.isEmpty()) {
 			return new PageRes<>(List.of(), pageReq.pageNumber(), pageReq.pageSize(), totalElements);

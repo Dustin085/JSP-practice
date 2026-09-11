@@ -3,6 +3,7 @@ package com.example.jsppractice.mapper;
 import static org.junit.Assert.assertEquals;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -25,7 +26,6 @@ import com.example.jsppractice.helper.DataBaseCleaner;
 import com.example.jsppractice.model.AuditActionType;
 import com.example.jsppractice.model.AuditEntityType;
 import com.example.jsppractice.model.AuditLog;
-import com.example.jsppractice.model.PageReq;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = RootConfig.class)
@@ -90,20 +90,45 @@ public class AuditLogMapperTest {
 	}
 
 	@Test
-	public void findAllPagedAndCountRespectPageSize() {
+	public void findNextReturnsRowsOlderThanCursorInDescendingIdOrder() {
 		Long userId = insertUser("auditor@example.com");
+		List<Long> ids = new ArrayList<>();
 		for (int i = 0; i < 3; i++) {
-			auditLogMapper.insert(AuditLog.builder().userId(userId).auditedAt(Instant.now())
+			AuditLog auditLog = AuditLog.builder().userId(userId).auditedAt(Instant.now())
 					.action(AuditActionType.APPROVE).entityType(AuditEntityType.BOOK_REQUEST).entityId((long) i)
-					.detail(Collections.emptyMap()).build());
+					.detail(Collections.emptyMap()).build();
+			auditLogMapper.insert(auditLog);
+			ids.add(auditLog.getId());
 		}
 
-		assertEquals(3, auditLogMapper.count());
-
-		List<AuditLog> firstPage = auditLogMapper.findAllPaged(new PageReq(0, 2));
+		// 第一頁：cursorId 是 null，從最新的開始抓
+		List<AuditLog> firstPage = auditLogMapper.findNext(null, 2);
 		assertEquals(2, firstPage.size());
+		assertEquals(ids.get(2), firstPage.get(0).getId());
+		assertEquals(ids.get(1), firstPage.get(1).getId());
 
-		List<AuditLog> secondPage = auditLogMapper.findAllPaged(new PageReq(1, 2));
+		// 第二頁：用第一頁最後一筆的 id 當 cursor，往更舊的資料翻
+		List<AuditLog> secondPage = auditLogMapper.findNext(firstPage.get(1).getId(), 2);
 		assertEquals(1, secondPage.size());
+		assertEquals(ids.get(0), secondPage.get(0).getId());
+	}
+
+	@Test
+	public void findPreviousReturnsRowsNewerThanCursorInAscendingIdOrder() {
+		Long userId = insertUser("auditor@example.com");
+		List<Long> ids = new ArrayList<>();
+		for (int i = 0; i < 3; i++) {
+			AuditLog auditLog = AuditLog.builder().userId(userId).auditedAt(Instant.now())
+					.action(AuditActionType.APPROVE).entityType(AuditEntityType.BOOK_REQUEST).entityId((long) i)
+					.detail(Collections.emptyMap()).build();
+			auditLogMapper.insert(auditLog);
+			ids.add(auditLog.getId());
+		}
+
+		// 從最舊那筆往回抓比它新的紀錄，預期依 id 由小到大排序
+		List<AuditLog> newer = auditLogMapper.findPrevious(ids.get(0), 2);
+		assertEquals(2, newer.size());
+		assertEquals(ids.get(1), newer.get(0).getId());
+		assertEquals(ids.get(2), newer.get(1).getId());
 	}
 }
