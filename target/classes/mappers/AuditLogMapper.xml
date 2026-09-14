@@ -13,25 +13,33 @@
 			typeHandler="com.example.jsppractice.mapper.typehandler.JsonMapTypeHandler" />
 	</resultMap>
 
-	<!-- 往舊資料翻頁（下一頁）：只抓比 cursorId 更舊（id 更小）的紀錄 -->
+	<!-- 往舊資料翻頁（下一頁）：排序主鍵是 audited_at（真正的業務時間），id 只在 audited_at
+	     完全相同時當 tie-breaker——同一次業務操作常常共用同一個 Instant，光用 audited_at
+	     排序沒有唯一性、光用 id 排序又不保證跟實際發生順序一致，兩個一起比才兩者兼顧。 -->
 	<select id="findNext" resultMap="auditLogResultMap">
 		SELECT *
 		FROM audit_logs
 		<where>
-			<if test="cursorId != null">id &lt; #{cursorId}</if>
+			<if test="cursor != null">
+				(audited_at &lt; #{cursor.auditedAt} OR (audited_at = #{cursor.auditedAt} AND id &lt; #{cursor.id}))
+			</if>
 		</where>
-		ORDER BY id DESC
+		ORDER BY audited_at DESC, id DESC
 		LIMIT #{limit}
 	</select>
 
-	<!-- 往新資料翻頁（上一頁）：只抓比 cursorId 更新（id 更大）的紀錄，
-	     用 ASC 排序才能正確抓到「緊接在 cursorId 之後」的那幾筆，取回後由 service 端反轉成 DESC 顯示 -->
+	<!-- 往新資料翻頁（上一頁）：內層用 ASC + LIMIT 才能正確抓到「緊接在 cursor 之後」
+	     最近的幾筆（離 cursor 越遠的越晚被抓到、越可能被 LIMIT 排除），外層再排回 DESC
+	     直接給畫面顯示用，不用勞煩 Java 端 reverse -->
 	<select id="findPrevious" resultMap="auditLogResultMap">
-		SELECT *
-		FROM audit_logs
-		WHERE id &gt; #{cursorId}
-		ORDER BY id ASC
-		LIMIT #{limit}
+		SELECT * FROM (
+			SELECT *
+			FROM audit_logs
+			WHERE (audited_at &gt; #{cursor.auditedAt} OR (audited_at = #{cursor.auditedAt} AND id &gt; #{cursor.id}))
+			ORDER BY audited_at ASC, id ASC
+			LIMIT #{limit}
+		) sub
+		ORDER BY audited_at DESC, id DESC
 	</select>
 
 	<select id="findByEntity" resultMap="auditLogResultMap">

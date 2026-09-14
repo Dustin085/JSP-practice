@@ -2,6 +2,29 @@
 
 現階段刻意不做，但值得之後練習/擴充的方向。
 
+## 對帳補救：procurement_book（已完成採購但缺書籍）重新連結 / 退回待處理
+
+`/reconciliations` 的對帳功能（`ReconciliationService`/`ReconciliationChecker`/`ReconciliationItem.status`）已經做完
+兩種檢查、加上「標記已處理」「沖銷」兩個通用補救動作，另外針對「已核准但缺採購項目」這種落差做了「補建」
+（`backfillProcurementItem`，直接建缺的那筆 `procurement_item`）。
+
+但「已完成採購但缺書籍」（`PROCUREMENT_BOOK` 這個檢查）目前**沒有**對應的自動補建，只能標記已處理或沖銷，
+原因是系統猜不出「該補哪一本書」。討論後決定：沖銷應該是調查過後、確認真的沒辦法/不值得修才用的最後手段，
+不該是遇到問題的直接反應，中間應該先加兩個更貼近真實原因的補救動作：
+
+1. **重新連結（relink）**：很多時候不是書真的沒建，是 `procurement_items.book_id` 這個關聯斷了（書其實已經在
+   `books` 表裡）。用該筆 `procurement_item` 對應的 `book_request_item`（title/isbn）去 `books` 查有沒有相符的
+   既有紀錄，有的話讓使用者確認後把 `book_id` 接上，明細標記 `RESOLVED`，寫一筆 audit log。
+2. **退回待處理（revert to pending）**：如果書真的從來沒建立過（採購被誤標記完成、流程沒走完），比起憑空生一本
+   書，更穩妥的做法是把 `procurement_items.status` 退回 `PENDING`（清掉 `procured_at`/`procured_by`/`book_id`），
+   讓它重新走回 `/procurement` 既有的「完成採購」畫面，由採購人員用正常流程補上正確的書籍資料。
+3. **沖銷**：調查完兩種都不適用（例如書確定不會再進、或是舊資料本身就有缺陷不值得追）才使用，`detail`/備註要
+   留下「為什麼決定放棄」的理由。
+
+實作上要新增的東西跟「補建」是同一個量級：`AuditActionType` 可能要加一個新值（如 `RELINK`）、`books` 查詢比對
+邏輯（title/isbn 相似度要多寬鬆是個要想清楚的細節）、`ReconciliationController`/JSP 加對應按鈕與（重新連結要）
+一個選書的小表單。
+
 ## RBAC 資料庫化
 
 目前角色權限判斷是寫死在程式碼裡（`RoleType` enum + `AdminCheckInterceptor` 裡的 `if (role != ADMIN)`），
@@ -46,14 +69,6 @@ pattern），一個使用者能同時掛多個角色，權限判斷從「role �
 要支援數量，需要決定：`books` 加一個數量欄位（同書目查到就累加），還是允許同一書目在 `books` 出現
 多列（不建議，作者/分類關聯要重複建立）。這牽動到之後如果要做「借閱/歸還」功能時「剩幾本可借」的
 邏輯，是一個獨立於簽核流程之外的功能主題，先不做。
-
-## 稽核軌跡（audit_log）：失敗嘗試也要記錄
-
-目前 `AuditService.create()` 只記錄「成功」的操作（跟業務操作綁在同一個 `@Transactional`，一起成功
-或一起失敗）。如果要連「嘗試 approve/reject 但因為 CAS 沒搶到、或被 `SelfReviewNotAllowedException`
-擋下」這種失敗嘗試都記下來，需要用 `@Transactional(propagation = REQUIRES_NEW)`，而且因為 Spring AOP
-proxy 的 self-invocation 限制，這個方法必須放在另一個獨立的 Spring bean 裡才會生效。今天先只做成功
-路徑，失敗路徑先不做。
 
 ## CSRF：SameSite cookie 與 login CSRF
 

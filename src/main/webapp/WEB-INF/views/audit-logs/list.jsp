@@ -32,10 +32,10 @@
 	</table>
 	<p>
 		<c:if test="${hasPrev}">
-			<a href="${pageContext.request.contextPath}/audit-logs?before=${prevCursor}">上一頁</a>
+			<a href="${pageContext.request.contextPath}/audit-logs?before=${prevCursor}&beforeAt=${prevCursorAt}">上一頁</a>
 		</c:if>
 		<c:if test="${hasNext}">
-			<a href="${pageContext.request.contextPath}/audit-logs?after=${nextCursor}">下一頁</a>
+			<a href="${pageContext.request.contextPath}/audit-logs?after=${nextCursor}&afterAt=${nextCursorAt}">下一頁</a>
 		</c:if>
 	</p>
 	<p><a href="${pageContext.request.contextPath}/books">回 Book 列表</a></p>
