@@ -63,6 +63,14 @@
 											<button type="submit" onclick="return confirm('確定補建對應的採購項目?')">補建</button>
 										</form>
 									</c:if>
+									<c:if test="${item.entityType == 'PROCUREMENT_ITEM'}">
+										<a href="${pageContext.request.contextPath}/reconciliations/items/${item.id}/relink">重新連結</a>
+										<form action="${pageContext.request.contextPath}/reconciliations/items/${item.id}/revert-to-pending"
+											method="post" style="display: inline">
+											<%@ include file="/WEB-INF/views/common/csrfTokenInput.jsp"%>
+											<button type="submit" onclick="return confirm('確定退回待處理?採購狀態會變回 PENDING，清掉採購人/採購時間')">退回待處理</button>
+										</form>
+									</c:if>
 								</c:if>
 							</li>
 						</c:forEach>

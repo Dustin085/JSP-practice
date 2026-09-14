@@ -35,4 +35,6 @@ public interface BookMapper {
 	long countBySearch(@Param("keyWord") String keyWord);
 
 	List<BookSummary> findByIds(@Param("ids") List<Long> ids);
+
+	List<Book> findRelinkCandidates(@Param("title") String title, @Param("isbn") String isbn);
 }

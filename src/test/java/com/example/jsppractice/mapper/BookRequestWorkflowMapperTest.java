@@ -219,4 +219,30 @@ public class BookRequestWorkflowMapperTest {
 		assertEquals(Integer.valueOf(2018), summary.getBookRequestItem().getPublishedYear());
 		assertEquals(new BigDecimal("1200.00"), summary.getBookRequestItem().getEstimatedPrice());
 	}
+
+	@Test
+	public void findSummaryReturnsAllStatusesWhenStatusIsNull() {
+		Long requesterId = insertUser("requester6@example.com");
+		BookRequest bookRequest = BookRequest.builder().requesterId(requesterId).status(BookRequestStatus.APPROVED)
+				.requestedAt(Instant.now()).idempotencyKey(UUID.randomUUID().toString()).build();
+		bookRequestMapper.insert(bookRequest);
+
+		BookRequestItem pendingItem = BookRequestItem.builder().bookRequestId(bookRequest.getId())
+				.title("Pending item").build();
+		bookRequestItemMapper.insert(pendingItem);
+		procurementItemMapper
+				.insert(ProcurementItem.builder().bookRequestItemId(pendingItem.getId())
+						.status(ProcurementStatus.PENDING).build());
+
+		BookRequestItem completedItem = BookRequestItem.builder().bookRequestId(bookRequest.getId())
+				.title("Completed item").build();
+		bookRequestItemMapper.insert(completedItem);
+		procurementItemMapper
+				.insert(ProcurementItem.builder().bookRequestItemId(completedItem.getId())
+						.status(ProcurementStatus.COMPLETED).build());
+
+		List<com.example.jsppractice.dto.ProcurementSummary> all = procurementItemMapper.findSummary(null);
+
+		assertEquals("status 是 null 時不該篩選，兩種狀態都要撈到", 2, all.size());
+	}
 }

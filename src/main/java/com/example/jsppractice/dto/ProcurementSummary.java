@@ -4,6 +4,7 @@ import java.time.Instant;
 
 import com.example.jsppractice.model.BookRequestItem;
 import com.example.jsppractice.model.ProcurementStatus;
+import com.example.jsppractice.util.DisplayTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,4 +27,8 @@ public class ProcurementSummary {
 	private Long bookId;
 
 	private BookRequestItem bookRequestItem;
+
+	public String getProcuredAtDisplay() {
+		return DisplayTime.format(procuredAt);
+	}
 }

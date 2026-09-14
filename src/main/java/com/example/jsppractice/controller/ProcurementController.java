@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.jsppractice.exception.ProcurementAlreadyCompletedException;
@@ -25,8 +26,10 @@ public class ProcurementController {
 	}
 
 	@GetMapping
-	public String list(Model model) {
-		model.addAttribute("procurementItems", procurementService.findSummary(ProcurementStatus.PENDING));
+	public String list(@RequestParam(required = false, defaultValue = "PENDING") String status, Model model) {
+		ProcurementStatus filter = "ALL".equals(status) ? null : ProcurementStatus.valueOf(status);
+		model.addAttribute("procurementItems", procurementService.findSummary(filter));
+		model.addAttribute("statusFilter", status);
 		return "procurement/list";
 	}
 

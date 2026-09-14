@@ -24,9 +24,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.example.jsppractice.config.RootConfig;
 import com.example.jsppractice.dto.ReconciliationSummary;
 import com.example.jsppractice.helper.DataBaseCleaner;
+import com.example.jsppractice.mapper.BookMapper;
 import com.example.jsppractice.mapper.BookRequestItemMapper;
 import com.example.jsppractice.mapper.BookRequestMapper;
 import com.example.jsppractice.mapper.ProcurementItemMapper;
+import com.example.jsppractice.model.Book;
 import com.example.jsppractice.model.BookRequest;
 import com.example.jsppractice.model.BookRequestItem;
 import com.example.jsppractice.model.BookRequestStatus;
@@ -50,6 +52,8 @@ public class ReconciliationRemediationTest {
 	private BookRequestItemMapper bookRequestItemMapper;
 	@Autowired
 	private ProcurementItemMapper procurementItemMapper;
+	@Autowired
+	private BookMapper bookMapper;
 	@Autowired
 	private DataSource dataSource;
 	@Autowired
@@ -146,6 +150,89 @@ public class ReconciliationRemediationTest {
 		ReconciliationItem item = firstItemOf(run);
 
 		reconciliationService.backfillProcurementItem(item.getId(), currentUser);
+	}
+
+	private ProcurementItem createCompletedProcurementItemWithoutBook(String title, String isbn) {
+		Long userId = insertUser("orphan-" + UUID.randomUUID() + "@example.com");
+		BookRequest approved = BookRequest.builder().requesterId(userId).status(BookRequestStatus.APPROVED)
+				.requestedAt(Instant.now()).idempotencyKey(UUID.randomUUID().toString()).build();
+		bookRequestMapper.insert(approved);
+		BookRequestItem item = BookRequestItem.builder().bookRequestId(approved.getId()).title(title).isbn(isbn)
+				.build();
+		bookRequestItemMapper.insert(item);
+		ProcurementItem procurementItem = ProcurementItem.builder().bookRequestItemId(item.getId())
+				.status(ProcurementStatus.COMPLETED).build();
+		procurementItemMapper.insert(procurementItem);
+		return procurementItem;
+	}
+
+	@Test
+	public void relinkLinksExistingBookAndResolvesDiscrepancy() {
+		createCompletedProcurementItemWithoutBook("Effective Java", "9780134685991");
+		Book existingBook = Book.builder().title("Effective Java").isbn("9780134685991").publishedYear(2018).build();
+		bookMapper.insert(existingBook);
+
+		Reconciliation firstRun = reconciliationService.reconcileProcurementItems();
+		assertEquals(ReconciliationStatus.COMPLETED_WITH_DISCREPANCY, firstRun.getStatus());
+		ReconciliationItem item = firstItemOf(firstRun);
+
+		List<Book> candidates = reconciliationService.findRelinkCandidates(item.getId());
+		assertTrue("應該要能靠 isbn 找到剛剛建立的那本書", candidates.stream().anyMatch(b -> b.getId().equals(existingBook.getId())));
+
+		reconciliationService.relink(item.getId(), existingBook.getId(), currentUser);
+
+		ProcurementItem updated = procurementItemMapper.findById(item.getEntityId()).get();
+		assertEquals(existingBook.getId(), updated.getBookId());
+
+		Reconciliation secondRun = reconciliationService.reconcileProcurementItems();
+		assertEquals("重新連結後，下次對帳不該再回報這筆", ReconciliationStatus.COMPLETED_NO_DISCREPANCY, secondRun.getStatus());
+
+		Long auditLogCount = jdbcTemplate.queryForObject(
+				"SELECT COUNT(*) FROM audit_logs WHERE action = 'RELINK' AND entity_type = 'PROCUREMENT_ITEM' AND entity_id = ?",
+				Long.class, item.getEntityId());
+		assertTrue("重新連結應該要留一筆稽核紀錄", auditLogCount > 0);
+	}
+
+	@Test(expected = IllegalStateException.class)
+	public void relinkRejectsWrongEntityType() {
+		createOrphanApprovedItem();
+		Reconciliation run = reconciliationService.reconcileBookRequestItems();
+		ReconciliationItem item = firstItemOf(run);
+
+		reconciliationService.relink(item.getId(), 1L, currentUser);
+	}
+
+	@Test
+	public void revertToPendingClearsProcurementFieldsAndResolvesDiscrepancy() {
+		ProcurementItem completed = createCompletedProcurementItemWithoutBook("Never actually procured", null);
+
+		Reconciliation firstRun = reconciliationService.reconcileProcurementItems();
+		ReconciliationItem item = firstItemOf(firstRun);
+
+		reconciliationService.revertToPending(item.getId(), currentUser);
+
+		ProcurementItem reverted = procurementItemMapper.findById(completed.getId()).get();
+		assertEquals(ProcurementStatus.PENDING, reverted.getStatus());
+		assertEquals(null, reverted.getProcuredAt());
+		assertEquals(null, reverted.getProcuredBy());
+		assertEquals(null, reverted.getBookId());
+
+		Reconciliation secondRun = reconciliationService.reconcileProcurementItems();
+		assertEquals("退回待處理後，下次對帳不該再回報這筆", ReconciliationStatus.COMPLETED_NO_DISCREPANCY, secondRun.getStatus());
+
+		Long auditLogCount = jdbcTemplate.queryForObject(
+				"SELECT COUNT(*) FROM audit_logs WHERE action = 'REVERT_TO_PENDING' AND entity_type = 'PROCUREMENT_ITEM' AND entity_id = ?",
+				Long.class, completed.getId());
+		assertTrue("退回待處理應該要留一筆稽核紀錄", auditLogCount > 0);
+	}
+
+	@Test(expected = IllegalStateException.class)
+	public void revertToPendingRejectsWrongEntityType() {
+		createOrphanApprovedItem();
+		Reconciliation run = reconciliationService.reconcileBookRequestItems();
+		ReconciliationItem item = firstItemOf(run);
+
+		reconciliationService.revertToPending(item.getId(), currentUser);
 	}
 
 	@Test

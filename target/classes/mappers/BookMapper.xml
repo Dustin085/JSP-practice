@@ -94,6 +94,16 @@
 		WHERE id = #{id}
 	</select>
 
+	<!-- 對帳「重新連結」用：isbn 完全相符優先，否則退回書名模糊比對——這裡刻意選最簡單的比對方式，
+		 沒有做相似度分數之類的複雜比對，讓使用者自己從候選清單挑，挑錯的風險比自動選中還低 -->
+	<select id="findRelinkCandidates" resultType="com.example.jsppractice.model.Book">
+		SELECT id, title, isbn, author_id, published_year
+		FROM books
+		WHERE (isbn IS NOT NULL AND isbn &lt;&gt; '' AND isbn = #{isbn})
+		OR title ILIKE CONCAT('%', #{title}, '%')
+		ORDER BY id
+	</select>
+
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
 		INSERT
 		INTO books (title, isbn, author_id, published_year)

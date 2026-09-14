@@ -40,6 +40,7 @@
 		SELECT * FROM procurement_items WHERE status = #{status}
 	</select>
 
+	<!-- status 可以是 null，代表不篩選狀態、撈全部採購項目 -->
 	<select id="findSummary" resultMap="procurementSummaryResultMap">
 		SELECT p.*,
 		b.title,b.isbn,b.author_id,b.published_year,b.estimated_price
@@ -47,7 +48,10 @@
 		procurement_items p
 		JOIN book_request_items b ON p.book_request_item_id
 		= b.id
-		WHERE p.status = #{status}
+		<where>
+			<if test="status != null">p.status = #{status}</if>
+		</where>
+		ORDER BY p.id DESC
 	</select>
 
 	<select id="findCompletedWithoutBook"
