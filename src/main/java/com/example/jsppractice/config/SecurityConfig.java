@@ -87,14 +87,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.loginPage("/login") // 沿用現有的 GET /login 頁面，不用 Security 內建的表單
 				.usernameParameter("email") // 表單欄位叫 email，不是預設的 username
 				.passwordParameter("password")
-				// 用這個而不是 defaultSuccessUrl：認證成功後要補上舊系統還在用的
-				// session currentUser/csrfToken，見該 class 上的註解
+				// 用這個而不是 defaultSuccessUrl：認證成功後要補上舊系統還在用的 session currentUser，見該 class 上的註解
 				.successHandler(new LegacySessionBridgeAuthenticationSuccessHandler())
 				.permitAll()
 				.and()
-				.csrf()
-				.disable() // 先關掉：現有表單只帶自家 CsrfInterceptor 的 token，
-							// 沒有 Security 要的 _csrf 欄位，兩套同時開會把所有 POST 都擋下來
+				// Day 3：CSRF 改用 Security 自己的保護（預設 HttpSessionCsrfTokenRepository，
+				// 整個 session 共用同一個值，語意跟舊的 CsrfInterceptor 一樣），不再手動 disable
 				.logout()
 				.disable(); // 先關掉：Security 預設 logout 也是攔 POST /logout，
 							// 會跟現有的 LogoutController 撞同一個 URL

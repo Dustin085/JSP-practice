@@ -1,18 +1,10 @@
 package com.example.jsppractice.config;
 
-import javax.servlet.Filter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
-import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-// @Order(HIGHEST_PRECEDENCE):確保這個 initializer 比 SecurityWebApplicationInitializer 先 onStartup()，
-// 讓 CharacterEncodingFilter 比 Spring Security 的 filter 先註冊、先執行——
-// Security 的 formLogin 也會讀 request 參數（email/password），編碼設定一定要先生效。
-@Order(Ordered.HIGHEST_PRECEDENCE)
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
@@ -42,11 +34,9 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 		return new String[] { "/" };
 	}
 
-	@Override
-	protected Filter[] getServletFilters() {
-		CharacterEncodingFilter encodingFilter = new CharacterEncodingFilter();
-		encodingFilter.setEncoding("UTF-8");
-		encodingFilter.setForceEncoding(true);
-		return new Filter[] { encodingFilter };
-	}
+	// CharacterEncodingFilter 不在這裡註冊：AbstractAnnotationConfigDispatcherServletInitializer.getServletFilters()
+	// 是用 servlet-name 掛的 filter mapping，Servlet 規範規定 url-pattern 掛的 filter（Spring Security 的
+	// springSecurityFilterChain，掛在 /*）一定會先跑過，不管 @Order 或註冊順序怎麼設都改變不了這個順序。
+	// 拿掉這個 override 之後 CharacterEncodingFilter 改在 SecurityWebApplicationInitializer 註冊，
+	// 兩者都是 url-pattern 掛的，@Order/註冊順序才真的管得到誰先跑。見那個 class 的註解。
 }

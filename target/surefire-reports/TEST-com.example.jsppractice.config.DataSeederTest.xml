@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.example.jsppractice.config.DataSeederTest" time="1.812" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.example.jsppractice.config.DataSeederTest" time="1.99" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="26"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="TW"/>
     <property name="sun.boot.library.path" value="C:\Users\dusti\scoop\apps\openjdk\current\bin"/>
-    <property name="sun.java.command" value="C:\Users\dusti\AppData\Local\Temp\surefire7606576523557546075\surefirebooter-20260914171058733_3.jar C:\Users\dusti\AppData\Local\Temp\surefire7606576523557546075 2026-09-14T17-10-58_606-jvmRun1 surefire-20260914171058733_1tmp surefire_0-20260914171058733_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\dusti\AppData\Local\Temp\surefire17734741279869972968\surefirebooter-20260914174825205_3.jar C:\Users\dusti\AppData\Local\Temp\surefire17734741279869972968 2026-09-14T17-48-25_084-jvmRun1 surefire-20260914174825205_1tmp surefire_0-20260914174825205_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\dusti\eclipse-workspace\JSP-practice\target\test-classes;C:\Users\dusti\eclipse-workspace\JSP-practice\target\classes;C:\Users\dusti\.m2\repository\org\springframework\spring-webmvc\5.3.39\spring-webmvc-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-aop\5.3.39\spring-aop-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-beans\5.3.39\spring-beans-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-context\5.3.39\spring-context-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-core\5.3.39\spring-core-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-jcl\5.3.39\spring-jcl-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-expression\5.3.39\spring-expression-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-web\5.3.39\spring-web-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-jdbc\5.3.39\spring-jdbc-5.3.39.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-tx\5.3.39\spring-tx-5.3.39.jar;C:\Users\dusti\.m2\repository\javax\servlet\javax.servlet-api\4.0.1\javax.servlet-api-4.0.1.jar;C:\Users\dusti\.m2\repository\javax\servlet\jsp\javax.servlet.jsp-api\2.3.3\javax.servlet.jsp-api-2.3.3.jar;C:\Users\dusti\.m2\repository\javax\servlet\jstl\1.2\jstl-1.2.jar;C:\Users\dusti\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.17.2\jackson-databind-2.17.2.jar;C:\Users\dusti\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.17.2\jackson-annotations-2.17.2.jar;C:\Users\dusti\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.17.2\jackson-core-2.17.2.jar;C:\Users\dusti\.m2\repository\javax\validation\validation-api\2.0.1.Final\validation-api-2.0.1.Final.jar;C:\Users\dusti\.m2\repository\org\hibernate\validator\hibernate-validator\6.2.5.Final\hibernate-validator-6.2.5.Final.jar;C:\Users\dusti\.m2\repository\jakarta\validation\jakarta.validation-api\2.0.2\jakarta.validation-api-2.0.2.jar;C:\Users\dusti\.m2\repository\org\jboss\logging\jboss-logging\3.4.1.Final\jboss-logging-3.4.1.Final.jar;C:\Users\dusti\.m2\repository\com\fasterxml\classmate\1.5.1\classmate-1.5.1.jar;C:\Users\dusti\.m2\repository\org\glassfish\javax.el\3.0.1-b12\javax.el-3.0.1-b12.jar;C:\Users\dusti\.m2\repository\org\projectlombok\lombok\1.18.46\lombok-1.18.46.jar;C:\Users\dusti\.m2\repository\org\springframework\security\spring-security-crypto\5.8.13\spring-security-crypto-5.8.13.jar;C:\Users\dusti\.m2\repository\org\springframework\security\spring-security-web\5.8.13\spring-security-web-5.8.13.jar;C:\Users\dusti\.m2\repository\org\springframework\security\spring-security-core\5.8.13\spring-security-core-5.8.13.jar;C:\Users\dusti\.m2\repository\org\springframework\security\spring-security-config\5.8.13\spring-security-config-5.8.13.jar;C:\Users\dusti\.m2\repository\com\h2database\h2\2.3.232\h2-2.3.232.jar;C:\Users\dusti\.m2\repository\org\apache\poi\poi-ooxml\5.2.5\poi-ooxml-5.2.5.jar;C:\Users\dusti\.m2\repository\org\apache\poi\poi\5.2.5\poi-5.2.5.jar;C:\Users\dusti\.m2\repository\commons-codec\commons-codec\1.16.0\commons-codec-1.16.0.jar;C:\Users\dusti\.m2\repository\org\apache\commons\commons-math3\3.6.1\commons-math3-3.6.1.jar;C:\Users\dusti\.m2\repository\com\zaxxer\SparseBitSet\1.3\SparseBitSet-1.3.jar;C:\Users\dusti\.m2\repository\org\apache\poi\poi-ooxml-lite\5.2.5\poi-ooxml-lite-5.2.5.jar;C:\Users\dusti\.m2\repository\org\apache\xmlbeans\xmlbeans\5.2.0\xmlbeans-5.2.0.jar;C:\Users\dusti\.m2\repository\org\apache\commons\commons-compress\1.25.0\commons-compress-1.25.0.jar;C:\Users\dusti\.m2\repository\commons-io\commons-io\2.15.0\commons-io-2.15.0.jar;C:\Users\dusti\.m2\repository\com\github\virtuald\curvesapi\1.08\curvesapi-1.08.jar;C:\Users\dusti\.m2\repository\org\apache\logging\log4j\log4j-api\2.21.1\log4j-api-2.21.1.jar;C:\Users\dusti\.m2\repository\org\apache\commons\commons-collections4\4.4\commons-collections4-4.4.jar;C:\Users\dusti\.m2\repository\ch\qos\logback\logback-classic\1.2.13\logback-classic-1.2.13.jar;C:\Users\dusti\.m2\repository\ch\qos\logback\logback-core\1.2.13\logback-core-1.2.13.jar;C:\Users\dusti\.m2\repository\org\slf4j\slf4j-api\1.7.32\slf4j-api-1.7.32.jar;C:\Users\dusti\.m2\repository\org\mybatis\mybatis\3.5.16\mybatis-3.5.16.jar;C:\Users\dusti\.m2\repository\org\mybatis\mybatis-spring\2.1.2\mybatis-spring-2.1.2.jar;C:\Users\dusti\.m2\repository\org\springframework\spring-test\5.3.39\spring-test-5.3.39.jar;C:\Users\dusti\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\dusti\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\dusti\.m2\repository\org\mockito\mockito-core\5.23.0\mockito-core-5.23.0.jar;C:\Users\dusti\.m2\repository\net\bytebuddy\byte-buddy\1.17.7\byte-buddy-1.17.7.jar;C:\Users\dusti\.m2\repository\net\bytebuddy\byte-buddy-agent\1.17.7\byte-buddy-agent-1.17.7.jar;C:\Users\dusti\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -32,7 +32,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\dusti\AppData\Local\Temp\surefire7606576523557546075\surefirebooter-20260914171058733_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\dusti\AppData\Local\Temp\surefire17734741279869972968\surefirebooter-20260914174825205_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="26.0.2+10-55"/>
@@ -61,516 +61,516 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="70.0"/>
   </properties>
-  <testcase name="seedRunsWithoutErrorsAndProducesAllThreeStatuses" classname="com.example.jsppractice.config.DataSeederTest" time="0.553">
-    <system-out><![CDATA[17:11:00.374 [main] DEBUG c.e.j.mapper.CategoryMapper.insert - ==>  Preparing: INSERT INTO categories (name) VALUES (?)
-17:11:00.388 [main] DEBUG c.e.j.mapper.CategoryMapper.insert - ==> Parameters: Programming(String)
-17:11:00.390 [main] DEBUG c.e.j.mapper.CategoryMapper.insert - <==    Updates: 1
-17:11:00.392 [main] DEBUG c.e.j.mapper.CategoryMapper.insert - ==>  Preparing: INSERT INTO categories (name) VALUES (?)
-17:11:00.393 [main] DEBUG c.e.j.mapper.CategoryMapper.insert - ==> Parameters: Architecture(String)
-17:11:00.393 [main] DEBUG c.e.j.mapper.CategoryMapper.insert - <==    Updates: 1
-17:11:00.394 [main] DEBUG c.e.j.mapper.CategoryMapper.insert - ==>  Preparing: INSERT INTO categories (name) VALUES (?)
-17:11:00.394 [main] DEBUG c.e.j.mapper.CategoryMapper.insert - ==> Parameters: Best Practice(String)
-17:11:00.394 [main] DEBUG c.e.j.mapper.CategoryMapper.insert - <==    Updates: 1
-17:11:00.396 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
-17:11:00.402 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Effective Java(String), 9780134685991(String), 1(Long), 2018(Integer)
-17:11:00.403 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
-17:11:00.410 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
-17:11:00.411 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 1(Long)
-17:11:00.411 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
-17:11:00.425 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?) , (?, ?)
-17:11:00.426 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 1(Long), 1(Long), 1(Long), 3(Long)
-17:11:00.426 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 2
-17:11:00.428 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
-17:11:00.429 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Clean Code(String), 9780132350884(String), 2(Long), 2008(Integer)
-17:11:00.429 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
-17:11:00.430 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
-17:11:00.430 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 2(Long)
-17:11:00.430 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
-17:11:00.431 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
-17:11:00.431 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 2(Long), 3(Long)
-17:11:00.431 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
-17:11:00.432 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
-17:11:00.433 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Domain-Driven Design(String), 9780321125217(String), 3(Long), 2003(Integer)
-17:11:00.433 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
-17:11:00.434 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
-17:11:00.434 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 3(Long)
-17:11:00.434 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
-17:11:00.435 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
-17:11:00.435 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 3(Long), 2(Long)
-17:11:00.435 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
-17:11:00.436 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
-17:11:00.437 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Clean Architecture(String), 9780134494166(String), 2(Long), 2017(Integer)
-17:11:00.437 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
-17:11:00.438 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
-17:11:00.438 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 4(Long)
-17:11:00.439 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
-17:11:00.439 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?) , (?, ?)
-17:11:00.439 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 4(Long), 2(Long), 4(Long), 3(Long)
-17:11:00.440 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 2
-17:11:00.441 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
-17:11:00.441 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
-17:11:00.442 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
-17:11:00.443 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
-17:11:00.444 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 5(Long)
-17:11:00.444 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
-17:11:00.444 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
-17:11:00.444 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 5(Long), 1(Long)
-17:11:00.445 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
-17:11:00.446 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
-17:11:00.446 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
-17:11:00.447 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
-17:11:00.448 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
-17:11:00.448 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 6(Long)
-17:11:00.448 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
-17:11:00.449 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
-17:11:00.449 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 6(Long), 1(Long)
-17:11:00.449 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
-17:11:00.450 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
-17:11:00.451 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
-17:11:00.452 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
-17:11:00.453 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
-17:11:00.453 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 7(Long)
-17:11:00.453 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
-17:11:00.454 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
-17:11:00.454 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 7(Long), 1(Long)
-17:11:00.455 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
-17:11:00.455 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
-17:11:00.456 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
-17:11:00.456 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
-17:11:00.456 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
-17:11:00.457 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 8(Long)
-17:11:00.457 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
-17:11:00.457 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
-17:11:00.457 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 8(Long), 1(Long)
-17:11:00.457 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
-17:11:00.458 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
-17:11:00.458 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
-17:11:00.459 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
-17:11:00.460 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
-17:11:00.460 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 9(Long)
-17:11:00.460 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
-17:11:00.460 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
-17:11:00.461 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 9(Long), 1(Long)
-17:11:00.461 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
-17:11:00.462 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
-17:11:00.462 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
-17:11:00.462 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
-17:11:00.463 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
-17:11:00.463 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 10(Long)
-17:11:00.464 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
-17:11:00.464 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
-17:11:00.464 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 10(Long), 1(Long)
-17:11:00.465 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
-17:11:00.465 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
-17:11:00.466 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
-17:11:00.466 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
-17:11:00.466 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
-17:11:00.467 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 11(Long)
-17:11:00.467 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
-17:11:00.467 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
-17:11:00.468 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 11(Long), 1(Long)
-17:11:00.468 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
-17:11:00.469 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
-17:11:00.469 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
-17:11:00.470 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
-17:11:00.470 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
-17:11:00.470 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 12(Long)
-17:11:00.471 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
-17:11:00.471 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
-17:11:00.471 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 12(Long), 1(Long)
-17:11:00.471 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
-17:11:00.472 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
-17:11:00.472 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
-17:11:00.473 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
-17:11:00.473 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
-17:11:00.474 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 13(Long)
-17:11:00.474 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
-17:11:00.474 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
-17:11:00.474 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 13(Long), 1(Long)
-17:11:00.474 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
-17:11:00.475 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
-17:11:00.475 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
-17:11:00.476 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
-17:11:00.476 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
-17:11:00.477 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 14(Long)
-17:11:00.477 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
-17:11:00.477 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
-17:11:00.477 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 14(Long), 1(Long)
-17:11:00.477 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
-17:11:00.478 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
-17:11:00.478 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
-17:11:00.479 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
-17:11:00.480 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
-17:11:00.480 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 15(Long)
-17:11:00.480 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
-17:11:00.480 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
-17:11:00.481 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 15(Long), 1(Long)
-17:11:00.481 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
-17:11:00.481 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
-17:11:00.482 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
-17:11:00.482 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
-17:11:00.483 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
-17:11:00.483 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 16(Long)
-17:11:00.483 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
-17:11:00.483 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
-17:11:00.483 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 16(Long), 1(Long)
-17:11:00.484 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
-17:11:00.484 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
-17:11:00.484 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
-17:11:00.485 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
-17:11:00.485 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
-17:11:00.485 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 17(Long)
-17:11:00.485 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
-17:11:00.485 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
-17:11:00.486 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 17(Long), 1(Long)
-17:11:00.486 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
-17:11:00.487 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
-17:11:00.487 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
-17:11:00.488 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
-17:11:00.489 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
-17:11:00.489 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 18(Long)
-17:11:00.489 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
-17:11:00.489 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
-17:11:00.489 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 18(Long), 1(Long)
-17:11:00.490 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
-17:11:00.491 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
-17:11:00.491 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
-17:11:00.491 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
-17:11:00.492 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
-17:11:00.492 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 19(Long)
-17:11:00.493 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
-17:11:00.493 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
-17:11:00.493 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 19(Long), 1(Long)
-17:11:00.494 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
-17:11:00.494 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
-17:11:00.495 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
-17:11:00.495 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
-17:11:00.496 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
-17:11:00.497 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 20(Long)
-17:11:00.497 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
-17:11:00.498 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
-17:11:00.498 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 20(Long), 1(Long)
-17:11:00.498 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
-17:11:00.499 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
-17:11:00.500 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
-17:11:00.500 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
-17:11:00.501 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
-17:11:00.502 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 21(Long)
-17:11:00.502 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
-17:11:00.502 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
-17:11:00.502 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 21(Long), 1(Long)
-17:11:00.503 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
-17:11:00.504 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
-17:11:00.504 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
-17:11:00.504 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
-17:11:00.505 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
-17:11:00.505 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 22(Long)
-17:11:00.505 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
-17:11:00.505 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
-17:11:00.506 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 22(Long), 1(Long)
-17:11:00.506 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
-17:11:00.507 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
-17:11:00.507 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
-17:11:00.507 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
-17:11:00.508 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
-17:11:00.509 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 23(Long)
-17:11:00.509 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
-17:11:00.509 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
-17:11:00.510 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 23(Long), 1(Long)
-17:11:00.510 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
-17:11:00.510 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
-17:11:00.511 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
-17:11:00.511 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
-17:11:00.511 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
-17:11:00.512 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 24(Long)
-17:11:00.512 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
-17:11:00.512 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
-17:11:00.513 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 24(Long), 1(Long)
-17:11:00.513 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
-17:11:00.516 [main] DEBUG c.e.j.mapper.UserMapper.findByEmail - ==>  Preparing: SELECT * FROM users u WHERE u.email = ?
-17:11:00.516 [main] DEBUG c.e.j.mapper.UserMapper.findByEmail - ==> Parameters: user@example.com(String)
-17:11:00.526 [main] DEBUG c.e.j.mapper.UserMapper.findByEmail - <==      Total: 0
-17:11:00.590 [main] DEBUG c.e.j.mapper.UserMapper.insert - ==>  Preparing: INSERT INTO users (email, name, password_hash, role) VALUES (?, ?, ?, ?)
-17:11:00.591 [main] DEBUG c.e.j.mapper.UserMapper.insert - ==> Parameters: user@example.com(String), 測試使用者(String), $2a$10$pbImEC66SJhVHBySUDmmMeitbCCC5UkVczR5onmafDisOye9xmK2m(String), USER(String)
-17:11:00.592 [main] DEBUG c.e.j.mapper.UserMapper.insert - <==    Updates: 1
-17:11:00.592 [main] INFO  c.e.j.service.AuthServiceImpl - 新使用者註冊：userId=1, email=user@example.com
-17:11:00.652 [main] DEBUG c.e.j.mapper.UserMapper.insert - ==>  Preparing: INSERT INTO users (email, name, password_hash, role) VALUES (?, ?, ?, ?)
-17:11:00.653 [main] DEBUG c.e.j.mapper.UserMapper.insert - ==> Parameters: admin@example.com(String), 管理員(String), $2a$10$eT6ZclIxtZ6uVpz3yxwANukqaohbP/6pnAT.o6zGh.evMUdVBCt0O(String), ADMIN(String)
-17:11:00.653 [main] DEBUG c.e.j.mapper.UserMapper.insert - <==    Updates: 1
-17:11:00.708 [main] DEBUG c.e.j.mapper.UserMapper.insert - ==>  Preparing: INSERT INTO users (email, name, password_hash, role) VALUES (?, ?, ?, ?)
-17:11:00.709 [main] DEBUG c.e.j.mapper.UserMapper.insert - ==> Parameters: procurement@example.com(String), 採購人員(String), $2a$10$IZpTSVZwp/x7bTTCrkwl9e1TmzMLxAxT9DBsUCvkxGjPwYNQkx71W(String), PROCUREMENT(String)
-17:11:00.709 [main] DEBUG c.e.j.mapper.UserMapper.insert - <==    Updates: 1
-17:11:00.714 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-17:11:00.716 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), PENDING(String), 2026-09-14 17:11:00.713872(Timestamp), 0f606196-63e4-439b-bf98-f66498900b05(String)
-17:11:00.717 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
-17:11:00.718 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.718 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 1(Long), Refactoring(String), null, null, null, null
-17:11:00.718 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
-17:11:00.720 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.750 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 1(Long), 2026-09-14 17:11:00.713872(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 1(Long), [B@7f5538a1(byte[])
-17:11:00.753 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-17:11:00.753 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=1, requesterId=1, 書籍數=1
-17:11:00.755 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-17:11:00.755 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), PENDING(String), 2026-09-14 17:11:00.7548785(Timestamp), 7fa22826-ee66-4a45-95ab-04e2ac77239f(String)
-17:11:00.755 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
-17:11:00.755 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.755 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 2(Long), The Pragmatic Programmer(String), 9780135957059(String), null, 2019(Integer), 850(BigDecimal)
-17:11:00.755 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
-17:11:00.757 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.757 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 2(Long), Head First Design Patterns(String), null, null, null, null
-17:11:00.757 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
-17:11:00.758 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.758 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 1(Long), 2026-09-14 17:11:00.7548785(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 2(Long), [B@7a485a36(byte[])
-17:11:00.759 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-17:11:00.759 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=2, requesterId=1, 書籍數=2
-17:11:00.759 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-17:11:00.759 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), PENDING(String), 2026-09-14 17:11:00.759635(Timestamp), b2c5361e-6e7c-4b85-a663-e93de934d64a(String)
-17:11:00.761 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
-17:11:00.761 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.761 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 3(Long), Test-Driven Development(String), 9780321146533(String), null, 2002(Integer), null
-17:11:00.761 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
-17:11:00.761 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.762 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 1(Long), 2026-09-14 17:11:00.759635(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 3(Long), [B@26350ea2(byte[])
-17:11:00.762 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-17:11:00.762 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=3, requesterId=1, 書籍數=1
-17:11:00.764 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-17:11:00.764 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), PENDING(String), 2026-09-14 17:11:00.7638955(Timestamp), af8ce8aa-30a7-467a-8a98-b1abc77311b7(String)
-17:11:00.764 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
-17:11:00.765 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.765 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 4(Long), Working Effectively with Legacy Code(String), null, null, null, null
-17:11:00.765 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
-17:11:00.765 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.766 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 1(Long), 2026-09-14 17:11:00.7638955(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 4(Long), [B@57272109(byte[])
-17:11:00.766 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-17:11:00.766 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=4, requesterId=1, 書籍數=1
-17:11:00.767 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-17:11:00.767 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), PENDING(String), 2026-09-14 17:11:00.7668951(Timestamp), 69b2cc3c-ac2e-4cec-b20d-3d3c8f62e1e6(String)
-17:11:00.767 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
-17:11:00.768 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.768 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 5(Long), Continuous Delivery(String), null, null, null, null
-17:11:00.768 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
-17:11:00.769 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.769 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 1(Long), 2026-09-14 17:11:00.7668951(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 5(Long), [B@79e66b2f(byte[])
-17:11:00.769 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-17:11:00.769 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=5, requesterId=1, 書籍數=1
-17:11:00.770 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-17:11:00.770 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), PENDING(String), 2026-09-14 17:11:00.7708937(Timestamp), c30cd3da-6433-478f-b37c-2729a33855b7(String)
-17:11:00.770 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
-17:11:00.771 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.771 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 6(Long), Site Reliability Engineering(String), null, null, 2016(Integer), 1200(BigDecimal)
-17:11:00.771 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
-17:11:00.771 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.772 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 1(Long), 2026-09-14 17:11:00.7708937(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 6(Long), [B@984169e(byte[])
-17:11:00.772 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-17:11:00.772 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=6, requesterId=1, 書籍數=1
-17:11:00.773 [main] DEBUG c.e.j.m.BookRequestMapper.approve - ==>  Preparing: UPDATE book_requests SET status = 'APPROVED', approver_id = ?, approved_at = ? WHERE id = ? AND status = 'PENDING' AND requester_id != ?
-17:11:00.776 [main] DEBUG c.e.j.m.BookRequestMapper.approve - ==> Parameters: 2(Long), 2026-09-14 17:11:00.7739011(Timestamp), 6(Long), 2(Long)
-17:11:00.776 [main] DEBUG c.e.j.m.BookRequestMapper.approve - <==    Updates: 1
-17:11:00.777 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==>  Preparing: SELECT * FROM book_requests WHERE id = ?
-17:11:00.777 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==> Parameters: 6(Long)
-17:11:00.781 [main] DEBUG c.e.j.m.BookRequestMapper.findById - <==      Total: 1
-17:11:00.782 [main] DEBUG c.e.j.m.B.findByBookRequestId - ==>  Preparing: SELECT * FROM book_request_items WHERE book_request_id = ?
-17:11:00.782 [main] DEBUG c.e.j.m.B.findByBookRequestId - ==> Parameters: 6(Long)
-17:11:00.784 [main] DEBUG c.e.j.m.B.findByBookRequestId - <==      Total: 1
-17:11:00.785 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==>  Preparing: INSERT INTO procurement_items (book_request_item_id, status) VALUES (?, ?)
-17:11:00.785 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==> Parameters: 7(Long), PENDING(String)
-17:11:00.786 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - <==    Updates: 1
-17:11:00.786 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.786 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 2(Long), 2026-09-14 17:11:00.7739011(Timestamp), CREATE(String), PROCUREMENT_ITEM(String), 1(Long), [B@7b4a0aef(byte[])
-17:11:00.788 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-17:11:00.788 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.788 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 2(Long), 2026-09-14 17:11:00.7739011(Timestamp), APPROVE(String), BOOK_REQUEST(String), 6(Long), [B@45cec376(byte[])
-17:11:00.788 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-17:11:00.788 [main] INFO  c.e.j.service.BookRequestServiceImpl - 申請已核准：requestId=6, approverId=2
-17:11:00.789 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-17:11:00.789 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), PENDING(String), 2026-09-14 17:11:00.7893613(Timestamp), 67bec1c5-56f6-4258-8515-1072a9f55d9f(String)
-17:11:00.790 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
-17:11:00.790 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.790 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 7(Long), Database Internals(String), null, null, null, null
-17:11:00.790 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
-17:11:00.790 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.790 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 7(Long), Designing Data-Intensive Applications(String), 9781449373320(String), null, 2017(Integer), 1500(BigDecimal)
-17:11:00.791 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
-17:11:00.791 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.791 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 1(Long), 2026-09-14 17:11:00.7893613(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 7(Long), [B@2b960a7(byte[])
-17:11:00.791 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-17:11:00.791 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=7, requesterId=1, 書籍數=2
-17:11:00.792 [main] DEBUG c.e.j.m.BookRequestMapper.approve - ==>  Preparing: UPDATE book_requests SET status = 'APPROVED', approver_id = ?, approved_at = ? WHERE id = ? AND status = 'PENDING' AND requester_id != ?
-17:11:00.792 [main] DEBUG c.e.j.m.BookRequestMapper.approve - ==> Parameters: 2(Long), 2026-09-14 17:11:00.7923609(Timestamp), 7(Long), 2(Long)
-17:11:00.792 [main] DEBUG c.e.j.m.BookRequestMapper.approve - <==    Updates: 1
-17:11:00.792 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==>  Preparing: SELECT * FROM book_requests WHERE id = ?
-17:11:00.793 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==> Parameters: 7(Long)
-17:11:00.793 [main] DEBUG c.e.j.m.BookRequestMapper.findById - <==      Total: 1
-17:11:00.794 [main] DEBUG c.e.j.m.B.findByBookRequestId - ==>  Preparing: SELECT * FROM book_request_items WHERE book_request_id = ?
-17:11:00.794 [main] DEBUG c.e.j.m.B.findByBookRequestId - ==> Parameters: 7(Long)
-17:11:00.800 [main] DEBUG c.e.j.m.B.findByBookRequestId - <==      Total: 2
-17:11:00.800 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==>  Preparing: INSERT INTO procurement_items (book_request_item_id, status) VALUES (?, ?)
-17:11:00.800 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==> Parameters: 8(Long), PENDING(String)
-17:11:00.801 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - <==    Updates: 1
-17:11:00.801 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.801 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 2(Long), 2026-09-14 17:11:00.7923609(Timestamp), CREATE(String), PROCUREMENT_ITEM(String), 2(Long), [B@663bb8ef(byte[])
-17:11:00.801 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-17:11:00.801 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==>  Preparing: INSERT INTO procurement_items (book_request_item_id, status) VALUES (?, ?)
-17:11:00.802 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==> Parameters: 9(Long), PENDING(String)
-17:11:00.802 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - <==    Updates: 1
-17:11:00.802 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.802 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 2(Long), 2026-09-14 17:11:00.7923609(Timestamp), CREATE(String), PROCUREMENT_ITEM(String), 3(Long), [B@2f4e40d7(byte[])
-17:11:00.802 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-17:11:00.803 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.803 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 2(Long), 2026-09-14 17:11:00.7923609(Timestamp), APPROVE(String), BOOK_REQUEST(String), 7(Long), [B@60e9c3a5(byte[])
-17:11:00.803 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-17:11:00.803 [main] INFO  c.e.j.service.BookRequestServiceImpl - 申請已核准：requestId=7, approverId=2
-17:11:00.804 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-17:11:00.804 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), PENDING(String), 2026-09-14 17:11:00.8043705(Timestamp), 64523ef3-3549-40bc-bbd5-d9420852937b(String)
-17:11:00.804 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
-17:11:00.805 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.805 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 8(Long), The Clean Coder(String), null, null, null, null
-17:11:00.805 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
-17:11:00.805 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.805 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 1(Long), 2026-09-14 17:11:00.8043705(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 8(Long), [B@188ac8a3(byte[])
-17:11:00.805 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-17:11:00.806 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=8, requesterId=1, 書籍數=1
-17:11:00.806 [main] DEBUG c.e.j.m.BookRequestMapper.approve - ==>  Preparing: UPDATE book_requests SET status = 'APPROVED', approver_id = ?, approved_at = ? WHERE id = ? AND status = 'PENDING' AND requester_id != ?
-17:11:00.806 [main] DEBUG c.e.j.m.BookRequestMapper.approve - ==> Parameters: 2(Long), 2026-09-14 17:11:00.8063626(Timestamp), 8(Long), 2(Long)
-17:11:00.807 [main] DEBUG c.e.j.m.BookRequestMapper.approve - <==    Updates: 1
-17:11:00.807 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==>  Preparing: SELECT * FROM book_requests WHERE id = ?
-17:11:00.807 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==> Parameters: 8(Long)
-17:11:00.807 [main] DEBUG c.e.j.m.BookRequestMapper.findById - <==      Total: 1
-17:11:00.807 [main] DEBUG c.e.j.m.B.findByBookRequestId - ==>  Preparing: SELECT * FROM book_request_items WHERE book_request_id = ?
-17:11:00.808 [main] DEBUG c.e.j.m.B.findByBookRequestId - ==> Parameters: 8(Long)
-17:11:00.808 [main] DEBUG c.e.j.m.B.findByBookRequestId - <==      Total: 1
-17:11:00.808 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==>  Preparing: INSERT INTO procurement_items (book_request_item_id, status) VALUES (?, ?)
-17:11:00.808 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==> Parameters: 10(Long), PENDING(String)
-17:11:00.808 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - <==    Updates: 1
-17:11:00.808 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.809 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 2(Long), 2026-09-14 17:11:00.8063626(Timestamp), CREATE(String), PROCUREMENT_ITEM(String), 4(Long), [B@340a8894(byte[])
-17:11:00.809 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-17:11:00.809 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.809 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 2(Long), 2026-09-14 17:11:00.8063626(Timestamp), APPROVE(String), BOOK_REQUEST(String), 8(Long), [B@7a8b9166(byte[])
-17:11:00.809 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-17:11:00.810 [main] INFO  c.e.j.service.BookRequestServiceImpl - 申請已核准：requestId=8, approverId=2
-17:11:00.810 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-17:11:00.811 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), PENDING(String), 2026-09-14 17:11:00.810363(Timestamp), 239d47d9-206c-4ce9-a659-76f1a9b1c923(String)
-17:11:00.811 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
-17:11:00.811 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.812 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 9(Long), Release It!(String), null, null, null, null
-17:11:00.812 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
-17:11:00.813 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.814 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 1(Long), 2026-09-14 17:11:00.810363(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 9(Long), [B@57f9b467(byte[])
-17:11:00.814 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-17:11:00.814 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=9, requesterId=1, 書籍數=1
-17:11:00.815 [main] DEBUG c.e.j.m.BookRequestMapper.approve - ==>  Preparing: UPDATE book_requests SET status = 'APPROVED', approver_id = ?, approved_at = ? WHERE id = ? AND status = 'PENDING' AND requester_id != ?
-17:11:00.816 [main] DEBUG c.e.j.m.BookRequestMapper.approve - ==> Parameters: 2(Long), 2026-09-14 17:11:00.8153624(Timestamp), 9(Long), 2(Long)
-17:11:00.816 [main] DEBUG c.e.j.m.BookRequestMapper.approve - <==    Updates: 1
-17:11:00.816 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==>  Preparing: SELECT * FROM book_requests WHERE id = ?
-17:11:00.816 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==> Parameters: 9(Long)
-17:11:00.817 [main] DEBUG c.e.j.m.BookRequestMapper.findById - <==      Total: 1
-17:11:00.817 [main] DEBUG c.e.j.m.B.findByBookRequestId - ==>  Preparing: SELECT * FROM book_request_items WHERE book_request_id = ?
-17:11:00.817 [main] DEBUG c.e.j.m.B.findByBookRequestId - ==> Parameters: 9(Long)
-17:11:00.817 [main] DEBUG c.e.j.m.B.findByBookRequestId - <==      Total: 1
-17:11:00.817 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==>  Preparing: INSERT INTO procurement_items (book_request_item_id, status) VALUES (?, ?)
-17:11:00.817 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==> Parameters: 11(Long), PENDING(String)
-17:11:00.817 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - <==    Updates: 1
-17:11:00.818 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.818 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 2(Long), 2026-09-14 17:11:00.8153624(Timestamp), CREATE(String), PROCUREMENT_ITEM(String), 5(Long), [B@f6de586(byte[])
-17:11:00.818 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-17:11:00.818 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.818 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 2(Long), 2026-09-14 17:11:00.8153624(Timestamp), APPROVE(String), BOOK_REQUEST(String), 9(Long), [B@5f2bd6d9(byte[])
-17:11:00.819 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-17:11:00.819 [main] INFO  c.e.j.service.BookRequestServiceImpl - 申請已核准：requestId=9, approverId=2
-17:11:00.819 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-17:11:00.819 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), PENDING(String), 2026-09-14 17:11:00.8193617(Timestamp), 2c208cde-f8dc-4a31-b4fc-b5de0da1b734(String)
-17:11:00.820 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
-17:11:00.820 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.820 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 10(Long), Overpriced Book(String), null, null, null, 99999(BigDecimal)
-17:11:00.820 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
-17:11:00.820 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.820 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 1(Long), 2026-09-14 17:11:00.8193617(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 10(Long), [B@23f86d8a(byte[])
-17:11:00.821 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-17:11:00.821 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=10, requesterId=1, 書籍數=1
-17:11:00.822 [main] DEBUG c.e.j.m.BookRequestMapper.reject - ==>  Preparing: UPDATE book_requests SET status = 'REJECTED', approver_id = ?, approved_at = ? WHERE id = ? AND status = 'PENDING' AND requester_id != ?
-17:11:00.822 [main] DEBUG c.e.j.m.BookRequestMapper.reject - ==> Parameters: 2(Long), 2026-09-14 17:11:00.8223614(Timestamp), 10(Long), 2(Long)
-17:11:00.822 [main] DEBUG c.e.j.m.BookRequestMapper.reject - <==    Updates: 1
-17:11:00.822 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==>  Preparing: SELECT * FROM book_requests WHERE id = ?
-17:11:00.822 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==> Parameters: 10(Long)
-17:11:00.823 [main] DEBUG c.e.j.m.BookRequestMapper.findById - <==      Total: 1
-17:11:00.823 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.823 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 2(Long), 2026-09-14 17:11:00.8223614(Timestamp), REJECT(String), BOOK_REQUEST(String), 10(Long), [B@14a049f9(byte[])
-17:11:00.824 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-17:11:00.824 [main] INFO  c.e.j.service.BookRequestServiceImpl - 申請已拒絕：requestId=10, approverId=2
-17:11:00.824 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-17:11:00.824 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), PENDING(String), 2026-09-14 17:11:00.8243673(Timestamp), 5a9d220e-2558-49b1-b1a1-08a84ab12771(String)
-17:11:00.825 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
-17:11:00.825 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.825 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 11(Long), Duplicate Request Example(String), null, null, null, null
-17:11:00.825 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
-17:11:00.825 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.825 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 1(Long), 2026-09-14 17:11:00.8243673(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 11(Long), [B@4cc36c19(byte[])
-17:11:00.825 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-17:11:00.825 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=11, requesterId=1, 書籍數=1
-17:11:00.826 [main] DEBUG c.e.j.m.BookRequestMapper.reject - ==>  Preparing: UPDATE book_requests SET status = 'REJECTED', approver_id = ?, approved_at = ? WHERE id = ? AND status = 'PENDING' AND requester_id != ?
-17:11:00.826 [main] DEBUG c.e.j.m.BookRequestMapper.reject - ==> Parameters: 2(Long), 2026-09-14 17:11:00.8263725(Timestamp), 11(Long), 2(Long)
-17:11:00.826 [main] DEBUG c.e.j.m.BookRequestMapper.reject - <==    Updates: 1
-17:11:00.826 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==>  Preparing: SELECT * FROM book_requests WHERE id = ?
-17:11:00.827 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==> Parameters: 11(Long)
-17:11:00.827 [main] DEBUG c.e.j.m.BookRequestMapper.findById - <==      Total: 1
-17:11:00.827 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.827 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 2(Long), 2026-09-14 17:11:00.8263725(Timestamp), REJECT(String), BOOK_REQUEST(String), 11(Long), [B@4af45442(byte[])
-17:11:00.827 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-17:11:00.827 [main] INFO  c.e.j.service.BookRequestServiceImpl - 申請已拒絕：requestId=11, approverId=2
-17:11:00.828 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-17:11:00.828 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), PENDING(String), 2026-09-14 17:11:00.8283719(Timestamp), 4051a926-1c13-40c3-84b0-ad51ba5b8002(String)
-17:11:00.829 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
-17:11:00.829 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.829 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 12(Long), Out of Scope Book(String), null, null, null, null
-17:11:00.829 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
-17:11:00.829 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.830 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 1(Long), 2026-09-14 17:11:00.8283719(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 12(Long), [B@30ca0779(byte[])
-17:11:00.830 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-17:11:00.830 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=12, requesterId=1, 書籍數=1
-17:11:00.831 [main] DEBUG c.e.j.m.BookRequestMapper.reject - ==>  Preparing: UPDATE book_requests SET status = 'REJECTED', approver_id = ?, approved_at = ? WHERE id = ? AND status = 'PENDING' AND requester_id != ?
-17:11:00.832 [main] DEBUG c.e.j.m.BookRequestMapper.reject - ==> Parameters: 2(Long), 2026-09-14 17:11:00.831367(Timestamp), 12(Long), 2(Long)
-17:11:00.832 [main] DEBUG c.e.j.m.BookRequestMapper.reject - <==    Updates: 1
-17:11:00.832 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==>  Preparing: SELECT * FROM book_requests WHERE id = ?
-17:11:00.832 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==> Parameters: 12(Long)
-17:11:00.833 [main] DEBUG c.e.j.m.BookRequestMapper.findById - <==      Total: 1
-17:11:00.833 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.833 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 2(Long), 2026-09-14 17:11:00.831367(Timestamp), REJECT(String), BOOK_REQUEST(String), 12(Long), [B@2bc426f0(byte[])
-17:11:00.834 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
-17:11:00.834 [main] INFO  c.e.j.service.BookRequestServiceImpl - 申請已拒絕：requestId=12, approverId=2
-17:11:00.834 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-17:11:00.835 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), APPROVED(String), 2026-09-14 17:11:00.8343663(Timestamp), 04271155-277d-41d9-a504-81e82e5e7fcd(String)
-17:11:00.835 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
-17:11:00.836 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.836 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 13(Long), [測試用] 已核准但缺採購項目(String), null, null, null, null
-17:11:00.836 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
-17:11:00.836 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
-17:11:00.836 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), APPROVED(String), 2026-09-14 17:11:00.8363663(Timestamp), b8e4a61e-e70e-468e-bd70-d81b3b488c84(String)
-17:11:00.837 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
-17:11:00.837 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
-17:11:00.837 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 14(Long), [測試用] 已完成採購但缺書籍紀錄(String), null, null, null, null
-17:11:00.837 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
-17:11:00.838 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==>  Preparing: INSERT INTO procurement_items (book_request_item_id, status) VALUES (?, ?)
-17:11:00.838 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==> Parameters: 16(Long), COMPLETED(String)
-17:11:00.838 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - <==    Updates: 1
-17:11:00.838 [main] DEBUG c.e.j.m.B.findByStatus - ==>  Preparing: SELECT * FROM book_requests WHERE status = ? ORDER BY requested_at
-17:11:00.839 [main] DEBUG c.e.j.m.B.findByStatus - ==> Parameters: PENDING(String)
-17:11:00.839 [main] DEBUG c.e.j.m.B.findByStatus - <==      Total: 5
-17:11:00.839 [main] DEBUG c.e.j.m.B.findByStatus - ==>  Preparing: SELECT * FROM book_requests WHERE status = ? ORDER BY requested_at
-17:11:00.841 [main] DEBUG c.e.j.m.B.findByStatus - ==> Parameters: APPROVED(String)
-17:11:00.841 [main] DEBUG c.e.j.m.B.findByStatus - <==      Total: 6
-17:11:00.841 [main] DEBUG c.e.j.m.B.findByStatus - ==>  Preparing: SELECT * FROM book_requests WHERE status = ? ORDER BY requested_at
-17:11:00.841 [main] DEBUG c.e.j.m.B.findByStatus - ==> Parameters: REJECTED(String)
-17:11:00.842 [main] DEBUG c.e.j.m.B.findByStatus - <==      Total: 3
-17:11:00.843 [main] DEBUG c.e.j.m.BookRequestMapper.findAll - ==>  Preparing: SELECT * FROM book_requests
-17:11:00.843 [main] DEBUG c.e.j.m.BookRequestMapper.findAll - ==> Parameters: 
-17:11:00.844 [main] DEBUG c.e.j.m.BookRequestMapper.findAll - <==      Total: 14
-17:11:00.844 [main] DEBUG c.e.j.m.B.findApprovedWithoutProcurementItem - ==>  Preparing: SELECT bri.* FROM book_request_items bri JOIN book_requests br ON br.id = bri.book_request_id LEFT JOIN procurement_items pi ON bri.id = pi.book_request_item_id WHERE br.status = 'APPROVED' AND pi.id IS NULL AND NOT EXISTS ( SELECT 1 FROM reconciliation_items ri WHERE ri.entity_type = 'BOOK_REQUEST_ITEM' AND ri.entity_id = bri.id AND ri.status = 'WRITTEN_OFF' )
-17:11:00.846 [main] DEBUG c.e.j.m.B.findApprovedWithoutProcurementItem - ==> Parameters: 
-17:11:00.848 [main] DEBUG c.e.j.m.B.findApprovedWithoutProcurementItem - <==      Total: 1
-17:11:00.848 [main] DEBUG c.e.j.m.P.findCompletedWithoutBook - ==>  Preparing: SELECT pi.* FROM procurement_items pi LEFT JOIN books b ON pi.book_id = b.id WHERE pi.status = 'COMPLETED' AND b.id IS NULL AND NOT EXISTS ( SELECT 1 FROM reconciliation_items ri WHERE ri.entity_type = 'PROCUREMENT_ITEM' AND ri.entity_id = pi.id AND ri.status = 'WRITTEN_OFF' )
-17:11:00.848 [main] DEBUG c.e.j.m.P.findCompletedWithoutBook - ==> Parameters: 
-17:11:00.850 [main] DEBUG c.e.j.m.P.findCompletedWithoutBook - <==      Total: 1
+  <testcase name="seedRunsWithoutErrorsAndProducesAllThreeStatuses" classname="com.example.jsppractice.config.DataSeederTest" time="0.649">
+    <system-out><![CDATA[17:48:26.977 [main] DEBUG c.e.j.mapper.CategoryMapper.insert - ==>  Preparing: INSERT INTO categories (name) VALUES (?)
+17:48:27.002 [main] DEBUG c.e.j.mapper.CategoryMapper.insert - ==> Parameters: Programming(String)
+17:48:27.003 [main] DEBUG c.e.j.mapper.CategoryMapper.insert - <==    Updates: 1
+17:48:27.005 [main] DEBUG c.e.j.mapper.CategoryMapper.insert - ==>  Preparing: INSERT INTO categories (name) VALUES (?)
+17:48:27.005 [main] DEBUG c.e.j.mapper.CategoryMapper.insert - ==> Parameters: Architecture(String)
+17:48:27.006 [main] DEBUG c.e.j.mapper.CategoryMapper.insert - <==    Updates: 1
+17:48:27.008 [main] DEBUG c.e.j.mapper.CategoryMapper.insert - ==>  Preparing: INSERT INTO categories (name) VALUES (?)
+17:48:27.008 [main] DEBUG c.e.j.mapper.CategoryMapper.insert - ==> Parameters: Best Practice(String)
+17:48:27.009 [main] DEBUG c.e.j.mapper.CategoryMapper.insert - <==    Updates: 1
+17:48:27.010 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
+17:48:27.016 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Effective Java(String), 9780134685991(String), 1(Long), 2018(Integer)
+17:48:27.017 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
+17:48:27.029 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
+17:48:27.030 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 1(Long)
+17:48:27.031 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
+17:48:27.050 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?) , (?, ?)
+17:48:27.051 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 1(Long), 1(Long), 1(Long), 3(Long)
+17:48:27.051 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 2
+17:48:27.054 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
+17:48:27.055 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Clean Code(String), 9780132350884(String), 2(Long), 2008(Integer)
+17:48:27.055 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
+17:48:27.057 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
+17:48:27.058 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 2(Long)
+17:48:27.058 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
+17:48:27.059 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
+17:48:27.059 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 2(Long), 3(Long)
+17:48:27.060 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
+17:48:27.061 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
+17:48:27.061 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Domain-Driven Design(String), 9780321125217(String), 3(Long), 2003(Integer)
+17:48:27.062 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
+17:48:27.063 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
+17:48:27.063 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 3(Long)
+17:48:27.063 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
+17:48:27.063 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
+17:48:27.064 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 3(Long), 2(Long)
+17:48:27.065 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
+17:48:27.066 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
+17:48:27.066 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Clean Architecture(String), 9780134494166(String), 2(Long), 2017(Integer)
+17:48:27.067 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
+17:48:27.067 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
+17:48:27.068 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 4(Long)
+17:48:27.068 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
+17:48:27.068 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?) , (?, ?)
+17:48:27.069 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 4(Long), 2(Long), 4(Long), 3(Long)
+17:48:27.069 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 2
+17:48:27.070 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
+17:48:27.071 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
+17:48:27.071 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
+17:48:27.073 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
+17:48:27.074 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 5(Long)
+17:48:27.074 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
+17:48:27.075 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
+17:48:27.076 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 5(Long), 1(Long)
+17:48:27.076 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
+17:48:27.078 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
+17:48:27.078 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
+17:48:27.079 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
+17:48:27.080 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
+17:48:27.080 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 6(Long)
+17:48:27.080 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
+17:48:27.081 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
+17:48:27.081 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 6(Long), 1(Long)
+17:48:27.081 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
+17:48:27.082 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
+17:48:27.083 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
+17:48:27.084 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
+17:48:27.084 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
+17:48:27.085 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 7(Long)
+17:48:27.085 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
+17:48:27.087 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
+17:48:27.088 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 7(Long), 1(Long)
+17:48:27.088 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
+17:48:27.090 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
+17:48:27.091 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
+17:48:27.092 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
+17:48:27.093 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
+17:48:27.093 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 8(Long)
+17:48:27.093 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
+17:48:27.094 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
+17:48:27.094 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 8(Long), 1(Long)
+17:48:27.095 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
+17:48:27.097 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
+17:48:27.097 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
+17:48:27.098 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
+17:48:27.100 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
+17:48:27.101 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 9(Long)
+17:48:27.102 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
+17:48:27.102 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
+17:48:27.103 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 9(Long), 1(Long)
+17:48:27.103 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
+17:48:27.106 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
+17:48:27.107 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
+17:48:27.108 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
+17:48:27.110 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
+17:48:27.111 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 10(Long)
+17:48:27.111 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
+17:48:27.112 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
+17:48:27.113 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 10(Long), 1(Long)
+17:48:27.114 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
+17:48:27.116 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
+17:48:27.116 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
+17:48:27.117 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
+17:48:27.118 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
+17:48:27.118 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 11(Long)
+17:48:27.118 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
+17:48:27.119 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
+17:48:27.119 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 11(Long), 1(Long)
+17:48:27.120 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
+17:48:27.121 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
+17:48:27.122 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
+17:48:27.122 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
+17:48:27.123 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
+17:48:27.124 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 12(Long)
+17:48:27.124 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
+17:48:27.125 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
+17:48:27.125 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 12(Long), 1(Long)
+17:48:27.126 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
+17:48:27.127 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
+17:48:27.127 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
+17:48:27.127 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
+17:48:27.128 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
+17:48:27.129 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 13(Long)
+17:48:27.129 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
+17:48:27.129 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
+17:48:27.129 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 13(Long), 1(Long)
+17:48:27.130 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
+17:48:27.131 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
+17:48:27.131 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
+17:48:27.131 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
+17:48:27.133 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
+17:48:27.134 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 14(Long)
+17:48:27.134 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
+17:48:27.135 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
+17:48:27.135 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 14(Long), 1(Long)
+17:48:27.136 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
+17:48:27.137 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
+17:48:27.137 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
+17:48:27.137 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
+17:48:27.138 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
+17:48:27.138 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 15(Long)
+17:48:27.138 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
+17:48:27.138 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
+17:48:27.139 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 15(Long), 1(Long)
+17:48:27.139 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
+17:48:27.141 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
+17:48:27.141 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
+17:48:27.142 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
+17:48:27.143 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
+17:48:27.143 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 16(Long)
+17:48:27.144 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
+17:48:27.144 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
+17:48:27.145 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 16(Long), 1(Long)
+17:48:27.145 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
+17:48:27.146 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
+17:48:27.146 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
+17:48:27.147 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
+17:48:27.148 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
+17:48:27.148 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 17(Long)
+17:48:27.149 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
+17:48:27.149 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
+17:48:27.151 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 17(Long), 1(Long)
+17:48:27.152 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
+17:48:27.153 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
+17:48:27.154 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
+17:48:27.154 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
+17:48:27.155 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
+17:48:27.155 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 18(Long)
+17:48:27.156 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
+17:48:27.156 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
+17:48:27.156 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 18(Long), 1(Long)
+17:48:27.157 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
+17:48:27.158 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
+17:48:27.158 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
+17:48:27.158 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
+17:48:27.160 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
+17:48:27.160 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 19(Long)
+17:48:27.160 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
+17:48:27.161 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
+17:48:27.161 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 19(Long), 1(Long)
+17:48:27.161 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
+17:48:27.162 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
+17:48:27.162 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
+17:48:27.163 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
+17:48:27.163 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
+17:48:27.164 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 20(Long)
+17:48:27.164 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
+17:48:27.164 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
+17:48:27.165 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 20(Long), 1(Long)
+17:48:27.165 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
+17:48:27.166 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
+17:48:27.167 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
+17:48:27.168 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
+17:48:27.169 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
+17:48:27.169 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 21(Long)
+17:48:27.169 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
+17:48:27.170 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
+17:48:27.170 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 21(Long), 1(Long)
+17:48:27.170 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
+17:48:27.171 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
+17:48:27.171 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
+17:48:27.171 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
+17:48:27.173 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
+17:48:27.174 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 22(Long)
+17:48:27.174 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
+17:48:27.174 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
+17:48:27.175 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 22(Long), 1(Long)
+17:48:27.176 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
+17:48:27.177 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
+17:48:27.177 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
+17:48:27.178 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
+17:48:27.178 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
+17:48:27.178 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 23(Long)
+17:48:27.178 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
+17:48:27.179 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
+17:48:27.179 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 23(Long), 1(Long)
+17:48:27.179 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
+17:48:27.180 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==>  Preparing: INSERT INTO books (title, isbn, author_id, published_year) VALUES (?, ?, ?, ?)
+17:48:27.181 [main] DEBUG c.e.j.mapper.BookMapper.insert - ==> Parameters: Java Concurrency in Practice(String), 9780321349606(String), 1(Long), 2006(Integer)
+17:48:27.181 [main] DEBUG c.e.j.mapper.BookMapper.insert - <==    Updates: 1
+17:48:27.182 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==>  Preparing: DELETE FROM books_categories bc WHERE bc.book_id = ?
+17:48:27.182 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - ==> Parameters: 24(Long)
+17:48:27.183 [main] DEBUG c.e.j.m.B.deleteCategoriesByBookId - <==    Updates: 0
+17:48:27.183 [main] DEBUG c.e.j.m.B.insertBookCategories - ==>  Preparing: INSERT INTO books_categories (book_id, category_id) VALUES (?, ?)
+17:48:27.183 [main] DEBUG c.e.j.m.B.insertBookCategories - ==> Parameters: 24(Long), 1(Long)
+17:48:27.184 [main] DEBUG c.e.j.m.B.insertBookCategories - <==    Updates: 1
+17:48:27.188 [main] DEBUG c.e.j.mapper.UserMapper.findByEmail - ==>  Preparing: SELECT * FROM users u WHERE u.email = ?
+17:48:27.189 [main] DEBUG c.e.j.mapper.UserMapper.findByEmail - ==> Parameters: user@example.com(String)
+17:48:27.206 [main] DEBUG c.e.j.mapper.UserMapper.findByEmail - <==      Total: 0
+17:48:27.275 [main] DEBUG c.e.j.mapper.UserMapper.insert - ==>  Preparing: INSERT INTO users (email, name, password_hash, role) VALUES (?, ?, ?, ?)
+17:48:27.276 [main] DEBUG c.e.j.mapper.UserMapper.insert - ==> Parameters: user@example.com(String), 測試使用者(String), $2a$10$kgC54OBIyHPDCdz1z4/bNu.fAmZbOg4ebbL.4ofOvlqARePMzb1E6(String), USER(String)
+17:48:27.276 [main] DEBUG c.e.j.mapper.UserMapper.insert - <==    Updates: 1
+17:48:27.277 [main] INFO  c.e.j.service.AuthServiceImpl - 新使用者註冊：userId=1, email=user@example.com
+17:48:27.334 [main] DEBUG c.e.j.mapper.UserMapper.insert - ==>  Preparing: INSERT INTO users (email, name, password_hash, role) VALUES (?, ?, ?, ?)
+17:48:27.335 [main] DEBUG c.e.j.mapper.UserMapper.insert - ==> Parameters: admin@example.com(String), 管理員(String), $2a$10$IKrYCTXJV3YbodoU/L7XN.s9/B48jJ2nkZDF1kHfcIqJprBS.a/36(String), ADMIN(String)
+17:48:27.335 [main] DEBUG c.e.j.mapper.UserMapper.insert - <==    Updates: 1
+17:48:27.391 [main] DEBUG c.e.j.mapper.UserMapper.insert - ==>  Preparing: INSERT INTO users (email, name, password_hash, role) VALUES (?, ?, ?, ?)
+17:48:27.391 [main] DEBUG c.e.j.mapper.UserMapper.insert - ==> Parameters: procurement@example.com(String), 採購人員(String), $2a$10$Wi0k2k./Cj/vzAEz2haWEeMpPemG9KAFTsQOuNhM48iJGWDLMnlD6(String), PROCUREMENT(String)
+17:48:27.392 [main] DEBUG c.e.j.mapper.UserMapper.insert - <==    Updates: 1
+17:48:27.395 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:48:27.397 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), PENDING(String), 2026-09-14 17:48:27.3948559(Timestamp), 2bd6603b-2048-45b6-b3db-a6a459de3880(String)
+17:48:27.398 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
+17:48:27.398 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.399 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 1(Long), Refactoring(String), null, null, null, null
+17:48:27.399 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
+17:48:27.401 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.428 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 1(Long), 2026-09-14 17:48:27.3948559(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 1(Long), [B@623ebac7(byte[])
+17:48:27.431 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:48:27.431 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=1, requesterId=1, 書籍數=1
+17:48:27.433 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:48:27.433 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), PENDING(String), 2026-09-14 17:48:27.4334617(Timestamp), 3b278582-afb7-4481-b7d8-21a354574af9(String)
+17:48:27.433 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
+17:48:27.433 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.434 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 2(Long), The Pragmatic Programmer(String), 9780135957059(String), null, 2019(Integer), 850(BigDecimal)
+17:48:27.434 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
+17:48:27.434 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.434 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 2(Long), Head First Design Patterns(String), null, null, null, null
+17:48:27.435 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
+17:48:27.435 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.436 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 1(Long), 2026-09-14 17:48:27.4334617(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 2(Long), [B@1e9469b8(byte[])
+17:48:27.437 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:48:27.437 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=2, requesterId=1, 書籍數=2
+17:48:27.438 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:48:27.438 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), PENDING(String), 2026-09-14 17:48:27.4384604(Timestamp), 87a140d0-c8c7-44a2-b2bc-f086b5f9fd7a(String)
+17:48:27.438 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
+17:48:27.438 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.438 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 3(Long), Test-Driven Development(String), 9780321146533(String), null, 2002(Integer), null
+17:48:27.439 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
+17:48:27.439 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.439 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 1(Long), 2026-09-14 17:48:27.4384604(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 3(Long), [B@59696551(byte[])
+17:48:27.439 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:48:27.439 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=3, requesterId=1, 書籍數=1
+17:48:27.441 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:48:27.441 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), PENDING(String), 2026-09-14 17:48:27.4414608(Timestamp), eab611a1-ff9c-4ecb-9f8a-b2d150b0cf9d(String)
+17:48:27.442 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
+17:48:27.442 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.442 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 4(Long), Working Effectively with Legacy Code(String), null, null, null, null
+17:48:27.442 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
+17:48:27.443 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.443 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 1(Long), 2026-09-14 17:48:27.4414608(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 4(Long), [B@17273273(byte[])
+17:48:27.443 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:48:27.443 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=4, requesterId=1, 書籍數=1
+17:48:27.444 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:48:27.444 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), PENDING(String), 2026-09-14 17:48:27.4444599(Timestamp), b83bce25-0bd0-4606-bce8-88c66ea7d4ab(String)
+17:48:27.445 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
+17:48:27.445 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.445 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 5(Long), Continuous Delivery(String), null, null, null, null
+17:48:27.445 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
+17:48:27.445 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.446 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 1(Long), 2026-09-14 17:48:27.4444599(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 5(Long), [B@43f1bb92(byte[])
+17:48:27.446 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:48:27.446 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=5, requesterId=1, 書籍數=1
+17:48:27.447 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:48:27.447 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), PENDING(String), 2026-09-14 17:48:27.446461(Timestamp), a8f42114-bdf9-47a0-a705-472d7df77270(String)
+17:48:27.447 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
+17:48:27.447 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.447 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 6(Long), Site Reliability Engineering(String), null, null, 2016(Integer), 1200(BigDecimal)
+17:48:27.447 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
+17:48:27.448 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.448 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 1(Long), 2026-09-14 17:48:27.446461(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 6(Long), [B@7544ac86(byte[])
+17:48:27.448 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:48:27.448 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=6, requesterId=1, 書籍數=1
+17:48:27.449 [main] DEBUG c.e.j.m.BookRequestMapper.approve - ==>  Preparing: UPDATE book_requests SET status = 'APPROVED', approver_id = ?, approved_at = ? WHERE id = ? AND status = 'PENDING' AND requester_id != ?
+17:48:27.452 [main] DEBUG c.e.j.m.BookRequestMapper.approve - ==> Parameters: 2(Long), 2026-09-14 17:48:27.4494603(Timestamp), 6(Long), 2(Long)
+17:48:27.452 [main] DEBUG c.e.j.m.BookRequestMapper.approve - <==    Updates: 1
+17:48:27.452 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==>  Preparing: SELECT * FROM book_requests WHERE id = ?
+17:48:27.453 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==> Parameters: 6(Long)
+17:48:27.456 [main] DEBUG c.e.j.m.BookRequestMapper.findById - <==      Total: 1
+17:48:27.457 [main] DEBUG c.e.j.m.B.findByBookRequestId - ==>  Preparing: SELECT * FROM book_request_items WHERE book_request_id = ?
+17:48:27.457 [main] DEBUG c.e.j.m.B.findByBookRequestId - ==> Parameters: 6(Long)
+17:48:27.459 [main] DEBUG c.e.j.m.B.findByBookRequestId - <==      Total: 1
+17:48:27.460 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==>  Preparing: INSERT INTO procurement_items (book_request_item_id, status) VALUES (?, ?)
+17:48:27.461 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==> Parameters: 7(Long), PENDING(String)
+17:48:27.462 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - <==    Updates: 1
+17:48:27.462 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.464 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 2(Long), 2026-09-14 17:48:27.4494603(Timestamp), CREATE(String), PROCUREMENT_ITEM(String), 1(Long), [B@298f0a0b(byte[])
+17:48:27.465 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:48:27.465 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.465 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 2(Long), 2026-09-14 17:48:27.4494603(Timestamp), APPROVE(String), BOOK_REQUEST(String), 6(Long), [B@2b960a7(byte[])
+17:48:27.466 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:48:27.466 [main] INFO  c.e.j.service.BookRequestServiceImpl - 申請已核准：requestId=6, approverId=2
+17:48:27.467 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:48:27.467 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), PENDING(String), 2026-09-14 17:48:27.4673785(Timestamp), e9468afd-091e-4e60-8f2c-706093ab1f29(String)
+17:48:27.468 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
+17:48:27.468 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.468 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 7(Long), Database Internals(String), null, null, null, null
+17:48:27.468 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
+17:48:27.468 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.468 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 7(Long), Designing Data-Intensive Applications(String), 9781449373320(String), null, 2017(Integer), 1500(BigDecimal)
+17:48:27.468 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
+17:48:27.469 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.469 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 1(Long), 2026-09-14 17:48:27.4673785(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 7(Long), [B@663bb8ef(byte[])
+17:48:27.469 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:48:27.469 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=7, requesterId=1, 書籍數=2
+17:48:27.470 [main] DEBUG c.e.j.m.BookRequestMapper.approve - ==>  Preparing: UPDATE book_requests SET status = 'APPROVED', approver_id = ?, approved_at = ? WHERE id = ? AND status = 'PENDING' AND requester_id != ?
+17:48:27.470 [main] DEBUG c.e.j.m.BookRequestMapper.approve - ==> Parameters: 2(Long), 2026-09-14 17:48:27.4706711(Timestamp), 7(Long), 2(Long)
+17:48:27.470 [main] DEBUG c.e.j.m.BookRequestMapper.approve - <==    Updates: 1
+17:48:27.471 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==>  Preparing: SELECT * FROM book_requests WHERE id = ?
+17:48:27.471 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==> Parameters: 7(Long)
+17:48:27.472 [main] DEBUG c.e.j.m.BookRequestMapper.findById - <==      Total: 1
+17:48:27.472 [main] DEBUG c.e.j.m.B.findByBookRequestId - ==>  Preparing: SELECT * FROM book_request_items WHERE book_request_id = ?
+17:48:27.472 [main] DEBUG c.e.j.m.B.findByBookRequestId - ==> Parameters: 7(Long)
+17:48:27.473 [main] DEBUG c.e.j.m.B.findByBookRequestId - <==      Total: 2
+17:48:27.474 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==>  Preparing: INSERT INTO procurement_items (book_request_item_id, status) VALUES (?, ?)
+17:48:27.474 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==> Parameters: 8(Long), PENDING(String)
+17:48:27.474 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - <==    Updates: 1
+17:48:27.474 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.475 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 2(Long), 2026-09-14 17:48:27.4706711(Timestamp), CREATE(String), PROCUREMENT_ITEM(String), 2(Long), [B@7e5843db(byte[])
+17:48:27.475 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:48:27.475 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==>  Preparing: INSERT INTO procurement_items (book_request_item_id, status) VALUES (?, ?)
+17:48:27.475 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==> Parameters: 9(Long), PENDING(String)
+17:48:27.475 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - <==    Updates: 1
+17:48:27.476 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.476 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 2(Long), 2026-09-14 17:48:27.4706711(Timestamp), CREATE(String), PROCUREMENT_ITEM(String), 3(Long), [B@459f703f(byte[])
+17:48:27.476 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:48:27.476 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.477 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 2(Long), 2026-09-14 17:48:27.4706711(Timestamp), APPROVE(String), BOOK_REQUEST(String), 7(Long), [B@188ac8a3(byte[])
+17:48:27.477 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:48:27.477 [main] INFO  c.e.j.service.BookRequestServiceImpl - 申請已核准：requestId=7, approverId=2
+17:48:27.477 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:48:27.478 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), PENDING(String), 2026-09-14 17:48:27.477694(Timestamp), 667af931-3471-4505-be09-cb1ca8faed67(String)
+17:48:27.478 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
+17:48:27.480 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.480 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 8(Long), The Clean Coder(String), null, null, null, null
+17:48:27.480 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
+17:48:27.480 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.480 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 1(Long), 2026-09-14 17:48:27.477694(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 8(Long), [B@340a8894(byte[])
+17:48:27.481 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:48:27.481 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=8, requesterId=1, 書籍數=1
+17:48:27.481 [main] DEBUG c.e.j.m.BookRequestMapper.approve - ==>  Preparing: UPDATE book_requests SET status = 'APPROVED', approver_id = ?, approved_at = ? WHERE id = ? AND status = 'PENDING' AND requester_id != ?
+17:48:27.482 [main] DEBUG c.e.j.m.BookRequestMapper.approve - ==> Parameters: 2(Long), 2026-09-14 17:48:27.4816621(Timestamp), 8(Long), 2(Long)
+17:48:27.482 [main] DEBUG c.e.j.m.BookRequestMapper.approve - <==    Updates: 1
+17:48:27.483 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==>  Preparing: SELECT * FROM book_requests WHERE id = ?
+17:48:27.483 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==> Parameters: 8(Long)
+17:48:27.483 [main] DEBUG c.e.j.m.BookRequestMapper.findById - <==      Total: 1
+17:48:27.483 [main] DEBUG c.e.j.m.B.findByBookRequestId - ==>  Preparing: SELECT * FROM book_request_items WHERE book_request_id = ?
+17:48:27.484 [main] DEBUG c.e.j.m.B.findByBookRequestId - ==> Parameters: 8(Long)
+17:48:27.484 [main] DEBUG c.e.j.m.B.findByBookRequestId - <==      Total: 1
+17:48:27.484 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==>  Preparing: INSERT INTO procurement_items (book_request_item_id, status) VALUES (?, ?)
+17:48:27.484 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==> Parameters: 10(Long), PENDING(String)
+17:48:27.485 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - <==    Updates: 1
+17:48:27.485 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.485 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 2(Long), 2026-09-14 17:48:27.4816621(Timestamp), CREATE(String), PROCUREMENT_ITEM(String), 4(Long), [B@10c72a6f(byte[])
+17:48:27.485 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:48:27.487 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.487 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 2(Long), 2026-09-14 17:48:27.4816621(Timestamp), APPROVE(String), BOOK_REQUEST(String), 8(Long), [B@70e94ecb(byte[])
+17:48:27.487 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:48:27.487 [main] INFO  c.e.j.service.BookRequestServiceImpl - 申請已核准：requestId=8, approverId=2
+17:48:27.488 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:48:27.489 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), PENDING(String), 2026-09-14 17:48:27.4882927(Timestamp), 2bf29bdd-573a-4a6b-b1ad-f9151dea9f13(String)
+17:48:27.489 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
+17:48:27.489 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.489 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 9(Long), Release It!(String), null, null, null, null
+17:48:27.489 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
+17:48:27.490 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.491 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 1(Long), 2026-09-14 17:48:27.4882927(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 9(Long), [B@1947596f(byte[])
+17:48:27.491 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:48:27.492 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=9, requesterId=1, 書籍數=1
+17:48:27.493 [main] DEBUG c.e.j.m.BookRequestMapper.approve - ==>  Preparing: UPDATE book_requests SET status = 'APPROVED', approver_id = ?, approved_at = ? WHERE id = ? AND status = 'PENDING' AND requester_id != ?
+17:48:27.493 [main] DEBUG c.e.j.m.BookRequestMapper.approve - ==> Parameters: 2(Long), 2026-09-14 17:48:27.4922923(Timestamp), 9(Long), 2(Long)
+17:48:27.493 [main] DEBUG c.e.j.m.BookRequestMapper.approve - <==    Updates: 1
+17:48:27.493 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==>  Preparing: SELECT * FROM book_requests WHERE id = ?
+17:48:27.494 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==> Parameters: 9(Long)
+17:48:27.494 [main] DEBUG c.e.j.m.BookRequestMapper.findById - <==      Total: 1
+17:48:27.494 [main] DEBUG c.e.j.m.B.findByBookRequestId - ==>  Preparing: SELECT * FROM book_request_items WHERE book_request_id = ?
+17:48:27.495 [main] DEBUG c.e.j.m.B.findByBookRequestId - ==> Parameters: 9(Long)
+17:48:27.495 [main] DEBUG c.e.j.m.B.findByBookRequestId - <==      Total: 1
+17:48:27.495 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==>  Preparing: INSERT INTO procurement_items (book_request_item_id, status) VALUES (?, ?)
+17:48:27.495 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==> Parameters: 11(Long), PENDING(String)
+17:48:27.495 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - <==    Updates: 1
+17:48:27.496 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.496 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 2(Long), 2026-09-14 17:48:27.4922923(Timestamp), CREATE(String), PROCUREMENT_ITEM(String), 5(Long), [B@43d9f1a2(byte[])
+17:48:27.496 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:48:27.496 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.496 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 2(Long), 2026-09-14 17:48:27.4922923(Timestamp), APPROVE(String), BOOK_REQUEST(String), 9(Long), [B@23f86d8a(byte[])
+17:48:27.497 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:48:27.497 [main] INFO  c.e.j.service.BookRequestServiceImpl - 申請已核准：requestId=9, approverId=2
+17:48:27.497 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:48:27.497 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), PENDING(String), 2026-09-14 17:48:27.4972933(Timestamp), a5dd9e2e-b912-4022-b7e0-5878e2f54fa4(String)
+17:48:27.498 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
+17:48:27.498 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.498 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 10(Long), Overpriced Book(String), null, null, null, 99999(BigDecimal)
+17:48:27.498 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
+17:48:27.498 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.499 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 1(Long), 2026-09-14 17:48:27.4972933(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 10(Long), [B@71e4b308(byte[])
+17:48:27.499 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:48:27.500 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=10, requesterId=1, 書籍數=1
+17:48:27.501 [main] DEBUG c.e.j.m.BookRequestMapper.reject - ==>  Preparing: UPDATE book_requests SET status = 'REJECTED', approver_id = ?, approved_at = ? WHERE id = ? AND status = 'PENDING' AND requester_id != ?
+17:48:27.501 [main] DEBUG c.e.j.m.BookRequestMapper.reject - ==> Parameters: 2(Long), 2026-09-14 17:48:27.5012922(Timestamp), 10(Long), 2(Long)
+17:48:27.501 [main] DEBUG c.e.j.m.BookRequestMapper.reject - <==    Updates: 1
+17:48:27.501 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==>  Preparing: SELECT * FROM book_requests WHERE id = ?
+17:48:27.502 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==> Parameters: 10(Long)
+17:48:27.503 [main] DEBUG c.e.j.m.BookRequestMapper.findById - <==      Total: 1
+17:48:27.504 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.504 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 2(Long), 2026-09-14 17:48:27.5012922(Timestamp), REJECT(String), BOOK_REQUEST(String), 10(Long), [B@4cc36c19(byte[])
+17:48:27.505 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:48:27.505 [main] INFO  c.e.j.service.BookRequestServiceImpl - 申請已拒絕：requestId=10, approverId=2
+17:48:27.505 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:48:27.505 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), PENDING(String), 2026-09-14 17:48:27.5056175(Timestamp), 5728145e-c412-47df-aca5-36b961451efa(String)
+17:48:27.506 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
+17:48:27.506 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.506 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 11(Long), Duplicate Request Example(String), null, null, null, null
+17:48:27.506 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
+17:48:27.507 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.507 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 1(Long), 2026-09-14 17:48:27.5056175(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 11(Long), [B@4af45442(byte[])
+17:48:27.508 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:48:27.508 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=11, requesterId=1, 書籍數=1
+17:48:27.509 [main] DEBUG c.e.j.m.BookRequestMapper.reject - ==>  Preparing: UPDATE book_requests SET status = 'REJECTED', approver_id = ?, approved_at = ? WHERE id = ? AND status = 'PENDING' AND requester_id != ?
+17:48:27.509 [main] DEBUG c.e.j.m.BookRequestMapper.reject - ==> Parameters: 2(Long), 2026-09-14 17:48:27.5096055(Timestamp), 11(Long), 2(Long)
+17:48:27.510 [main] DEBUG c.e.j.m.BookRequestMapper.reject - <==    Updates: 1
+17:48:27.510 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==>  Preparing: SELECT * FROM book_requests WHERE id = ?
+17:48:27.510 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==> Parameters: 11(Long)
+17:48:27.510 [main] DEBUG c.e.j.m.BookRequestMapper.findById - <==      Total: 1
+17:48:27.510 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.511 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 2(Long), 2026-09-14 17:48:27.5096055(Timestamp), REJECT(String), BOOK_REQUEST(String), 11(Long), [B@30ca0779(byte[])
+17:48:27.511 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:48:27.511 [main] INFO  c.e.j.service.BookRequestServiceImpl - 申請已拒絕：requestId=11, approverId=2
+17:48:27.512 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:48:27.512 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), PENDING(String), 2026-09-14 17:48:27.512606(Timestamp), 9c6b4275-77ff-47b8-8368-285a496d5372(String)
+17:48:27.512 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
+17:48:27.512 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.512 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 12(Long), Out of Scope Book(String), null, null, null, null
+17:48:27.512 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
+17:48:27.513 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.513 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 1(Long), 2026-09-14 17:48:27.512606(Timestamp), SUBMIT(String), BOOK_REQUEST(String), 12(Long), [B@2bc426f0(byte[])
+17:48:27.513 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:48:27.513 [main] INFO  c.e.j.service.BookRequestServiceImpl - 送出申請：requestId=12, requesterId=1, 書籍數=1
+17:48:27.513 [main] DEBUG c.e.j.m.BookRequestMapper.reject - ==>  Preparing: UPDATE book_requests SET status = 'REJECTED', approver_id = ?, approved_at = ? WHERE id = ? AND status = 'PENDING' AND requester_id != ?
+17:48:27.514 [main] DEBUG c.e.j.m.BookRequestMapper.reject - ==> Parameters: 2(Long), 2026-09-14 17:48:27.5136187(Timestamp), 12(Long), 2(Long)
+17:48:27.514 [main] DEBUG c.e.j.m.BookRequestMapper.reject - <==    Updates: 1
+17:48:27.514 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==>  Preparing: SELECT * FROM book_requests WHERE id = ?
+17:48:27.514 [main] DEBUG c.e.j.m.BookRequestMapper.findById - ==> Parameters: 12(Long)
+17:48:27.515 [main] DEBUG c.e.j.m.BookRequestMapper.findById - <==      Total: 1
+17:48:27.515 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==>  Preparing: INSERT INTO audit_logs (user_id, audited_at, action, entity_type, entity_id, detail) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.515 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - ==> Parameters: 2(Long), 2026-09-14 17:48:27.5136187(Timestamp), REJECT(String), BOOK_REQUEST(String), 12(Long), [B@4b74b35(byte[])
+17:48:27.515 [main] DEBUG c.e.j.mapper.AuditLogMapper.insert - <==    Updates: 1
+17:48:27.515 [main] INFO  c.e.j.service.BookRequestServiceImpl - 申請已拒絕：requestId=12, approverId=2
+17:48:27.516 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:48:27.516 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), APPROVED(String), 2026-09-14 17:48:27.5156173(Timestamp), 0092dd20-548a-4501-b57c-aaab27cc41fb(String)
+17:48:27.516 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
+17:48:27.517 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.517 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 13(Long), [測試用] 已核准但缺採購項目(String), null, null, null, null
+17:48:27.517 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
+17:48:27.517 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==>  Preparing: INSERT INTO book_requests (requester_id, status, requested_at, idempotency_key) VALUES (?, ?, ?, ?)
+17:48:27.518 [main] DEBUG c.e.j.m.BookRequestMapper.insert - ==> Parameters: 1(Long), APPROVED(String), 2026-09-14 17:48:27.5176263(Timestamp), 098ede1b-601f-42a3-8c70-dc0190b81b2a(String)
+17:48:27.518 [main] DEBUG c.e.j.m.BookRequestMapper.insert - <==    Updates: 1
+17:48:27.518 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==>  Preparing: INSERT INTO book_request_items (book_request_id, title, isbn, author_id, published_year, estimated_price) VALUES (?, ?, ?, ?, ?, ?)
+17:48:27.518 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - ==> Parameters: 14(Long), [測試用] 已完成採購但缺書籍紀錄(String), null, null, null, null
+17:48:27.518 [main] DEBUG c.e.j.m.BookRequestItemMapper.insert - <==    Updates: 1
+17:48:27.519 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==>  Preparing: INSERT INTO procurement_items (book_request_item_id, status) VALUES (?, ?)
+17:48:27.519 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - ==> Parameters: 16(Long), COMPLETED(String)
+17:48:27.519 [main] DEBUG c.e.j.m.ProcurementItemMapper.insert - <==    Updates: 1
+17:48:27.520 [main] DEBUG c.e.j.m.B.findByStatus - ==>  Preparing: SELECT * FROM book_requests WHERE status = ? ORDER BY requested_at
+17:48:27.520 [main] DEBUG c.e.j.m.B.findByStatus - ==> Parameters: PENDING(String)
+17:48:27.521 [main] DEBUG c.e.j.m.B.findByStatus - <==      Total: 5
+17:48:27.522 [main] DEBUG c.e.j.m.B.findByStatus - ==>  Preparing: SELECT * FROM book_requests WHERE status = ? ORDER BY requested_at
+17:48:27.523 [main] DEBUG c.e.j.m.B.findByStatus - ==> Parameters: APPROVED(String)
+17:48:27.524 [main] DEBUG c.e.j.m.B.findByStatus - <==      Total: 6
+17:48:27.525 [main] DEBUG c.e.j.m.B.findByStatus - ==>  Preparing: SELECT * FROM book_requests WHERE status = ? ORDER BY requested_at
+17:48:27.525 [main] DEBUG c.e.j.m.B.findByStatus - ==> Parameters: REJECTED(String)
+17:48:27.526 [main] DEBUG c.e.j.m.B.findByStatus - <==      Total: 3
+17:48:27.527 [main] DEBUG c.e.j.m.BookRequestMapper.findAll - ==>  Preparing: SELECT * FROM book_requests
+17:48:27.527 [main] DEBUG c.e.j.m.BookRequestMapper.findAll - ==> Parameters: 
+17:48:27.528 [main] DEBUG c.e.j.m.BookRequestMapper.findAll - <==      Total: 14
+17:48:27.529 [main] DEBUG c.e.j.m.B.findApprovedWithoutProcurementItem - ==>  Preparing: SELECT bri.* FROM book_request_items bri JOIN book_requests br ON br.id = bri.book_request_id LEFT JOIN procurement_items pi ON bri.id = pi.book_request_item_id WHERE br.status = 'APPROVED' AND pi.id IS NULL AND NOT EXISTS ( SELECT 1 FROM reconciliation_items ri WHERE ri.entity_type = 'BOOK_REQUEST_ITEM' AND ri.entity_id = bri.id AND ri.status = 'WRITTEN_OFF' )
+17:48:27.531 [main] DEBUG c.e.j.m.B.findApprovedWithoutProcurementItem - ==> Parameters: 
+17:48:27.532 [main] DEBUG c.e.j.m.B.findApprovedWithoutProcurementItem - <==      Total: 1
+17:48:27.533 [main] DEBUG c.e.j.m.P.findCompletedWithoutBook - ==>  Preparing: SELECT pi.* FROM procurement_items pi LEFT JOIN books b ON pi.book_id = b.id WHERE pi.status = 'COMPLETED' AND b.id IS NULL AND NOT EXISTS ( SELECT 1 FROM reconciliation_items ri WHERE ri.entity_type = 'PROCUREMENT_ITEM' AND ri.entity_id = pi.id AND ri.status = 'WRITTEN_OFF' )
+17:48:27.534 [main] DEBUG c.e.j.m.P.findCompletedWithoutBook - ==> Parameters: 
+17:48:27.534 [main] DEBUG c.e.j.m.P.findCompletedWithoutBook - <==      Total: 1
 ]]></system-out>
     <system-err><![CDATA[ERROR StatusLogger Log4j2 could not find a logging implementation. Please add log4j-core to the classpath. Using SimpleLogger to log to the console...
 ]]></system-err>

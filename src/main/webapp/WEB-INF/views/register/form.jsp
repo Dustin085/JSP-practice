@@ -9,6 +9,7 @@
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	<h1>註冊</h1>
 	<form action="${pageContext.request.contextPath}/register" method="post">
+		<%@ include file="/WEB-INF/views/common/csrfTokenInput.jsp" %>
         <label for="email">Email：</label>
         <input type="email" id="email" name="email" required><br><br>
 
