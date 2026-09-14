@@ -27,7 +27,9 @@ public class WebConfig implements WebMvcConfigurer {
 				"/categories/**", "/requests/**", "/procurement/**", "/audit-logs/**", "/reconciliations/**");
 		registry.addInterceptor(new CsrfInterceptor()).addPathPatterns("/books/**", "/authors/**", "/categories/**",
 				"/requests/**", "/procurement/**", "/audit-logs/**", "/reconciliations/**");
-		registry.addInterceptor(new RoleAccessInterceptor()).addPathPatterns("/books/**", "/authors/**",
-				"/categories/**", "/requests/**", "/procurement/**", "/audit-logs/**", "/reconciliations/**");
+		// Day 2：暫時關掉，改用 SecurityConfig 的 authorizeRequests() 規則做角色檢查，
+		// 驗證通過、規則對得上之後，Day 4 收尾時把這行跟整個 RoleAccessInterceptor/RoleAccessRule 一起刪掉
+		// registry.addInterceptor(new RoleAccessInterceptor()).addPathPatterns("/books/**", "/authors/**",
+		// 		"/categories/**", "/requests/**", "/procurement/**", "/audit-logs/**", "/reconciliations/**");
 	}
 }

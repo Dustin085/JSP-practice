@@ -1,5 +1,7 @@
 C:\Users\dusti\eclipse-workspace\JSP-practice\src\main\java\com\example\jsppractice\config\DataSeeder.java
 C:\Users\dusti\eclipse-workspace\JSP-practice\src\main\java\com\example\jsppractice\config\RootConfig.java
+C:\Users\dusti\eclipse-workspace\JSP-practice\src\main\java\com\example\jsppractice\config\SecurityConfig.java
+C:\Users\dusti\eclipse-workspace\JSP-practice\src\main\java\com\example\jsppractice\config\SecurityWebApplicationInitializer.java
 C:\Users\dusti\eclipse-workspace\JSP-practice\src\main\java\com\example\jsppractice\config\SeedDataListener.java
 C:\Users\dusti\eclipse-workspace\JSP-practice\src\main\java\com\example\jsppractice\config\WebAppInitializer.java
 C:\Users\dusti\eclipse-workspace\JSP-practice\src\main\java\com\example\jsppractice\config\WebConfig.java
@@ -64,6 +66,8 @@ C:\Users\dusti\eclipse-workspace\JSP-practice\src\main\java\com\example\jsppract
 C:\Users\dusti\eclipse-workspace\JSP-practice\src\main\java\com\example\jsppractice\model\User.java
 C:\Users\dusti\eclipse-workspace\JSP-practice\src\main\java\com\example\jsppractice\repository\AuthorRepository.java
 C:\Users\dusti\eclipse-workspace\JSP-practice\src\main\java\com\example\jsppractice\repository\JdbcAuthorRepository.java
+C:\Users\dusti\eclipse-workspace\JSP-practice\src\main\java\com\example\jsppractice\security\CustomUserDetails.java
+C:\Users\dusti\eclipse-workspace\JSP-practice\src\main\java\com\example\jsppractice\security\LegacySessionBridgeAuthenticationSuccessHandler.java
 C:\Users\dusti\eclipse-workspace\JSP-practice\src\main\java\com\example\jsppractice\service\AuditService.java
 C:\Users\dusti\eclipse-workspace\JSP-practice\src\main\java\com\example\jsppractice\service\AuditServiceImpl.java
 C:\Users\dusti\eclipse-workspace\JSP-practice\src\main\java\com\example\jsppractice\service\AuthorService.java
@@ -83,6 +87,7 @@ C:\Users\dusti\eclipse-workspace\JSP-practice\src\main\java\com\example\jsppract
 C:\Users\dusti\eclipse-workspace\JSP-practice\src\main\java\com\example\jsppractice\service\ReconciliationFailureRecorder.java
 C:\Users\dusti\eclipse-workspace\JSP-practice\src\main\java\com\example\jsppractice\service\ReconciliationService.java
 C:\Users\dusti\eclipse-workspace\JSP-practice\src\main\java\com\example\jsppractice\service\ReconciliationServiceImpl.java
+C:\Users\dusti\eclipse-workspace\JSP-practice\src\main\java\com\example\jsppractice\service\UserDetailsServiceImpl.java
 C:\Users\dusti\eclipse-workspace\JSP-practice\src\main\java\com\example\jsppractice\service\UserService.java
 C:\Users\dusti\eclipse-workspace\JSP-practice\src\main\java\com\example\jsppractice\service\UserServiceImpl.java
 C:\Users\dusti\eclipse-workspace\JSP-practice\src\main\java\com\example\jsppractice\util\DisplayTime.java

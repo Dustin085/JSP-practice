@@ -4,9 +4,15 @@ import javax.servlet.Filter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+// @Order(HIGHEST_PRECEDENCE):確保這個 initializer 比 SecurityWebApplicationInitializer 先 onStartup()，
+// 讓 CharacterEncodingFilter 比 Spring Security 的 filter 先註冊、先執行——
+// Security 的 formLogin 也會讀 request 參數（email/password），編碼設定一定要先生效。
+@Order(Ordered.HIGHEST_PRECEDENCE)
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
@@ -21,7 +27,9 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class<?>[] { RootConfig.class };
+		// SecurityConfig 一定要放 root context，不是 servlet context：
+		// DelegatingFilterProxy 預設只會去 root WebApplicationContext 找 springSecurityFilterChain 這個 bean
+		return new Class<?>[] { RootConfig.class, SecurityConfig.class };
 	}
 
 	@Override
