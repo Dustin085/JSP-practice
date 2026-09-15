@@ -38,14 +38,17 @@
 - [x] 資料遮罩：挑了 email，新增 `/users`（ADMIN 限定）使用者列表頁，`EmailMasker`（`util` package，
       跟 `DisplayTime` 同一種靜態工具類 pattern）+ `User.getMaskedEmail()`——只留本地部分第一/最後一個字，
       網域不遮。header 加了 ADMIN 才看得到的「使用者管理」連結
-- [ ] AES 加密（存放加密）：還沒做，先只做了上面的遮罩（顯示層）。討論過 email 剛好是這個系統的
-      Spring Security 登入帳號（`SecurityConfig` 的 `usernameParameter("email")`、
-      `UserMapper.findByEmail()` 的 `WHERE email = ?`、`CustomUserDetails.getUsername()`），
-      如果真的要把 `users.email` 整欄加密，AES-GCM 每次加密都用隨機 IV、同樣明文兩次加密結果不同，
-      `WHERE email = 加密後的值` 永遠查不到——會直接讓登入壞掉。要做的話要先加一個「盲索引」欄位
-      （例如 `email_lookup_hash`，用另一把跟 AES 金鑰分開的密鑰算 HMAC-SHA256，同一個 email 每次
-      雜湊結果一樣），登入查找改成查這個雜湊欄位，`email` 欄位本身才存 AES 密文，需要顯示明文時才解密。
-      金鑰要放環境變數，不能寫死在程式碼或進 git
+- [x] AES 加密（存放加密）：`users.email` 現在存的是 AES-256/GCM 密文，不是明文。
+      - `AesEncryptor`/`EmailLookupHasher`（`crypto` package）：加密跟盲索引雜湊用兩把分開來源的密鑰
+        （`AES_SECRET_KEY`/`EMAIL_HASH_KEY` 環境變數，SHA-256 雜湊成 32 bytes 當金鑰；沒設環境變數
+        時退回明確標記「僅供本機開發」的預設值，正式環境一定要蓋掉）
+      - `EncryptedStringTypeHandler`（`mybatis` package）：掛在 `UserMapper.xml` 的 `email` 欄位，
+        讓 `User`/service/controller 全程只看到明文，加解密完全在 JDBC 存取這層做掉
+      - `email_lookup_hash`（`schema.sql` 新欄位，`HMAC-SHA256(email)` 的 hex 字串）：登入查找、
+        唯一性約束都改靠它（`WHERE email = ?` 對密文沒用，`UserMapper.findByEmail` 改名
+        `findByEmailHash`），真正的 email 明文只在讀出來、要顯示/使用時才解密
+      - `AuthServiceImpl` 原本直接注入 `UserMapper` 查重複註冊，改成一律走
+        `UserService.findByEmail()`（雜湊查找邏輯只寫在 `UserServiceImpl` 一個地方）
 - OpenAPI/Swagger：目前只有 `HealthController` 回 JSON，其餘都是 JSP 伺服器端渲染，文件化的東西
   太少，等真的加一組 JSON API 才值得上
 

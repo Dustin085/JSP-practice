@@ -3,24 +3,38 @@
 <mapper namespace="com.example.jsppractice.mapper.UserMapper">
 	<!-- users 已經不存 role，這裡查回來的 User.roles 一律是空集合，跟 Book.findById 不會
 		 自動帶出 categories 是同一種做法——角色要另外呼叫 findRolesByUserId 補上 -->
-	<select id="findByEmail"
-		resultType="com.example.jsppractice.model.User">
-		SELECT *
+	<!-- email 欄位是 AES 密文，讀出來要經過 EncryptedStringTypeHandler 解密才是明文，
+		 所以這裡不能用 resultType 自動映射（那只會照 JDBC 型別原樣塞進 String，不會解密），
+		 要用 resultMap 明確指定這個欄位走哪個 typeHandler -->
+	<resultMap id="userResultMap" type="com.example.jsppractice.model.User">
+		<id column="id" property="id" />
+		<result column="email" property="email"
+			typeHandler="com.example.jsppractice.mybatis.EncryptedStringTypeHandler" />
+		<result column="name" property="name" />
+		<result column="password_hash" property="passwordHash" />
+	</resultMap>
+
+	<select id="findByEmailHash" resultMap="userResultMap">
+		SELECT id, email, name, password_hash
 		FROM users u
-		WHERE u.email = #{email}
+		WHERE u.email_lookup_hash = #{emailHash}
 	</select>
 
-	<select id="findAll" resultType="com.example.jsppractice.model.User">
-		SELECT *
+	<select id="findAll" resultMap="userResultMap">
+		SELECT id, email, name, password_hash
 		FROM users u
 		ORDER BY u.id
 	</select>
 
-	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+	<!-- INSERT 的參數不用靠 resultMap，直接在 #{...} 後面指定 typeHandler 就會在送進
+		 PreparedStatement 之前加密；email_lookup_hash 是呼叫端（UserServiceImpl）另外
+		 算好傳進來的，這裡不重算——同一把雜湊邏輯只寫在一個地方 -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="user.id">
 		INSERT
-		INTO users (email, name, password_hash)
-		VALUES (#{email},
-		#{name}, #{passwordHash})
+		INTO users (email, email_lookup_hash, name, password_hash)
+		VALUES (
+		#{user.email, typeHandler=com.example.jsppractice.mybatis.EncryptedStringTypeHandler},
+		#{emailHash}, #{user.name}, #{user.passwordHash})
 	</insert>
 
 	<update id="update">

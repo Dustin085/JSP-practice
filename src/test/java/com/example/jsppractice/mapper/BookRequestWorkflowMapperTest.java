@@ -23,6 +23,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.example.jsppractice.config.RootConfig;
+import com.example.jsppractice.crypto.AesEncryptor;
+import com.example.jsppractice.crypto.EmailLookupHasher;
 import com.example.jsppractice.dto.BookRequestSummary;
 import com.example.jsppractice.helper.DataBaseCleaner;
 import com.example.jsppractice.model.BookRequest;
@@ -66,7 +68,8 @@ public class BookRequestWorkflowMapperTest {
 		SimpleJdbcInsert insert = new SimpleJdbcInsert(dataSource).withTableName("users")
 				.usingGeneratedKeyColumns("id");
 		Map<String, Object> params = new HashMap<>();
-		params.put("email", email);
+		params.put("email", AesEncryptor.encrypt(email));
+		params.put("email_lookup_hash", EmailLookupHasher.hash(email));
 		params.put("password_hash", "hashed-password");
 		Long id = insert.executeAndReturnKey(params).longValue();
 		jdbcTemplate.update("INSERT INTO user_roles (user_id, role) VALUES (?, ?)", id, "USER");

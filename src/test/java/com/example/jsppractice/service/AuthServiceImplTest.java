@@ -17,15 +17,11 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.example.jsppractice.exception.EmailAlreadyExistsException;
-import com.example.jsppractice.mapper.UserMapper;
 import com.example.jsppractice.model.RoleType;
 import com.example.jsppractice.model.User;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AuthServiceImplTest {
-
-	@Mock
-	private UserMapper userMapper;
 
 	@Mock
 	private PasswordEncoder passwordEncoder;
@@ -38,7 +34,7 @@ public class AuthServiceImplTest {
 
 	@Test
 	public void registerSavesNewUserWithHashedPasswordAndUserRole() {
-		when(userMapper.findByEmail("new@example.com")).thenReturn(Optional.empty());
+		when(userService.findByEmail("new@example.com")).thenReturn(Optional.empty());
 		when(passwordEncoder.encode("raw-password")).thenReturn("hashed-password");
 		when(userService.save(any())).thenAnswer(invocation -> invocation.getArgument(0));
 
@@ -51,7 +47,7 @@ public class AuthServiceImplTest {
 	@Test(expected = EmailAlreadyExistsException.class)
 	public void registerThrowsWhenEmailAlreadyExists() {
 		User existing = User.builder().id(1L).email("taken@example.com").roles(Set.of(RoleType.USER)).build();
-		when(userMapper.findByEmail("taken@example.com")).thenReturn(Optional.of(existing));
+		when(userService.findByEmail("taken@example.com")).thenReturn(Optional.of(existing));
 
 		authService.register("taken@example.com", "Someone", "raw-password");
 

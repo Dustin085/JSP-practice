@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.jsppractice.crypto.EmailLookupHasher;
 import com.example.jsppractice.mapper.UserMapper;
 import com.example.jsppractice.model.User;
 
@@ -21,8 +22,9 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public User save(User user) {
 		if (user.getId() == null) {
-			userMapper.insert(user);
+			userMapper.insert(user, EmailLookupHasher.hash(user.getEmail()));
 		} else {
+			// email 目前沒有編輯功能，update() 也不會動 email 欄位，不需要重算/更新 email_lookup_hash
 			userMapper.update(user);
 			userMapper.deleteRolesByUserId(user.getId());
 		}
@@ -35,7 +37,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional(readOnly = true)
 	public Optional<User> findByEmail(String email) {
-		return userMapper.findByEmail(email).map(user -> {
+		return userMapper.findByEmailHash(EmailLookupHasher.hash(email)).map(user -> {
 			user.setRoles(userMapper.findRolesByUserId(user.getId()));
 			return user;
 		});

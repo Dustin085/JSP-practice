@@ -8,6 +8,9 @@
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	<h1>使用者列表</h1>
+	<p>
+		<a href="${pageContext.request.contextPath}/">首頁</a>
+	</p>
 	<table border="1">
 		<tr>
 			<th>ID</th>

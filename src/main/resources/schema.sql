@@ -1,9 +1,13 @@
 CREATE TABLE IF NOT EXISTS users (
 	id BIGINT AUTO_INCREMENT PRIMARY KEY,
-	email VARCHAR(100) NOT NULL,
+	-- AES-256/GCM 密文（含隨機 IV），不是明文，長度會比原本的 email 長不少（Base64 編碼 IV+密文+認證標籤）
+	email VARCHAR(255) NOT NULL,
+	-- 盲索引：HMAC-SHA256(email) 的 hex 字串，固定 64 字元。email 加密後不能再拿來查找
+	-- （同一個 email 每次加密結果都不一樣），登入改成查這個確定性雜湊欄位，唯一性也改靠它保證
+	email_lookup_hash VARCHAR(64) NOT NULL,
 	name VARCHAR(200),
 	password_hash VARCHAR(200) NOT NULL,
-	CONSTRAINT uk_user_email UNIQUE (email)
+	CONSTRAINT uk_user_email_lookup_hash UNIQUE (email_lookup_hash)
 );
 
 -- 一人多角色：USER 是每個帳號都會有的 baseline，ADMIN/PROCUREMENT 是額外加掛的角色。

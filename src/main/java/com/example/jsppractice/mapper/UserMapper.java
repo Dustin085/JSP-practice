@@ -11,11 +11,12 @@ import com.example.jsppractice.model.RoleType;
 import com.example.jsppractice.model.User;
 
 public interface UserMapper {
-	Optional<User> findByEmail(String email);
+	// 拿盲索引（HMAC-SHA256(email)）查，不是明文 email——email 欄位本身是密文，沒辦法用等於比對。
+	Optional<User> findByEmailHash(String emailHash);
 
 	List<User> findAll();
 
-	void insert(User user);
+	void insert(@Param("user") User user, @Param("emailHash") String emailHash);
 
 	void update(User user);
 
