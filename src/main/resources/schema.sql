@@ -3,8 +3,17 @@ CREATE TABLE IF NOT EXISTS users (
 	email VARCHAR(100) NOT NULL,
 	name VARCHAR(200),
 	password_hash VARCHAR(200) NOT NULL,
-	role VARCHAR(20) NOT NULL CONSTRAINT chk_user_role CHECK (role IN ('ADMIN', 'USER', 'PROCUREMENT')),
 	CONSTRAINT uk_user_email UNIQUE (email)
+);
+
+-- 一人多角色：USER 是每個帳號都會有的 baseline，ADMIN/PROCUREMENT 是額外加掛的角色。
+-- role 還是沿用 RoleType enum 的字串值（跟舊的 users.role 一樣用 CHECK 限制），不是另外拆一張
+-- roles 表——角色本身可不可以動態新增是「RBAC 資料庫化」那個更大的題目，這裡不處理。
+CREATE TABLE IF NOT EXISTS user_roles (
+	user_id BIGINT NOT NULL,
+	role VARCHAR(20) NOT NULL CONSTRAINT chk_user_roles_role CHECK (role IN ('ADMIN', 'USER', 'PROCUREMENT')),
+	PRIMARY KEY (user_id, role),
+	FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS audit_logs (

@@ -3,6 +3,7 @@ package com.example.jsppractice.config;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -88,11 +89,13 @@ public class DataSeeder {
 		User requester = authService.register("user@example.com", "測試使用者", "password123");
 
 		User admin = User.builder().email("admin@example.com").name("管理員")
-				.passwordHash(passwordEncoder.encode("password123")).role(RoleType.ADMIN).build();
+				.passwordHash(passwordEncoder.encode("password123")).roles(Set.of(RoleType.ADMIN, RoleType.USER))
+				.build();
 		userService.save(admin);
 
 		User procurementStaff = User.builder().email("procurement@example.com").name("採購人員")
-				.passwordHash(passwordEncoder.encode("password123")).role(RoleType.PROCUREMENT).build();
+				.passwordHash(passwordEncoder.encode("password123"))
+				.roles(Set.of(RoleType.PROCUREMENT, RoleType.USER)).build();
 		userService.save(procurementStaff);
 
 		seedBookRequests(requester, admin);

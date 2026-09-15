@@ -60,8 +60,9 @@ public class AuditLogMapperTest {
 		Map<String, Object> params = new HashMap<>();
 		params.put("email", email);
 		params.put("password_hash", "hash");
-		params.put("role", "ADMIN");
-		return insert.executeAndReturnKey(params).longValue();
+		Long id = insert.executeAndReturnKey(params).longValue();
+		jdbcTemplate.update("INSERT INTO user_roles (user_id, role) VALUES (?, ?)", id, "ADMIN");
+		return id;
 	}
 
 	@Test

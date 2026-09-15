@@ -22,15 +22,19 @@
 JSP 的 `currentUser` 也已經改成從 `Authentication`（透過 `CurrentUserModelAdvice`）取得，不再靠 session
 手動橋接。Remember-me 是唯一還沒做的內建機制，之後想練習的話可以加。
 
-## 一人多角色（user_roles 多對多）
+## 給其他人角色的功能（角色指派畫面）
 
-簽核流程討論時發現：如果同一人需要同時具備審核（ADMIN）跟採購（PROCUREMENT）身分，現在 `users.role`
-單一欄位存不下。目前先採用「審核人跟採購人不能是同一人」當成職務分離（segregation of duties）原則，
-不用真的改資料庫。
+一人多角色（`user_roles` 多對多）已經做完：`users.role` 單一欄位換成 `user_roles` 表，
+每個帳號一定有 `USER` 這個 baseline 角色，`ADMIN`/`PROCUREMENT` 是額外加掛的角色，
+`CustomUserDetails.getAuthorities()`/JSP 的 `currentUser.hasRole(...)` 都已經看的是角色集合。
+`role` 仍然是寫死的 `RoleType` enum，不是資料庫可以動態新增的東西（那是更大的「RBAC 資料庫化」題目）。
 
-之後如果想練習，可以拆成 `users`、`roles`、`user_roles` 三張表（跟 `books_categories` 同一種多對多
-pattern），一個使用者能同時掛多個角色，權限判斷從「role 是不是等於 X」改成「角色清單裡有沒有 X」。
-這個改動比「RBAC 資料庫化」小，只解決「一人多角色」，不解決「角色/權限可以動態設定」。
+目前 `user_roles` 只能靠 `DataSeeder`/直接改資料庫調整，還沒有「管理員在畫面上把某個角色加/移除到
+某個使用者身上」的功能。之後要做的話：
+- 找一支路徑，例如 `POST /users/{id}/roles`、`DELETE /users/{id}/roles/{role}`，限 `hasRole("ADMIN")`
+- 異動要記進 `audit_logs`（`AuditActionType` 加 `GRANT_ROLE`/`REVOKE_ROLE`，`AuditEntityType` 加 `USER`），
+  不要在 `user_roles` 本身加 `granted_by`/`granted_at` 欄位——跟其他異動一樣統一走 audit_log 機制
+- 要決定：可不可以拿掉自己身上最後一個角色、可不可以拿掉自己的 ADMIN（防呆，不然可能把自己鎖在外面）
 
 ## Book 加上館藏數量（庫存管理）
 

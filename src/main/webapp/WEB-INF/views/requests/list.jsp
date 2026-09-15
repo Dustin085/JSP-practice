@@ -46,7 +46,7 @@
 				<td>${request.requestedAtDisplay}</td>
 				<td>${request.approvedAtDisplay}</td>
 				<td>
-					<c:if test="${currentUser.role == 'ADMIN' && request.status == 'PENDING'}">
+					<c:if test="${currentUser.hasRole('ADMIN') && request.status == 'PENDING'}">
 						<form
 							action="${pageContext.request.contextPath}/requests/${request.id}/approve"
 							method="post" style="display: inline">

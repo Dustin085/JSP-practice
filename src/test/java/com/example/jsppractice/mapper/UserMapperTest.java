@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 import javax.sql.DataSource;
 
@@ -57,8 +58,9 @@ public class UserMapperTest {
 		params.put("email", email);
 		params.put("name", name);
 		params.put("password_hash", passwordHash);
-		params.put("role", role.name());
-		return insert.executeAndReturnKey(params).longValue();
+		Long id = insert.executeAndReturnKey(params).longValue();
+		jdbcTemplate.update("INSERT INTO user_roles (user_id, role) VALUES (?, ?)", id, role.name());
+		return id;
 	}
 
 	@Test
@@ -70,7 +72,6 @@ public class UserMapperTest {
 		assertTrue(found.isPresent());
 		assertEquals("Alex", found.get().getName());
 		assertEquals("hashed-password", found.get().getPasswordHash());
-		assertEquals(RoleType.USER, found.get().getRole());
 	}
 
 	@Test
@@ -83,26 +84,29 @@ public class UserMapperTest {
 	@Test
 	public void insertAssignsGeneratedId() {
 		User user = User.builder().email("new@example.com").name("New User").passwordHash("hashed-password")
-				.role(RoleType.ADMIN).build();
+				.roles(Set.of(RoleType.ADMIN)).build();
 
 		userMapper.insert(user);
+		userMapper.insertUserRoles(user.getId(), user.getRoles());
 
 		User found = userMapper.findByEmail("new@example.com").get();
 		assertEquals(user.getId(), found.getId());
-		assertEquals(RoleType.ADMIN, found.getRole());
+		assertEquals(Set.of(RoleType.ADMIN), userMapper.findRolesByUserId(found.getId()));
 	}
 
 	@Test
 	public void updateChangesExistingRow() {
 		Long id = insertUser("update@example.com", "Old Name", "old-hash", RoleType.USER);
 		User user = User.builder().id(id).email("update@example.com").name("New Name").passwordHash("new-hash")
-				.role(RoleType.ADMIN).build();
+				.roles(Set.of(RoleType.ADMIN)).build();
 
 		userMapper.update(user);
+		userMapper.deleteRolesByUserId(id);
+		userMapper.insertUserRoles(id, user.getRoles());
 
 		User found = userMapper.findByEmail("update@example.com").get();
 		assertEquals("New Name", found.getName());
 		assertEquals("new-hash", found.getPasswordHash());
-		assertEquals(RoleType.ADMIN, found.getRole());
+		assertEquals(Set.of(RoleType.ADMIN), userMapper.findRolesByUserId(id));
 	}
 }

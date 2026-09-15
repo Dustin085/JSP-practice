@@ -9,7 +9,7 @@
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	<h1>Book 列表</h1>
 	<p>
-		<c:if test="${currentUser.role == 'ADMIN'}">
+		<c:if test="${currentUser.hasRole('ADMIN')}">
 			<a href="${pageContext.request.contextPath}/books/new">新增書籍</a> |
 		</c:if>
 		<a href="${pageContext.request.contextPath}/authors">管理作者</a> | <a
@@ -17,10 +17,10 @@
 			href="${pageContext.request.contextPath}/books/export?keyword=${keyword}">匯出 Excel</a> | 
 			<a href="${pageContext.request.contextPath}/requests">新書申請</a> | 
 			<a href="${pageContext.request.contextPath}/procurement">採購清單</a>
-		<c:if test="${currentUser.role == 'ADMIN'}">
+		<c:if test="${currentUser.hasRole('ADMIN')}">
 			| <a href="${pageContext.request.contextPath}/audit-logs">稽核紀錄</a>
 		</c:if>
-		<c:if test="${currentUser.role == 'ADMIN'}">
+		<c:if test="${currentUser.hasRole('ADMIN')}">
 			| <a href="${pageContext.request.contextPath}/reconciliations">資料對帳</a>
 		</c:if>
 	</p>
@@ -51,7 +51,7 @@
 						varStatus="status">
 					${category.name}<c:if test="${!status.last}">, </c:if>
 					</c:forEach></td>
-				<td><c:if test="${currentUser.role == 'ADMIN'}">
+				<td><c:if test="${currentUser.hasRole('ADMIN')}">
 					<a
 						href="${pageContext.request.contextPath}/books/${book.id}/edit">編輯</a>
 					<form

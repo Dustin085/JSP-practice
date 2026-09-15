@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
@@ -66,14 +67,15 @@ public class BookRequestIdempotencyTest {
 		Map<String, Object> params = new HashMap<>();
 		params.put("email", email);
 		params.put("password_hash", "hashed-password");
-		params.put("role", "USER");
-		return insert.executeAndReturnKey(params).longValue();
+		Long id = insert.executeAndReturnKey(params).longValue();
+		jdbcTemplate.update("INSERT INTO user_roles (user_id, role) VALUES (?, ?)", id, "USER");
+		return id;
 	}
 
 	@Test
 	public void sameKeySubmittedTwiceSequentiallyOnlyCreatesOneBookRequest() {
 		Long requesterId = insertUser("requester@example.com");
-		User requester = User.builder().id(requesterId).role(RoleType.USER).build();
+		User requester = User.builder().id(requesterId).roles(Set.of(RoleType.USER)).build();
 		String idempotencyKey = UUID.randomUUID().toString();
 		List<BookRequestBookInfo> bookInfos = List
 				.of(new BookRequestBookInfo("Effective Java", null, null, null, null));
@@ -88,7 +90,7 @@ public class BookRequestIdempotencyTest {
 	@Test
 	public void concurrentSubmitsWithSameIdempotencyKeyOnlyCreateOneBookRequest() throws Exception {
 		Long requesterId = insertUser("requester2@example.com");
-		User requester = User.builder().id(requesterId).role(RoleType.USER).build();
+		User requester = User.builder().id(requesterId).roles(Set.of(RoleType.USER)).build();
 		String idempotencyKey = UUID.randomUUID().toString();
 		List<BookRequestBookInfo> bookInfos = List
 				.of(new BookRequestBookInfo("Effective Java", null, null, null, null));

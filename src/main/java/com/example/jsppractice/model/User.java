@@ -1,5 +1,8 @@
 package com.example.jsppractice.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,5 +21,12 @@ public class User {
 
 	private String passwordHash;
 
-	private RoleType role;
+	@Builder.Default
+	private Set<RoleType> roles = new HashSet<>();
+
+	// EL 沒辦法直接對 Set<RoleType> 做 contains('ADMIN') 型別比對（字串跟 enum 不會相等），
+	// 供 JSP 用的判斷統一走這個方法：${currentUser.hasRole('ADMIN')}
+	public boolean hasRole(String roleName) {
+		return roles.stream().anyMatch(r -> r.name().equals(roleName));
+	}
 }

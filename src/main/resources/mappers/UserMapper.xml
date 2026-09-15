@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.jsppractice.mapper.UserMapper">
+	<!-- users 已經不存 role，這裡查回來的 User.roles 一律是空集合，跟 Book.findById 不會
+		 自動帶出 categories 是同一種做法——角色要另外呼叫 findRolesByUserId 補上 -->
 	<select id="findByEmail"
 		resultType="com.example.jsppractice.model.User">
 		SELECT *
@@ -10,17 +12,35 @@
 
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
 		INSERT
-		INTO users (email, name, password_hash, role)
+		INTO users (email, name, password_hash)
 		VALUES (#{email},
-		#{name}, #{passwordHash}, #{role})
+		#{name}, #{passwordHash})
 	</insert>
 
 	<update id="update">
 		UPDATE users
 		SET name = #{name},
 		password_hash =
-		#{passwordHash}, role = #{role}
+		#{passwordHash}
 		WHERE id =
 		#{id}
 	</update>
+
+	<select id="findRolesByUserId" resultType="com.example.jsppractice.model.RoleType">
+		SELECT role
+		FROM user_roles
+		WHERE user_id = #{userId}
+	</select>
+
+	<insert id="insertUserRoles">
+		INSERT INTO user_roles (user_id, role)
+		VALUES
+		<foreach collection="roles" item="role" separator=",">
+			(#{userId}, #{role})
+		</foreach>
+	</insert>
+
+	<delete id="deleteRolesByUserId">
+		DELETE FROM user_roles WHERE user_id = #{userId}
+	</delete>
 </mapper>

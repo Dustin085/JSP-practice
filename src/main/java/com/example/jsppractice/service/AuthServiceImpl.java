@@ -1,6 +1,7 @@
 package com.example.jsppractice.service;
 
 import java.util.Optional;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,7 +34,8 @@ public class AuthServiceImpl implements AuthService {
 			throw new EmailAlreadyExistsException(email);
 		}
 		String passwordHash = passwordEncoder.encode(password);
-		User newUser = User.builder().email(email).name(name).passwordHash(passwordHash).role(RoleType.USER).build();
+		User newUser = User.builder().email(email).name(name).passwordHash(passwordHash)
+				.roles(Set.of(RoleType.USER)).build();
 		User saved = userService.save(newUser);
 		log.info("新使用者註冊：userId={}, email={}", saved.getId(), email);
 		return saved;

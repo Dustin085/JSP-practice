@@ -7,6 +7,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.Optional;
+import java.util.Set;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,12 +45,12 @@ public class AuthServiceImplTest {
 		authService.register("new@example.com", "New User", "raw-password");
 
 		verify(userService).save(argThat(u -> u.getEmail().equals("new@example.com") && u.getName().equals("New User")
-				&& u.getPasswordHash().equals("hashed-password") && u.getRole() == RoleType.USER));
+				&& u.getPasswordHash().equals("hashed-password") && u.getRoles().equals(Set.of(RoleType.USER))));
 	}
 
 	@Test(expected = EmailAlreadyExistsException.class)
 	public void registerThrowsWhenEmailAlreadyExists() {
-		User existing = User.builder().id(1L).email("taken@example.com").role(RoleType.USER).build();
+		User existing = User.builder().id(1L).email("taken@example.com").roles(Set.of(RoleType.USER)).build();
 		when(userMapper.findByEmail("taken@example.com")).thenReturn(Optional.of(existing));
 
 		authService.register("taken@example.com", "Someone", "raw-password");
