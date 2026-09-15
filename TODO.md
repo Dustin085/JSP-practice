@@ -2,6 +2,34 @@
 
 現階段刻意不做，但值得之後練習/擴充的方向。
 
+## 企業級後端技能練習（依貼合度分級）
+
+背景：為了準備台灣公部門/金融/保險的後端職缺，額外評估過 MQ/批次/鎖機制/舊系統整合/資安稽核這幾類
+常見需求，哪些適合直接做在這個書籍系統上。依「跟現有堆疊相不相容」「網域裡有沒有自然的需求」分三級：
+
+**第一級：直接做，貼合度高、不用加新基礎設施**（依序進行）
+- [x] 排程對帳：新增 `ReconciliationScheduler`（`@Scheduled(cron = "0 0 2 * * *")`，每天凌晨 2 點跑），
+      呼叫跟手動觸發（`/reconciliations/book-request-items`、`/reconciliations/procurement-items`）
+      同一套 `ReconciliationService` 方法，兩者並存不衝突；`RootConfig` 加了 `@EnableScheduling`
+- [ ] DB 鎖與隔離層級：`ProcurementServiceConcurrencyTest` 那個併發場景加碼——悲觀鎖用
+      `SELECT ... FOR UPDATE`（H2 支援）；樂觀鎖因為沒有 JPA，`@Version` 用不上，改成手刻
+      「`UPDATE ... WHERE version = ?` 判斷影響筆數」；隔離層級直接在 `@Transactional(isolation=...)` 上試
+- [ ] MDC traceId：Filter 幫每個請求塞 `traceId` 進 MDC，改 logback pattern，跟 `audit_logs`
+      是互補（誰做了什麼 vs. 一次請求的完整軌跡）的兩種追溯機制
+
+**第二級：值得做，但要先幫這個書籍系統「發明」一個合理情境，不是照搬**
+- SFTP + 固定長度電文解析：掰一個「廠商每天半夜丟一份採購到貨清單到 SFTP，排程去抓、解析、更新
+  `procurement_items`」的情境，可以跟上面的排程/批次練習串起來
+- 資料遮罩/AES 加密：現在網域沒有身分證字號/信用卡號這類敏感欄位，`password_hash` 已經是 bcrypt
+  不需要再加密，要做的話要先想清楚要加密哪個欄位，不要硬塞一個假欄位進業務流程
+- OpenAPI/Swagger：目前只有 `HealthController` 回 JSON，其餘都是 JSP 伺服器端渲染，文件化的東西
+  太少，等真的加一組 JSON API 才值得上
+
+**第三級：先不要塞進這個專案，另外開一個 repo 練**
+- RabbitMQ/Kafka、SOAP、Saga/2PC：都需要外接一整套基礎設施或協定，而且很難在書籍申請/採購這個
+  網域裡長出自然的需求，硬塞會變成「為了用技術而用技術」，違背這個專案「網域驅動、不無中生有」的
+  做法（職務分離、對帳補救都是先有真實情境才做）
+
 ## RBAC 資料庫化
 
 目前角色權限判斷是寫死在程式碼裡（`RoleType` enum + `AdminCheckInterceptor` 裡的 `if (role != ADMIN)`），
