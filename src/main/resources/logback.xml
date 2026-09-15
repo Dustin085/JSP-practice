@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
+	<!-- %X{traceId}：TraceIdFilter 每個請求塞進 MDC 的值，不是這個 key 觸發的 log（例如應用啟動時、
+		 排程背景執行緒）就會印空字串，這是正常的，MDC 本來就是跟著請求的執行緒才有值 -->
 	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
-			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} [traceId=%X{traceId}] - %msg%n</pattern>
 			<charset>UTF-8</charset>
 		</encoder>
 	</appender>
@@ -15,7 +17,7 @@
 			<maxHistory>7</maxHistory>
 		</rollingPolicy>
 		<encoder>
-			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} [traceId=%X{traceId}] - %msg%n</pattern>
 			<charset>UTF-8</charset>
 		</encoder>
 	</appender>
