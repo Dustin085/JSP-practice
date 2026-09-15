@@ -42,6 +42,9 @@ CREATE TABLE IF NOT EXISTS books (
     isbn VARCHAR(20),
     author_id BIGINT ,
     published_year INT,
+    -- 樂觀鎖：UPDATE 時一併檢查 WHERE version = 舊值、SET version = version + 1，
+    -- 兩個人同時編輯同一本書時，後 commit 的那個人會因為 version 對不上而被擋下來
+    version INT NOT NULL,
 
     CONSTRAINT fk_book_author
     FOREIGN KEY (author_id)

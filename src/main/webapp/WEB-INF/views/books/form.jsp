@@ -21,6 +21,7 @@
 
 	<form:form modelAttribute="book" action="${formAction}" method="post">
 		<%@ include file="/WEB-INF/views/common/csrfTokenInput.jsp" %>
+		<form:hidden path="version" />
 		<div>
 			<form:label path="title">書名:</form:label>
 			<form:input path="title" />

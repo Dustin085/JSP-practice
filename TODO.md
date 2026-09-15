@@ -11,9 +11,16 @@
 - [x] 排程對帳：新增 `ReconciliationScheduler`（`@Scheduled(cron = "0 0 2 * * *")`，每天凌晨 2 點跑），
       呼叫跟手動觸發（`/reconciliations/book-request-items`、`/reconciliations/procurement-items`）
       同一套 `ReconciliationService` 方法，兩者並存不衝突；`RootConfig` 加了 `@EnableScheduling`
-- [ ] DB 鎖與隔離層級：`ProcurementServiceConcurrencyTest` 那個併發場景加碼——悲觀鎖用
-      `SELECT ... FOR UPDATE`（H2 支援）；樂觀鎖因為沒有 JPA，`@Version` 用不上，改成手刻
-      「`UPDATE ... WHERE version = ?` 判斷影響筆數」；隔離層級直接在 `@Transactional(isolation=...)` 上試
+- [x] DB 鎖：悲觀鎖（`ProcurementServiceImpl.completeProcurement()` 的 `findByIdForUpdate`）、
+      `book_requests.approve()/reject()` 的 compare-and-swap 式樂觀鎖（拿 status 當版本判斷）都已經有了。
+      新增的是 `books.version`：真正的教科書式樂觀鎖，`Book.update()` 任意欄位編輯都受保護（不像
+      approve/reject 只保護狀態轉換），衝突時丟 `org.springframework.dao.OptimisticLockingFailureException`
+      （跟 JPA `@Version` 衝突丟的是同一個 Spring 例外）
+- [ ] 隔離層級：還沒做。跟報表/JOIN 無關（單一 SELECT 在任何隔離層級下都是同一時間點快照），真正有感覺
+      的情境是「同一個交易內分兩次讀同一列，中間夾了另一個交易的異動」——這個專案目前沒有天然的業務
+      流程長這樣，打算寫一個跟 `ProcurementServiceConcurrencyTest` 同一種風格的專門測試，用
+      `CountDownLatch` 控制兩個交易的時序，直接斷言 `READ_COMMITTED`/`REPEATABLE_READ` 下讀到的值
+      有沒有不同，而不是把情境硬塞進某個 controller
 - [ ] MDC traceId：Filter 幫每個請求塞 `traceId` 進 MDC，改 logback pattern，跟 `audit_logs`
       是互補（誰做了什麼 vs. 一次請求的完整軌跡）的兩種追溯機制
 

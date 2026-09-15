@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.apache.poi.ss.usermodel.Workbook;
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -108,9 +109,13 @@ public class BookController {
 			model.addAttribute("selectedCategoryIds", categoryIds == null ? Collections.emptyList() : categoryIds);
 			return "books/form";
 		}
-		bookService.save(book);
-		bookService.saveCategories(id, categoryIds);
-		redirectAttributes.addFlashAttribute("flashMessage", "書籍更新成功");
+		try {
+			bookService.save(book);
+			bookService.saveCategories(id, categoryIds);
+			redirectAttributes.addFlashAttribute("flashMessage", "書籍更新成功");
+		} catch (OptimisticLockingFailureException e) {
+			redirectAttributes.addFlashAttribute("flashMessage", e.getMessage());
+		}
 		return "redirect:/books";
 	}
 

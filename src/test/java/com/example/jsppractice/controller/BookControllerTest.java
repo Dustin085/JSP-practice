@@ -22,6 +22,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -80,7 +81,7 @@ public class BookControllerTest {
 
 	@Test
 	public void createWithValidDataRedirectsToList() throws Exception {
-		Book saved = new Book(1L, "Effective Java", "9780134685991", 2L, 2018);
+		Book saved = new Book(1L, "Effective Java", "9780134685991", 2L, 2018, 0);
 		when(bookService.save(any(Book.class))).thenReturn(saved);
 
 		mockMvc.perform(post("/books")
@@ -93,6 +94,24 @@ public class BookControllerTest {
 				.andExpect(flash().attribute("flashMessage", "書籍新增成功"));
 
 		verify(bookService).saveCategories(eq(1L), any());
+	}
+
+	@Test
+	public void updateWithStaleVersionShowsConflictMessageWithoutSavingCategories() throws Exception {
+		when(bookService.save(any(Book.class)))
+				.thenThrow(new OptimisticLockingFailureException("這本書已經被其他人修改過，請重新整理再試一次：id=1"));
+
+		mockMvc.perform(post("/books/1")
+						.param("title", "Effective Java")
+						.param("isbn", "9780134685991")
+						.param("authorId", "2")
+						.param("publishedYear", "2018")
+						.param("version", "0"))
+				.andExpect(status().is3xxRedirection())
+				.andExpect(redirectedUrl("/books"))
+				.andExpect(flash().attribute("flashMessage", "這本書已經被其他人修改過，請重新整理再試一次：id=1"));
+
+		verify(bookService, never()).saveCategories(any(), any());
 	}
 
 	@Test
