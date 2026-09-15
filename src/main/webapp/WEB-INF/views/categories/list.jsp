@@ -8,7 +8,7 @@
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	<h1>Category 列表</h1>
-	<p><c:if test="${sessionScope.currentUser.role == 'ADMIN'}">
+	<p><c:if test="${currentUser.role == 'ADMIN'}">
 		<a href="${pageContext.request.contextPath}/categories/new">新增分類</a>
 	</c:if></p>
 	<table border="1">
@@ -21,7 +21,7 @@
 			<tr>
 				<td>${category.id}</td>
 				<td>${category.name}</td>
-				<td><c:if test="${sessionScope.currentUser.role == 'ADMIN'}">
+				<td><c:if test="${currentUser.role == 'ADMIN'}">
 					<a href="${pageContext.request.contextPath}/categories/${category.id}/edit">編輯</a>
 					<form action="${pageContext.request.contextPath}/categories/${category.id}/delete" method="post" style="display:inline">
 						<%@ include file="/WEB-INF/views/common/csrfTokenInput.jsp" %>

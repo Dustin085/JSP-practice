@@ -48,7 +48,7 @@
 				<td>${item.bookRequestItem.estimatedPrice}</td>
 				<td>${item.procuredAtDisplay}</td>
 				<td>
-					<c:if test="${sessionScope.currentUser.role == 'PROCUREMENT' && item.status == 'PENDING'}">
+					<c:if test="${currentUser.role == 'PROCUREMENT' && item.status == 'PENDING'}">
 						<form action="${pageContext.request.contextPath}/procurement/${item.id}/complete"
 							method="post" style="display: inline">
 							<%@ include file="/WEB-INF/views/common/csrfTokenInput.jsp" %>

@@ -2,8 +2,7 @@ package com.example.jsppractice.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +16,7 @@ import com.example.jsppractice.dto.ReconciliationSummary;
 import com.example.jsppractice.model.Book;
 import com.example.jsppractice.model.Reconciliation;
 import com.example.jsppractice.model.User;
+import com.example.jsppractice.security.CustomUserDetails;
 import com.example.jsppractice.service.ReconciliationService;
 
 @Controller
@@ -51,25 +51,27 @@ public class ReconciliationController {
 	}
 
 	@PostMapping("/items/{id}/resolve")
-	public String resolve(@PathVariable Long id, HttpSession session, RedirectAttributes redirectAttributes) {
-		User currentUser = (User) session.getAttribute("currentUser");
+	public String resolve(@PathVariable Long id, Authentication authentication,
+			RedirectAttributes redirectAttributes) {
+		User currentUser = CustomUserDetails.currentUser(authentication);
 		reconciliationService.resolve(id, currentUser);
 		redirectAttributes.addFlashAttribute("flashMessage", "已標記為已處理");
 		return "redirect:/reconciliations";
 	}
 
 	@PostMapping("/items/{id}/write-off")
-	public String writeOff(@PathVariable Long id, HttpSession session, RedirectAttributes redirectAttributes) {
-		User currentUser = (User) session.getAttribute("currentUser");
+	public String writeOff(@PathVariable Long id, Authentication authentication,
+			RedirectAttributes redirectAttributes) {
+		User currentUser = CustomUserDetails.currentUser(authentication);
 		reconciliationService.writeOff(id, currentUser);
 		redirectAttributes.addFlashAttribute("flashMessage", "已沖銷，下次對帳不會再回報這筆");
 		return "redirect:/reconciliations";
 	}
 
 	@PostMapping("/items/{id}/backfill-procurement-item")
-	public String backfillProcurementItem(@PathVariable Long id, HttpSession session,
+	public String backfillProcurementItem(@PathVariable Long id, Authentication authentication,
 			RedirectAttributes redirectAttributes) {
-		User currentUser = (User) session.getAttribute("currentUser");
+		User currentUser = CustomUserDetails.currentUser(authentication);
 		reconciliationService.backfillProcurementItem(id, currentUser);
 		redirectAttributes.addFlashAttribute("flashMessage", "已補建對應的採購項目");
 		return "redirect:/reconciliations";
@@ -84,17 +86,18 @@ public class ReconciliationController {
 	}
 
 	@PostMapping("/items/{id}/relink")
-	public String relink(@PathVariable Long id, @RequestParam Long bookId, HttpSession session,
+	public String relink(@PathVariable Long id, @RequestParam Long bookId, Authentication authentication,
 			RedirectAttributes redirectAttributes) {
-		User currentUser = (User) session.getAttribute("currentUser");
+		User currentUser = CustomUserDetails.currentUser(authentication);
 		reconciliationService.relink(id, bookId, currentUser);
 		redirectAttributes.addFlashAttribute("flashMessage", "已重新連結書籍");
 		return "redirect:/reconciliations";
 	}
 
 	@PostMapping("/items/{id}/revert-to-pending")
-	public String revertToPending(@PathVariable Long id, HttpSession session, RedirectAttributes redirectAttributes) {
-		User currentUser = (User) session.getAttribute("currentUser");
+	public String revertToPending(@PathVariable Long id, Authentication authentication,
+			RedirectAttributes redirectAttributes) {
+		User currentUser = CustomUserDetails.currentUser(authentication);
 		reconciliationService.revertToPending(id, currentUser);
 		redirectAttributes.addFlashAttribute("flashMessage", "已退回待處理，可以到採購清單重新完成採購");
 		return "redirect:/reconciliations";

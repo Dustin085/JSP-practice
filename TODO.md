@@ -15,18 +15,12 @@
 這個改動的價值在於「不改程式碼、不重新部署就能調整權限」，目前專案角色少（ADMIN/USER，之後可能加
 簽核流程的 SUPERVISOR/FINANCE）用 enum 硬判斷還夠用，先不做。
 
-## 換裝 Spring Security
+## Remember-me
 
-目前登入/權限/密碼雜湊都是手刻的（`AuthService`、`LoginCheckInterceptor`、`AdminCheckInterceptor`、
-`BCryptPasswordEncoder` 單獨引入 `spring-security-crypto`），用意是先搞懂機制原理。
-
-之後可以練習把這一整套換成正式的 Spring Security，體驗看看框架幫忙自動化了哪些事：
-- `UserDetailsService`、`SecurityFilterChain`（或 XML 版的 `<http>` 設定）
-- CSRF 防護（目前專案完全沒有，是已知缺口）
-- Remember-me、session 固定攻擊防護等內建機制
-
-跟專案一路以來「先手刻理解、再看框架自動化了什麼」的學習模式一致（JDBC → MyBatis → JPA 的練習方式
-也是同樣邏輯）。
+登入/權限/CSRF/登出已經全部換成 Spring Security（見 `SecurityConfig`），手刻的
+`LoginCheckInterceptor`/`RoleAccessInterceptor`/`CsrfInterceptor`/`LogoutController` 都已經刪除，
+JSP 的 `currentUser` 也已經改成從 `Authentication`（透過 `CurrentUserModelAdvice`）取得，不再靠 session
+手動橋接。Remember-me 是唯一還沒做的內建機制，之後想練習的話可以加。
 
 ## 一人多角色（user_roles 多對多）
 

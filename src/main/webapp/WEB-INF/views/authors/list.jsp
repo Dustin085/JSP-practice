@@ -8,7 +8,7 @@
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	<h1>Author 列表</h1>
-	<p><c:if test="${sessionScope.currentUser.role == 'ADMIN'}">
+	<p><c:if test="${currentUser.role == 'ADMIN'}">
 		<a href="${pageContext.request.contextPath}/authors/new">新增作者</a>
 	</c:if></p>
 	<table border="1">
@@ -21,7 +21,7 @@
 			<tr>
 				<td>${author.id}</td>
 				<td>${author.name}</td>
-				<td><c:if test="${sessionScope.currentUser.role == 'ADMIN'}">
+				<td><c:if test="${currentUser.role == 'ADMIN'}">
 					<a href="${pageContext.request.contextPath}/authors/${author.id}/edit">編輯</a>
 					<form action="${pageContext.request.contextPath}/authors/${author.id}/delete" method="post" style="display:inline">
 						<%@ include file="/WEB-INF/views/common/csrfTokenInput.jsp" %>

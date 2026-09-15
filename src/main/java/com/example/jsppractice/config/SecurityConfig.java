@@ -9,8 +9,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.example.jsppractice.security.LegacySessionBridgeAuthenticationSuccessHandler;
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -87,14 +85,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.loginPage("/login") // 沿用現有的 GET /login 頁面，不用 Security 內建的表單
 				.usernameParameter("email") // 表單欄位叫 email，不是預設的 username
 				.passwordParameter("password")
-				// 用這個而不是 defaultSuccessUrl：認證成功後要補上舊系統還在用的 session currentUser，見該 class 上的註解
-				.successHandler(new LegacySessionBridgeAuthenticationSuccessHandler())
+				// 不用手動橋接 session 了：currentUser 現在改由 CurrentUserModelAdvice 從
+				// Authentication 取得，不用再自己塞 session attribute，直接用預設成功導向頁即可
+				.defaultSuccessUrl("/", false)
 				.permitAll()
 				.and()
 				// Day 3：CSRF 改用 Security 自己的保護（預設 HttpSessionCsrfTokenRepository，
 				// 整個 session 共用同一個值，語意跟舊的 CsrfInterceptor 一樣），不再手動 disable
+				// Day 5：logout 也改交給 Security（原本手刻的 LogoutController 已刪除，不會再
+				// 跟這裡搶 POST /logout）——預設行為就是 invalidate session + 清空 SecurityContext，
+				// 比原本手刻版本多做了清 SecurityContext 這件事
 				.logout()
-				.disable(); // 先關掉：Security 預設 logout 也是攔 POST /logout，
-							// 會跟現有的 LogoutController 撞同一個 URL
+				.logoutUrl("/logout")
+				.logoutSuccessUrl("/login")
+				.permitAll();
 	}
 }

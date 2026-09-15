@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import javax.servlet.http.HttpSession;
-
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +19,7 @@ import com.example.jsppractice.exception.BookRequestAlreadyProcessedException;
 import com.example.jsppractice.exception.SelfReviewNotAllowedException;
 import com.example.jsppractice.model.BookRequestStatus;
 import com.example.jsppractice.model.User;
+import com.example.jsppractice.security.CustomUserDetails;
 import com.example.jsppractice.service.AuthorService;
 import com.example.jsppractice.service.BookRequestService;
 import com.example.jsppractice.service.BookRequestService.BookRequestBookInfo;
@@ -54,9 +54,9 @@ public class BookRequestController {
 	@PostMapping
 	public String submit(@RequestParam List<String> title, @RequestParam List<String> isbn,
 			@RequestParam List<String> authorId, @RequestParam List<String> publishedYear,
-			@RequestParam List<String> estimatedPrice, @RequestParam String idempotencyKey, HttpSession session,
-			RedirectAttributes redirectAttributes) {
-		User currentUser = (User) session.getAttribute("currentUser");
+			@RequestParam List<String> estimatedPrice, @RequestParam String idempotencyKey,
+			Authentication authentication, RedirectAttributes redirectAttributes) {
+		User currentUser = CustomUserDetails.currentUser(authentication);
 
 		List<BookRequestBookInfo> bookInfos = new ArrayList<>();
 		for (int i = 0; i < title.size(); i++) {
@@ -78,8 +78,9 @@ public class BookRequestController {
 	}
 
 	@PostMapping("/{id}/approve")
-	public String approve(@PathVariable Long id, HttpSession session, RedirectAttributes redirectAttributes) {
-		User currentUser = (User) session.getAttribute("currentUser");
+	public String approve(@PathVariable Long id, Authentication authentication,
+			RedirectAttributes redirectAttributes) {
+		User currentUser = CustomUserDetails.currentUser(authentication);
 		try {
 			bookRequestService.approve(id, currentUser);
 			redirectAttributes.addFlashAttribute("flashMessage", "申請已核准");
@@ -90,8 +91,8 @@ public class BookRequestController {
 	}
 
 	@PostMapping("/{id}/reject")
-	public String reject(@PathVariable Long id, HttpSession session, RedirectAttributes redirectAttributes) {
-		User currentUser = (User) session.getAttribute("currentUser");
+	public String reject(@PathVariable Long id, Authentication authentication, RedirectAttributes redirectAttributes) {
+		User currentUser = CustomUserDetails.currentUser(authentication);
 		try {
 			bookRequestService.reject(id, currentUser);
 			redirectAttributes.addFlashAttribute("flashMessage", "申請已拒絕");
