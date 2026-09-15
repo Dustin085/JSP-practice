@@ -70,10 +70,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/procurement/**")
 				.authenticated()
 
-				// ── 稽核紀錄、對帳：全部限 ADMIN
+				// ── 稽核紀錄、對帳、使用者列表：全部限 ADMIN
 				.antMatchers("/audit-logs/**")
 				.hasRole("ADMIN")
 				.antMatchers("/reconciliations/**")
+				.hasRole("ADMIN")
+				.antMatchers("/users/**")
 				.hasRole("ADMIN")
 
 				// 收尾用 authenticated() 而不是 permitAll()：以後不管漏加哪條規則，

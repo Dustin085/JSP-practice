@@ -1,6 +1,7 @@
 package com.example.jsppractice.mapper;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -11,6 +12,8 @@ import com.example.jsppractice.model.User;
 
 public interface UserMapper {
 	Optional<User> findByEmail(String email);
+
+	List<User> findAll();
 
 	void insert(User user);
 

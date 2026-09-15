@@ -1,5 +1,6 @@
 package com.example.jsppractice.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -38,6 +39,12 @@ public class UserServiceImpl implements UserService {
 			user.setRoles(userMapper.findRolesByUserId(user.getId()));
 			return user;
 		});
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<User> findAll() {
+		return userMapper.findAll();
 	}
 
 }

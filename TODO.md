@@ -35,8 +35,17 @@
 **第二級：值得做，但要先幫這個書籍系統「發明」一個合理情境，不是照搬**
 - SFTP + 固定長度電文解析：掰一個「廠商每天半夜丟一份採購到貨清單到 SFTP，排程去抓、解析、更新
   `procurement_items`」的情境，可以跟上面的排程/批次練習串起來
-- 資料遮罩/AES 加密：現在網域沒有身分證字號/信用卡號這類敏感欄位，`password_hash` 已經是 bcrypt
-  不需要再加密，要做的話要先想清楚要加密哪個欄位，不要硬塞一個假欄位進業務流程
+- [x] 資料遮罩：挑了 email，新增 `/users`（ADMIN 限定）使用者列表頁，`EmailMasker`（`util` package，
+      跟 `DisplayTime` 同一種靜態工具類 pattern）+ `User.getMaskedEmail()`——只留本地部分第一/最後一個字，
+      網域不遮。header 加了 ADMIN 才看得到的「使用者管理」連結
+- [ ] AES 加密（存放加密）：還沒做，先只做了上面的遮罩（顯示層）。討論過 email 剛好是這個系統的
+      Spring Security 登入帳號（`SecurityConfig` 的 `usernameParameter("email")`、
+      `UserMapper.findByEmail()` 的 `WHERE email = ?`、`CustomUserDetails.getUsername()`），
+      如果真的要把 `users.email` 整欄加密，AES-GCM 每次加密都用隨機 IV、同樣明文兩次加密結果不同，
+      `WHERE email = 加密後的值` 永遠查不到——會直接讓登入壞掉。要做的話要先加一個「盲索引」欄位
+      （例如 `email_lookup_hash`，用另一把跟 AES 金鑰分開的密鑰算 HMAC-SHA256，同一個 email 每次
+      雜湊結果一樣），登入查找改成查這個雜湊欄位，`email` 欄位本身才存 AES 密文，需要顯示明文時才解密。
+      金鑰要放環境變數，不能寫死在程式碼或進 git
 - OpenAPI/Swagger：目前只有 `HealthController` 回 JSON，其餘都是 JSP 伺服器端渲染，文件化的東西
   太少，等真的加一組 JSON API 才值得上
 

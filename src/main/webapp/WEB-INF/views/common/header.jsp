@@ -9,6 +9,9 @@
 		</c:when>
 		<c:otherwise>
 			<p>${currentUser.name}，您好</p>
+			<c:if test="${currentUser.hasRole('ADMIN')}">
+				<p><a href="${pageContext.request.contextPath}/users">使用者管理</a></p>
+			</c:if>
 			<form action="${pageContext.request.contextPath}/logout" method="post">
 				<%@ include file="/WEB-INF/views/common/csrfTokenInput.jsp" %>
 				<button type="submit">登出</button>

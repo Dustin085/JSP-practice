@@ -5,6 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -108,5 +109,17 @@ public class UserMapperTest {
 		assertEquals("New Name", found.getName());
 		assertEquals("new-hash", found.getPasswordHash());
 		assertEquals(Set.of(RoleType.ADMIN), userMapper.findRolesByUserId(id));
+	}
+
+	@Test
+	public void findAllReturnsEveryUserOrderedById() {
+		Long firstId = insertUser("alex@example.com", "Alex", "hashed-password", RoleType.USER);
+		Long secondId = insertUser("brian@example.com", "Brian", "hashed-password", RoleType.ADMIN);
+
+		List<User> users = userMapper.findAll();
+
+		assertEquals(2, users.size());
+		assertEquals(firstId, users.get(0).getId());
+		assertEquals(secondId, users.get(1).getId());
 	}
 }

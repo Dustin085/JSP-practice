@@ -3,6 +3,8 @@ package com.example.jsppractice.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.example.jsppractice.util.EmailMasker;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,5 +30,10 @@ public class User {
 	// 供 JSP 用的判斷統一走這個方法：${currentUser.hasRole('ADMIN')}
 	public boolean hasRole(String roleName) {
 		return roles.stream().anyMatch(r -> r.name().equals(roleName));
+	}
+
+	// 使用者列表頁用：${user.maskedEmail}
+	public String getMaskedEmail() {
+		return EmailMasker.mask(email);
 	}
 }
