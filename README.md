@@ -46,4 +46,4 @@ mvn -o test
 
 ## 已知之後想做的方向
 
-見 [TODO.md](TODO.md)：RBAC 資料庫化、一人多角色（`user_roles` 多對多）、Remember-me、Book 館藏數量、CSRF SameSite cookie、audit_log 顯示優化。
+見 [TODO.md](TODO.md)：RBAC 資料庫化、給其他人角色的功能、Remember-me、Book 館藏數量、login CSRF、audit_log 顯示優化。

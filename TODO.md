@@ -45,14 +45,17 @@ JSP 的 `currentUser` 也已經改成從 `Authentication`（透過 `CurrentUserM
 多列（不建議，作者/分類關聯要重複建立）。這牽動到之後如果要做「借閱/歸還」功能時「剩幾本可借」的
 邏輯，是一個獨立於簽核流程之外的功能主題，先不做。
 
-## CSRF：SameSite cookie 與 login CSRF
+## CSRF：login CSRF
 
-今天做的 CSRF token（Synchronizer Token Pattern）只涵蓋登入後的操作區域（`/books/**` 等，跟
-`LoginCheckInterceptor` 同範圍）。兩個可以之後加強的方向：
-- 幫 Tomcat 的 `JSESSIONID` cookie 加上 `SameSite=Lax`（`web.xml` 的 `<cookie-config>` 或
-  Tomcat 的 `CookieProcessor`），當作 defense-in-depth 的第二層防護，不是取代 CSRF token。
-- `/login` 表單本身目前沒有 CSRF 保護（送出前 session 還沒有 token），理論上有「login CSRF」風險
-  （騙使用者用攻擊者的帳號登入），優先度較低，先不做。
+`JSESSIONID` 的 `SameSite=Lax` 已經做完，靠 Tomcat 的 `CookieProcessor` 設定（Servlet 4.0 的
+`web.xml` 沒有標準寫法），當作 Spring Security CSRF token 之外的 defense-in-depth 第二層。
+`src/main/webapp/META-INF/context.xml` 有加這個屬性，是給「真的打包成 war 丟進 Tomcat webapps/」
+這種標準部署方式用的；但本機用 Eclipse 開發時，Eclipse 是直接把 Context 寫死在它自己管理、workspace
+底下的 `Servers/Tomcat vX.x Server at localhost-config/server.xml`，不會去讀 war 裡的 context.xml，
+所以本機那份也要手動加 `sameSiteCookies="lax"`（不在 git 版控範圍，重灌 workspace 要記得重設）。
+
+還沒做的：`/login` 表單本身目前沒有 CSRF 保護（送出前 session 還沒有 token），理論上有「login CSRF」
+風險（騙使用者用攻擊者的帳號登入），優先度較低，先不做。
 
 ## audit_log 列表頁：顯示優化
 
