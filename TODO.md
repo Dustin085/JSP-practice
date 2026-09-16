@@ -72,12 +72,15 @@
 這個改動的價值在於「不改程式碼、不重新部署就能調整權限」，目前專案角色少（ADMIN/USER，之後可能加
 簽核流程的 SUPERVISOR/FINANCE）用 enum 硬判斷還夠用，先不做。
 
-## Remember-me
+## ~~Remember-me~~（已完成）
 
 登入/權限/CSRF/登出已經全部換成 Spring Security（見 `SecurityConfig`），手刻的
 `LoginCheckInterceptor`/`RoleAccessInterceptor`/`CsrfInterceptor`/`LogoutController` 都已經刪除，
 JSP 的 `currentUser` 也已經改成從 `Authentication`（透過 `CurrentUserModelAdvice`）取得，不再靠 session
-手動橋接。Remember-me 是唯一還沒做的內建機制，之後想練習的話可以加。
+手動橋接——這個風險排除之後，Remember-me 也補上了：用 `PersistentTokenRepository`
+（`JdbcTokenRepositoryImpl` + 新表 `persistent_logins`），不是單純簽章 cookie 的
+`TokenBasedRememberMeServices`，多了 series/token 輪替的偷竊偵測能力，是 Spring Security 建議的
+正式做法。登入頁多一個「記住我」checkbox（`name="remember-me"`，Security 預設參數名稱）。
 
 ## 給其他人角色的功能（角色指派畫面）
 

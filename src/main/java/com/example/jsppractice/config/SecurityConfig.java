@@ -1,5 +1,8 @@
 package com.example.jsppractice.config;
 
+import javax.sql.DataSource;
+
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -8,6 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 @Configuration
 @EnableWebSecurity
@@ -15,15 +20,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private final UserDetailsService userDetailsService;
 	private final PasswordEncoder passwordEncoder;
+	private final DataSource dataSource;
 
-	public SecurityConfig(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
+	public SecurityConfig(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder,
+			DataSource dataSource) {
 		this.userDetailsService = userDetailsService;
 		this.passwordEncoder = passwordEncoder;
+		this.dataSource = dataSource;
 	}
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
+	}
+
+	// PersistentTokenRepository（存 persistent_logins 表）比單純簽章 cookie 的
+	// TokenBasedRememberMeServices 多了偷竊偵測（series 固定、token 每次輪替）跟「登出單一裝置」
+	// 的能力，是 Spring Security 官方文件建議的正式做法。JdbcTokenRepositoryImpl 是內建實作，
+	// 直接塞 DataSource 就能用，不用自己刻 SQL。
+	@Bean
+	public PersistentTokenRepository persistentTokenRepository() {
+		JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
+		tokenRepository.setDataSource(dataSource);
+		return tokenRepository;
 	}
 
 	@Override
@@ -91,6 +110,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				// Authentication 取得，不用再自己塞 session attribute，直接用預設成功導向頁即可
 				.defaultSuccessUrl("/", false)
 				.permitAll()
+				.and()
+				// Day 6：Remember-me，勾了才會發 cookie（表單 checkbox name 要叫 remember-me，
+				// 這是 Security 預設讀的參數名稱）。key 只是簽章 cookie 結構完整性用的固定字串，
+				// 跟 persistent_logins 裡 series/token 的偷竊偵測是兩回事——這裡先寫死一個值，
+				// 風險遠低於 AES 金鑰（頂多讓舊 cookie 失效，不是資料外洩），沒有另外走環境變數。
+				.rememberMe()
+				.tokenRepository(persistentTokenRepository())
+				.userDetailsService(userDetailsService)
+				.key("jsp-practice-remember-me-key")
 				.and()
 				// Day 3：CSRF 改用 Security 自己的保護（預設 HttpSessionCsrfTokenRepository，
 				// 整個 session 共用同一個值，語意跟舊的 CsrfInterceptor 一樣），不再手動 disable

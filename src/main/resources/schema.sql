@@ -20,6 +20,18 @@ CREATE TABLE IF NOT EXISTS user_roles (
 	FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
+-- Remember-me（PersistentTokenRepository）用，欄位名稱/型別是 Spring Security 的
+-- JdbcTokenRepositoryImpl 內建 SQL 指定的固定格式，不能自己改名。series 是每張 cookie（每次
+-- 「記住我」登入）的身分，token 每次被拿來自動登入都會輪替一次；series 對得上但 token 對不上，
+-- 代表這張 cookie 已經被用過一次卻又出現第二次，視為被偷、整個 series 作廢——這是它比單純
+-- 雜湊簽章 cookie 多出來的偷竊偵測能力。
+CREATE TABLE IF NOT EXISTS persistent_logins (
+	username VARCHAR(64) NOT NULL,
+	series VARCHAR(64) PRIMARY KEY,
+	token VARCHAR(64) NOT NULL,
+	last_used TIMESTAMP NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS audit_logs (
 	id BIGINT AUTO_INCREMENT PRIMARY KEY,
 	user_id BIGINT NOT NULL,
