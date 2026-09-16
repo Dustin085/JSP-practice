@@ -19,6 +19,10 @@
 		</c:otherwise>
 	</c:choose>
 
+	<c:if test="${not empty conflictMessage}">
+		<p style="color: red;">${conflictMessage}</p>
+	</c:if>
+
 	<form:form modelAttribute="book" action="${formAction}" method="post">
 		<%@ include file="/WEB-INF/views/common/csrfTokenInput.jsp" %>
 		<form:hidden path="version" />
@@ -57,7 +61,14 @@
 			</c:forEach>
 			<a href="${pageContext.request.contextPath}/categories/new">沒有想要的分類？新增一個</a>
 		</div>
-		<button type="submit">儲存</button>
+		<c:choose>
+			<c:when test="${not empty conflictMessage}">
+				<button type="submit" onclick="return confirm('確定要用你剛剛輸入的內容覆蓋別人的修改嗎?');">確認覆蓋並儲存</button>
+			</c:when>
+			<c:otherwise>
+				<button type="submit">儲存</button>
+			</c:otherwise>
+		</c:choose>
 		<a href="${pageContext.request.contextPath}/books">取消</a>
 	</form:form>
 </body>

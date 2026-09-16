@@ -16,16 +16,18 @@
       新增的是 `books.version`：真正的教科書式樂觀鎖，`Book.update()` 任意欄位編輯都受保護（不像
       approve/reject 只保護狀態轉換），衝突時丟 `org.springframework.dao.OptimisticLockingFailureException`
       （跟 JPA `@Version` 衝突丟的是同一個 Spring 例外）
-      - [ ] 待做：編輯衝突時保留使用者輸入。現在 `BookController.update()` 撞到樂觀鎖衝突，是直接
-            redirect 回 `/books` 清單，使用者剛剛打的內容（例如改了一半的書名）就消失了，要重新點編輯、
-            重新輸入一次。比較好的做法是衝突時把 `books/form` 重新渲染出來、帶著使用者剛剛送出的那些
-            值（不是重新查資料庫），讓他們不用重打，但要多處理「重新顯示的表單 version 要用使用者原本
-            那個舊值（讓他們可以選擇覆蓋）還是最新值（強迫先看過別人的版本）」這個設計決定
-- [ ] 隔離層級：還沒做。跟報表/JOIN 無關（單一 SELECT 在任何隔離層級下都是同一時間點快照），真正有感覺
-      的情境是「同一個交易內分兩次讀同一列，中間夾了另一個交易的異動」——這個專案目前沒有天然的業務
-      流程長這樣，打算寫一個跟 `ProcurementServiceConcurrencyTest` 同一種風格的專門測試，用
-      `CountDownLatch` 控制兩個交易的時序，直接斷言 `READ_COMMITTED`/`REPEATABLE_READ` 下讀到的值
-      有沒有不同，而不是把情境硬塞進某個 controller
+      - [x] 編輯衝突時保留使用者輸入：`BookController.update()` 撞到 `OptimisticLockingFailureException`
+            時改成重新渲染 `books/form`（不是 redirect 回清單），`book` 這個表單綁定物件本身就帶著
+            使用者剛剛輸入的內容，直接放回 model 就好，不用重查資料庫。`version` 換成資料庫目前真正的
+            最新值（不是使用者送出的那個舊值）——不然使用者原封不動再送一次還是會撞到同一個衝突。
+            另外用 `conflictMessage` 顯示資料庫目前最新的書名，讓使用者自己決定要不要蓋過去，
+            而不是靜默覆蓋。表單按鈕在有衝突時換成「確認覆蓋並儲存」+ `onclick="return confirm(...)"`
+            （跟 categories/authors 刪除按鈕、requests 核准/拒絕同一種既有寫法），逼使用者對第二次送出
+            按一次確認，不會因為反射性連點兩下就把別人的修改静默蓋掉
+- [x] 隔離層級：新增 `TransactionIsolationLevelTest`，繞過 Spring 的 `@Transactional`/service 層，
+      直接控制 JDBC `Connection` 自己開交易，用 `CountDownLatch` 卡住「A 交易讀一次 → B 交易 commit →
+      A 交易再讀一次」的時序，驗證 H2 在 `READ_COMMITTED`（會看到 B 剛 commit 的新值）跟
+      `REPEATABLE_READ`（維持交易開始那一刻的快照，看不到 B 的異動）下行為確實不同
 - [x] MDC traceId：新增 `TraceIdFilter`（`com.example.jsppractice.filter`），透過
       `SecurityWebApplicationInitializer.beforeSpringSecurityFilterChain()` 掛在最前面（比
       `CharacterEncodingFilter` 還前面，範圍要包住整個請求），logback pattern 加了

@@ -1,5 +1,6 @@
 package com.example.jsppractice.controller;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.ArgumentMatchers.isNull;
@@ -24,6 +25,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.example.jsppractice.dto.BookSummary;
@@ -97,19 +99,29 @@ public class BookControllerTest {
 	}
 
 	@Test
-	public void updateWithStaleVersionShowsConflictMessageWithoutSavingCategories() throws Exception {
+	public void updateWithStaleVersionReRendersFormWithUsersInputAndConflictMessage() throws Exception {
 		when(bookService.save(any(Book.class)))
 				.thenThrow(new OptimisticLockingFailureException("這本書已經被其他人修改過，請重新整理再試一次：id=1"));
+		Book latest = new Book(1L, "Someone Else's Title", "9780134685991", 2L, 2018, 1);
+		when(bookService.findById(1L)).thenReturn(latest);
 
-		mockMvc.perform(post("/books/1")
-						.param("title", "Effective Java")
+		MvcResult result = mockMvc.perform(post("/books/1")
+						.param("title", "My Edit")
 						.param("isbn", "9780134685991")
 						.param("authorId", "2")
 						.param("publishedYear", "2018")
 						.param("version", "0"))
-				.andExpect(status().is3xxRedirection())
-				.andExpect(redirectedUrl("/books"))
-				.andExpect(flash().attribute("flashMessage", "這本書已經被其他人修改過，請重新整理再試一次：id=1"));
+				.andExpect(status().isOk())
+				.andExpect(view().name("books/form"))
+				.andExpect(model().attributeExists("conflictMessage"))
+				.andReturn();
+
+		Book modelBook = (Book) result.getModelAndView().getModel().get("book");
+		// 畫面上保留使用者剛剛輸入的內容（"My Edit"），不是資料庫裡最新的標題
+		assertEquals("My Edit", modelBook.getTitle());
+		// version 換成資料庫目前真正的最新值，不是使用者送出的那個舊 0，
+		// 不然使用者原封不動再送一次還是會撞到同一個衝突
+		assertEquals(Integer.valueOf(1), modelBook.getVersion());
 
 		verify(bookService, never()).saveCategories(any(), any());
 	}
