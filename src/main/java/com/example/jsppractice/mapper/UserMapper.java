@@ -16,6 +16,8 @@ public interface UserMapper {
 
 	List<User> findAll();
 
+	List<User> findByIds(@Param("ids") Collection<Long> ids);
+
 	void insert(@Param("user") User user, @Param("emailHash") String emailHash);
 
 	void update(User user);

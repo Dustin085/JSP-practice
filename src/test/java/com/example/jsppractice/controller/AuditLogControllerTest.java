@@ -23,9 +23,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import com.example.jsppractice.dto.AuditLogSummary;
 import com.example.jsppractice.model.AuditActionType;
 import com.example.jsppractice.model.AuditEntityType;
-import com.example.jsppractice.model.AuditLog;
 import com.example.jsppractice.model.AuditLogCursor;
 import com.example.jsppractice.model.CursorPage;
 import com.example.jsppractice.service.AuditService;
@@ -49,9 +49,10 @@ public class AuditLogControllerTest {
 	// 真實情境常見：H2 儲存時間戳時會四捨五入到奈秒精度，讀回來的 Instant 常常不是整毫秒。
 	// 這裡故意用非整毫秒的時間，模擬先前用 epoch millis 來回傳遞時 toEpochMilli() 只會捨去、
 	// 把自己這筆資料的邊界比較搞錯的情況（上一頁自己撈回自己、漏掉最新那筆）。
-	private AuditLog logWithSubMillisecondPrecision(long id, Instant auditedAt) {
-		return AuditLog.builder().id(id).userId(1L).auditedAt(auditedAt).action(AuditActionType.APPROVE)
-				.entityType(AuditEntityType.BOOK_REQUEST).entityId(1L).detail(Collections.emptyMap()).build();
+	private AuditLogSummary logWithSubMillisecondPrecision(long id, Instant auditedAt) {
+		return AuditLogSummary.builder().id(id).userEmail("auditor@example.com").auditedAt(auditedAt)
+				.action(AuditActionType.APPROVE).entityType(AuditEntityType.BOOK_REQUEST).entityId(1L)
+				.detail(Collections.emptyMap()).build();
 	}
 
 	private Map<String, Object> modelOf(MvcResult result) {
@@ -61,8 +62,8 @@ public class AuditLogControllerTest {
 	@Test
 	public void nextCursorAtRoundTripsExactInstantWithoutLosingSubMillisecondPrecision() throws Exception {
 		Instant preciseInstant = Instant.parse("2026-09-14T11:36:41.434567891Z");
-		AuditLog newest = logWithSubMillisecondPrecision(24L, Instant.parse("2026-09-14T11:36:41.500000000Z"));
-		AuditLog last = logWithSubMillisecondPrecision(5L, preciseInstant);
+		AuditLogSummary newest = logWithSubMillisecondPrecision(24L, Instant.parse("2026-09-14T11:36:41.500000000Z"));
+		AuditLogSummary last = logWithSubMillisecondPrecision(5L, preciseInstant);
 		when(auditService.findNextPage(eq(null), eq(20)))
 				.thenReturn(new CursorPage<>(List.of(newest, last), true, false));
 
@@ -84,8 +85,8 @@ public class AuditLogControllerTest {
 	@Test
 	public void prevCursorAtRoundTripsExactInstantWithoutLosingSubMillisecondPrecision() throws Exception {
 		Instant preciseInstant = Instant.parse("2026-09-14T11:36:41.434567891Z");
-		AuditLog first = logWithSubMillisecondPrecision(3L, preciseInstant);
-		AuditLog older = logWithSubMillisecondPrecision(2L, Instant.parse("2026-09-14T11:36:41.000000000Z"));
+		AuditLogSummary first = logWithSubMillisecondPrecision(3L, preciseInstant);
+		AuditLogSummary older = logWithSubMillisecondPrecision(2L, Instant.parse("2026-09-14T11:36:41.000000000Z"));
 		when(auditService.findNextPage(any(), eq(20))).thenReturn(new CursorPage<>(List.of(first, older), false, true));
 
 		MvcResult page = mockMvc.perform(get("/audit-logs")).andReturn();

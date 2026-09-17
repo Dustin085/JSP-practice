@@ -119,8 +119,13 @@ JSP 的 `currentUser` 也已經改成從 `Authentication`（透過 `CurrentUserM
 
 ## audit_log 列表頁：顯示優化
 
-`audit-logs/list.jsp` 目前 `userId` 直接顯示數字、`detail` 直接用 `Map.toString()` 顯示，是刻意先
-從簡的版本。之後如果要好看一點：
-- `userId` 要顯示成 email/姓名，需要另外做一個 `AuditLogSummary` DTO 加 join `users` 表（跟
-  `BookRequestSummary`/`ProcurementSummary` 同一套做法）。
-- `detail` 的 JSON 內容可以用 JS 或後端排版成更易讀的格式，而不是原始的 `Map.toString()`。
+- [x] `userId` 改顯示 email：新增 `AuditLogSummary` DTO（`dto` package），`AuditServiceImpl` 在
+      `findNextPage()`/`findPreviousPage()` 分頁完之後，才批次呼叫新增的 `UserMapper.findByIds()`
+      查這一頁涉及到的 user email（deferred join，跟 `BookMapper.search()` 分頁時先只查 id
+      再批次撈完整資料是同一個道理——遊標分頁的排序/邊界比較只認 `audit_logs` 自己的
+      `audited_at`/`id`，不會因為多 JOIN 一張表把那條已經夠複雜的分頁 SQL 弄得更難懂）。
+      挑 email 不挑姓名：`users.name` 是 nullable，不是每個帳號都有填。
+- [x] `detail` 排版：新增 `DisplayJson`（`util` package，跟 `DisplayTime` 同一種靜態工具類 pattern），
+      用 Jackson 的 `writerWithDefaultPrettyPrinter()` 把 `Map<String, Object>` 轉回縮排過的 JSON
+      字串，`AuditLogSummary.getDetailDisplay()` 呼叫它，JSP 用 `<pre>` 包起來保留換行/縮排——
+      不需要另外引入前端 JS 函式庫，後端排版就夠用了。

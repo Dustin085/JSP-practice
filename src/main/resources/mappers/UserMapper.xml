@@ -26,6 +26,16 @@
 		ORDER BY u.id
 	</select>
 
+	<!-- audit_logs 顯示優化用：批次查一批 user_id 對應的 email，避免 N+1 -->
+	<select id="findByIds" resultMap="userResultMap">
+		SELECT id, email, name, password_hash
+		FROM users u
+		WHERE u.id IN
+		<foreach collection="ids" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</select>
+
 	<!-- INSERT 的參數不用靠 resultMap，直接在 #{...} 後面指定 typeHandler 就會在送進
 		 PreparedStatement 之前加密；email_lookup_hash 是呼叫端（UserServiceImpl）另外
 		 算好傳進來的，這裡不重算——同一把雜湊邏輯只寫在一個地方 -->

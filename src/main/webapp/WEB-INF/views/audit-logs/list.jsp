@@ -12,7 +12,7 @@
 		<tr>
 			<th>ID</th>
 			<th>時間</th>
-			<th>操作人 ID</th>
+			<th>操作人</th>
 			<th>動作</th>
 			<th>對象類型</th>
 			<th>對象 ID</th>
@@ -22,11 +22,11 @@
 			<tr>
 				<td>${log.id}</td>
 				<td>${log.auditedAtDisplay}</td>
-				<td>${log.userId}</td>
+				<td>${log.userEmail}</td>
 				<td>${log.action}</td>
 				<td>${log.entityType}</td>
 				<td>${log.entityId}</td>
-				<td>${log.detail}</td>
+				<td><pre>${log.detailDisplay}</pre></td>
 			</tr>
 		</c:forEach>
 	</table>

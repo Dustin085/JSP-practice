@@ -136,4 +136,17 @@ public class UserMapperTest {
 		assertEquals(secondId, users.get(1).getId());
 		assertEquals("brian@example.com", users.get(1).getEmail());
 	}
+
+	@Test
+	public void findByIdsReturnsOnlyRequestedUsersWithDecryptedEmail() {
+		Long alexId = insertUser("alex@example.com", "Alex", "hashed-password", RoleType.USER);
+		insertUser("brian@example.com", "Brian", "hashed-password", RoleType.ADMIN);
+		Long carolId = insertUser("carol@example.com", "Carol", "hashed-password", RoleType.PROCUREMENT);
+
+		List<User> users = userMapper.findByIds(List.of(alexId, carolId));
+
+		assertEquals(2, users.size());
+		assertEquals(Set.of("alex@example.com", "carol@example.com"),
+				users.stream().map(User::getEmail).collect(java.util.stream.Collectors.toSet()));
+	}
 }
