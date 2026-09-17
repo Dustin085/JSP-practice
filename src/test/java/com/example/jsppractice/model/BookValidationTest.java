@@ -32,7 +32,7 @@ public class BookValidationTest {
 
 	@Test
 	public void blankTitleIsRejected() {
-		Book book = new Book(null, "", "9780134685991", 1L, 2018);
+		Book book = new Book(null, "", "9780134685991", 1L, 2018, 0);
 
 		Set<ConstraintViolation<Book>> violations = validator.validate(book);
 
@@ -41,7 +41,7 @@ public class BookValidationTest {
 
 	@Test
 	public void invalidIsbnIsRejected() {
-		Book book = new Book(null, "Effective Java", "not-an-isbn", 1L, 2018);
+		Book book = new Book(null, "Effective Java", "not-an-isbn", 1L, 2018, 0);
 
 		Set<ConstraintViolation<Book>> violations = validator.validate(book);
 
@@ -50,7 +50,7 @@ public class BookValidationTest {
 
 	@Test
 	public void publishedYearOutOfRangeIsRejected() {
-		Book book = new Book(null, "Effective Java", "", 1L, 3000);
+		Book book = new Book(null, "Effective Java", "", 1L, 3000, 0);
 
 		Set<ConstraintViolation<Book>> violations = validator.validate(book);
 
@@ -59,7 +59,7 @@ public class BookValidationTest {
 
 	@Test
 	public void validBookHasNoViolations() {
-		Book book = new Book(null, "Effective Java", "9780134685991", 1L, 2018);
+		Book book = new Book(null, "Effective Java", "9780134685991", 1L, 2018, 0);
 
 		Set<ConstraintViolation<Book>> violations = validator.validate(book);
 

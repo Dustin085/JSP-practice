@@ -1,10 +1,35 @@
 CREATE TABLE IF NOT EXISTS users (
 	id BIGINT AUTO_INCREMENT PRIMARY KEY,
-	email VARCHAR(100) NOT NULL,
+	-- AES-256/GCM 密文（含隨機 IV），不是明文，長度會比原本的 email 長不少（Base64 編碼 IV+密文+認證標籤）
+	email VARCHAR(255) NOT NULL,
+	-- 盲索引：HMAC-SHA256(email) 的 hex 字串，固定 64 字元。email 加密後不能再拿來查找
+	-- （同一個 email 每次加密結果都不一樣），登入改成查這個確定性雜湊欄位，唯一性也改靠它保證
+	email_lookup_hash VARCHAR(64) NOT NULL,
 	name VARCHAR(200),
 	password_hash VARCHAR(200) NOT NULL,
-	role VARCHAR(20) NOT NULL CONSTRAINT chk_user_role CHECK (role IN ('ADMIN', 'USER', 'PROCUREMENT')),
-	CONSTRAINT uk_user_email UNIQUE (email)
+	CONSTRAINT uk_user_email_lookup_hash UNIQUE (email_lookup_hash)
+);
+
+-- 一人多角色：USER 是每個帳號都會有的 baseline，ADMIN/PROCUREMENT 是額外加掛的角色。
+-- role 還是沿用 RoleType enum 的字串值（跟舊的 users.role 一樣用 CHECK 限制），不是另外拆一張
+-- roles 表——角色本身可不可以動態新增是「RBAC 資料庫化」那個更大的題目，這裡不處理。
+CREATE TABLE IF NOT EXISTS user_roles (
+	user_id BIGINT NOT NULL,
+	role VARCHAR(20) NOT NULL CONSTRAINT chk_user_roles_role CHECK (role IN ('ADMIN', 'USER', 'PROCUREMENT')),
+	PRIMARY KEY (user_id, role),
+	FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+-- Remember-me（PersistentTokenRepository）用，欄位名稱/型別是 Spring Security 的
+-- JdbcTokenRepositoryImpl 內建 SQL 指定的固定格式，不能自己改名。series 是每張 cookie（每次
+-- 「記住我」登入）的身分，token 每次被拿來自動登入都會輪替一次；series 對得上但 token 對不上，
+-- 代表這張 cookie 已經被用過一次卻又出現第二次，視為被偷、整個 series 作廢——這是它比單純
+-- 雜湊簽章 cookie 多出來的偷竊偵測能力。
+CREATE TABLE IF NOT EXISTS persistent_logins (
+	username VARCHAR(64) NOT NULL,
+	series VARCHAR(64) PRIMARY KEY,
+	token VARCHAR(64) NOT NULL,
+	last_used TIMESTAMP NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS audit_logs (
@@ -33,6 +58,9 @@ CREATE TABLE IF NOT EXISTS books (
     isbn VARCHAR(20),
     author_id BIGINT ,
     published_year INT,
+    -- 樂觀鎖：UPDATE 時一併檢查 WHERE version = 舊值、SET version = version + 1，
+    -- 兩個人同時編輯同一本書時，後 commit 的那個人會因為 version 對不上而被擋下來
+    version INT NOT NULL,
 
     CONSTRAINT fk_book_author
     FOREIGN KEY (author_id)

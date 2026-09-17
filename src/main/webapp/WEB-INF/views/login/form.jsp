@@ -9,6 +9,7 @@
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	<h1>登入</h1>
 	<form action="${pageContext.request.contextPath}/login" method="post">
+		<%@ include file="/WEB-INF/views/common/csrfTokenInput.jsp" %>
 		<!-- 單行文字方塊 -->
         <label for="email">Email：</label>
         <input type="email" id="email" name="email" required><br><br>
@@ -16,7 +17,11 @@
         <!-- 密碼方塊 -->
         <label for="password">密碼：</label>
         <input type="password" id="password" name="password" required><br><br>
-        
+
+        <!-- name 一定要叫 remember-me，SecurityConfig 沒有另外設 rememberMeParameter，用的是預設值 -->
+        <label for="remember-me">記住我：</label>
+        <input type="checkbox" id="remember-me" name="remember-me"><br><br>
+
         <button type="submit">登入</button>
 	</form>
 	<p><a href="${pageContext.request.contextPath}/register">還沒有帳號?前往註冊</a></p>

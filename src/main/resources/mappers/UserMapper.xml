@@ -1,26 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.jsppractice.mapper.UserMapper">
-	<select id="findByEmail"
-		resultType="com.example.jsppractice.model.User">
-		SELECT *
+	<!-- users 已經不存 role，這裡查回來的 User.roles 一律是空集合，跟 Book.findById 不會
+		 自動帶出 categories 是同一種做法——角色要另外呼叫 findRolesByUserId 補上 -->
+	<!-- email 欄位是 AES 密文，讀出來要經過 EncryptedStringTypeHandler 解密才是明文，
+		 所以這裡不能用 resultType 自動映射（那只會照 JDBC 型別原樣塞進 String，不會解密），
+		 要用 resultMap 明確指定這個欄位走哪個 typeHandler -->
+	<resultMap id="userResultMap" type="com.example.jsppractice.model.User">
+		<id column="id" property="id" />
+		<result column="email" property="email"
+			typeHandler="com.example.jsppractice.mybatis.EncryptedStringTypeHandler" />
+		<result column="name" property="name" />
+		<result column="password_hash" property="passwordHash" />
+	</resultMap>
+
+	<select id="findByEmailHash" resultMap="userResultMap">
+		SELECT id, email, name, password_hash
 		FROM users u
-		WHERE u.email = #{email}
+		WHERE u.email_lookup_hash = #{emailHash}
 	</select>
 
-	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+	<select id="findAll" resultMap="userResultMap">
+		SELECT id, email, name, password_hash
+		FROM users u
+		ORDER BY u.id
+	</select>
+
+	<!-- audit_logs 顯示優化用：批次查一批 user_id 對應的 email，避免 N+1 -->
+	<select id="findByIds" resultMap="userResultMap">
+		SELECT id, email, name, password_hash
+		FROM users u
+		WHERE u.id IN
+		<foreach collection="ids" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</select>
+
+	<!-- INSERT 的參數不用靠 resultMap，直接在 #{...} 後面指定 typeHandler 就會在送進
+		 PreparedStatement 之前加密；email_lookup_hash 是呼叫端（UserServiceImpl）另外
+		 算好傳進來的，這裡不重算——同一把雜湊邏輯只寫在一個地方 -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="user.id">
 		INSERT
-		INTO users (email, name, password_hash, role)
-		VALUES (#{email},
-		#{name}, #{passwordHash}, #{role})
+		INTO users (email, email_lookup_hash, name, password_hash)
+		VALUES (
+		#{user.email, typeHandler=com.example.jsppractice.mybatis.EncryptedStringTypeHandler},
+		#{emailHash}, #{user.name}, #{user.passwordHash})
 	</insert>
 
 	<update id="update">
 		UPDATE users
 		SET name = #{name},
 		password_hash =
-		#{passwordHash}, role = #{role}
+		#{passwordHash}
 		WHERE id =
 		#{id}
 	</update>
+
+	<select id="findRolesByUserId" resultType="com.example.jsppractice.model.RoleType">
+		SELECT role
+		FROM user_roles
+		WHERE user_id = #{userId}
+	</select>
+
+	<insert id="insertUserRoles">
+		INSERT INTO user_roles (user_id, role)
+		VALUES
+		<foreach collection="roles" item="role" separator=",">
+			(#{userId}, #{role})
+		</foreach>
+	</insert>
+
+	<delete id="deleteRolesByUserId">
+		DELETE FROM user_roles WHERE user_id = #{userId}
+	</delete>
 </mapper>

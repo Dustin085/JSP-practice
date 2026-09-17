@@ -22,6 +22,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.example.jsppractice.config.RootConfig;
+import com.example.jsppractice.crypto.AesEncryptor;
+import com.example.jsppractice.crypto.EmailLookupHasher;
 import com.example.jsppractice.dto.ReconciliationSummary;
 import com.example.jsppractice.helper.DataBaseCleaner;
 import com.example.jsppractice.mapper.BookMapper;
@@ -77,10 +79,12 @@ public class ReconciliationRemediationTest {
 		SimpleJdbcInsert insert = new SimpleJdbcInsert(dataSource).withTableName("users")
 				.usingGeneratedKeyColumns("id");
 		Map<String, Object> params = new HashMap<>();
-		params.put("email", email);
+		params.put("email", AesEncryptor.encrypt(email));
+		params.put("email_lookup_hash", EmailLookupHasher.hash(email));
 		params.put("password_hash", "hash");
-		params.put("role", "ADMIN");
-		return insert.executeAndReturnKey(params).longValue();
+		Long id = insert.executeAndReturnKey(params).longValue();
+		jdbcTemplate.update("INSERT INTO user_roles (user_id, role) VALUES (?, ?)", id, "ADMIN");
+		return id;
 	}
 
 	private BookRequestItem createOrphanApprovedItem() {

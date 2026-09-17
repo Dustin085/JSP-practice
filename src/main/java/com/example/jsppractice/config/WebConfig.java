@@ -3,13 +3,8 @@ package com.example.jsppractice.config;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-import com.example.jsppractice.interceptor.CsrfInterceptor;
-import com.example.jsppractice.interceptor.LoginCheckInterceptor;
-import com.example.jsppractice.interceptor.RoleAccessInterceptor;
 
 @Configuration
 @EnableWebMvc
@@ -19,15 +14,5 @@ public class WebConfig implements WebMvcConfigurer {
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 		registry.jsp("/WEB-INF/views/", ".jsp");
-	}
-
-	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new LoginCheckInterceptor()).addPathPatterns("/books/**", "/authors/**",
-				"/categories/**", "/requests/**", "/procurement/**", "/audit-logs/**", "/reconciliations/**");
-		registry.addInterceptor(new CsrfInterceptor()).addPathPatterns("/books/**", "/authors/**", "/categories/**",
-				"/requests/**", "/procurement/**", "/audit-logs/**", "/reconciliations/**");
-		registry.addInterceptor(new RoleAccessInterceptor()).addPathPatterns("/books/**", "/authors/**",
-				"/categories/**", "/requests/**", "/procurement/**", "/audit-logs/**", "/reconciliations/**");
 	}
 }

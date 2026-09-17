@@ -49,7 +49,7 @@ public class BookMapperTest {
 	}
 
 	private Book sampleBook() {
-		return new Book(null, "Effective Java", "978-0134685991", authorId, 2018);
+		return new Book(null, "Effective Java", "978-0134685991", authorId, 2018, 0);
 	}
 
 	private Long insertCategory(String name) {
@@ -98,9 +98,29 @@ public class BookMapperTest {
 		bookMapper.insert(saved);
 		Long bookId = saved.getId();
 		saved.setTitle(NEW_TITLE);
-		bookMapper.update(saved);
+		int updated = bookMapper.update(saved);
+		assertEquals("version 對得上，應該有更新到 1 筆", 1, updated);
 		assertEquals(NEW_TITLE, bookMapper.findById(bookId).getTitle());
 		assertEquals(1, bookMapper.findAll().size());
+	}
+
+	@Test
+	public void updateWithStaleVersionAffectsNoRows() {
+		Book saved = sampleBook();
+		bookMapper.insert(saved);
+		Long bookId = saved.getId();
+
+		// 模擬另一個人已經先改過這本書一次，DB 裡的 version 已經變成 1
+		saved.setTitle("Someone Else's Edit");
+		bookMapper.update(saved);
+
+		// 這裡的 saved.version 還停在編輯當下讀到的舊值（0），模擬「畫面停留在舊版本很久才送出」
+		saved.setVersion(0);
+		saved.setTitle("My Stale Edit");
+		int updated = bookMapper.update(saved);
+
+		assertEquals("version 對不上，不該更新到任何一筆", 0, updated);
+		assertEquals("資料庫裡應該還是別人那次的修改結果", "Someone Else's Edit", bookMapper.findById(bookId).getTitle());
 	}
 
 	@Test
@@ -142,8 +162,8 @@ public class BookMapperTest {
 
 	@Test
 	public void searchMatchesByTitle() {
-		bookMapper.insert(new Book(null, "Effective Java", "978-0134685991", authorId, 2018));
-		bookMapper.insert(new Book(null, "Unrelated Book", "9999999999999", authorId, 2000));
+		bookMapper.insert(new Book(null, "Effective Java", "978-0134685991", authorId, 2018, 0));
+		bookMapper.insert(new Book(null, "Unrelated Book", "9999999999999", authorId, 2000, 0));
 
 		List<BookSummary> results = bookMapper.search("Effective");
 
@@ -159,7 +179,7 @@ public class BookMapperTest {
 				.longValue();
 
 		bookMapper.insert(sampleBook());
-		bookMapper.insert(new Book(null, "Clean Code", "9780132350884", otherAuthorId, 2008));
+		bookMapper.insert(new Book(null, "Clean Code", "9780132350884", otherAuthorId, 2008, 0));
 
 		List<BookSummary> results = bookMapper.search("Bloch");
 
@@ -170,7 +190,7 @@ public class BookMapperTest {
 	@Test
 	public void searchWithBlankKeywordReturnsAllBooks() {
 		bookMapper.insert(sampleBook());
-		bookMapper.insert(new Book(null, "Unrelated Book", "9999999999999", authorId, 2000));
+		bookMapper.insert(new Book(null, "Unrelated Book", "9999999999999", authorId, 2000, 0));
 
 		List<BookSummary> results = bookMapper.search("");
 
@@ -181,11 +201,11 @@ public class BookMapperTest {
 	public void paginationIsNotThrownOffByBooksWithMultipleCategories() {
 		// 這本書掛 3 個分類，JOIN 展開後底層會是 3 列，用來驗證分頁不會被分類數量灌水
 		List<Long> categoryIds = List.of(insertCategory("A"), insertCategory("B"), insertCategory("C"));
-		Book bookWithManyCategories = new Book(null, "Book With Many Categories", null, authorId, 2020);
+		Book bookWithManyCategories = new Book(null, "Book With Many Categories", null, authorId, 2020, 0);
 		bookMapper.insert(bookWithManyCategories);
 		bookMapper.insertBookCategories(bookWithManyCategories.getId(), categoryIds);
 
-		Book bookWithoutCategories = new Book(null, "Book Without Categories", null, authorId, 2021);
+		Book bookWithoutCategories = new Book(null, "Book Without Categories", null, authorId, 2021, 0);
 		bookMapper.insert(bookWithoutCategories);
 
 		long totalElements = bookMapper.countBySearch(null);

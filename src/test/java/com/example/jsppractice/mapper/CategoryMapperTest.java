@@ -70,6 +70,7 @@ public class CategoryMapperTest {
 		params.put("isbn", "978-0134685991");
 		params.put("author_id", authorId);
 		params.put("published_year", 2018);
+		params.put("version", 0);
 		return insert.executeAndReturnKey(params).longValue();
 	}
 

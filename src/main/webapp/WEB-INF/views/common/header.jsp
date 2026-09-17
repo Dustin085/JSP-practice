@@ -2,13 +2,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <header>
 	<c:choose>
-		<c:when test="${empty sessionScope.currentUser}">
+		<c:when test="${empty currentUser}">
 			<p>
 				<a href="${pageContext.request.contextPath}/login">登入</a>
 			</p>
 		</c:when>
 		<c:otherwise>
-			<p>${sessionScope.currentUser.name}，您好</p>
+			<p>${currentUser.name}，您好</p>
+			<c:if test="${currentUser.hasRole('ADMIN')}">
+				<p><a href="${pageContext.request.contextPath}/users">使用者管理</a></p>
+			</c:if>
 			<form action="${pageContext.request.contextPath}/logout" method="post">
 				<%@ include file="/WEB-INF/views/common/csrfTokenInput.jsp" %>
 				<button type="submit">登出</button>

@@ -3,6 +3,7 @@ package com.example.jsppractice.service;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,7 +43,14 @@ public class BookServiceImpl implements BookService {
 			bookMapper.insert(book);
 			return book;
 		}
-		bookMapper.update(book);
+		int updated = bookMapper.update(book);
+		if (updated == 0) {
+			throw new OptimisticLockingFailureException("這本書已經被其他人修改過，請重新整理再試一次：id=" + book.getId());
+		}
+		// UPDATE 裡實際遞增 version 的是資料庫（SET version = version + 1），這裡只是讓呼叫端
+		// 拿到的這個物件也同步反映最新版本號，避免緊接著又拿同一個物件送第二次更新時，
+		// 帶著已經過期的舊 version 白白被擋下來。
+		book.setVersion(book.getVersion() + 1);
 		return book;
 	}
 

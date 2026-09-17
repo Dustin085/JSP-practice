@@ -89,7 +89,7 @@
 
 	<select id="findById"
 		resultType="com.example.jsppractice.model.Book">
-		SELECT id, title, isbn, author_id, published_year
+		SELECT id, title, isbn, author_id, published_year, version
 		FROM books
 		WHERE id = #{id}
 	</select>
@@ -106,17 +106,20 @@
 
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
 		INSERT
-		INTO books (title, isbn, author_id, published_year)
+		INTO books (title, isbn, author_id, published_year, version)
 		VALUES (#{title},
-		#{isbn}, #{authorId}, #{publishedYear})
+		#{isbn}, #{authorId}, #{publishedYear}, #{version})
 	</insert>
 
+	<!-- 樂觀鎖：WHERE version = #{version} 用的是呼叫端讀到的舊值，SET version = version + 1
+		 交給資料庫從目前這一列的值算，兩者在同一條 UPDATE 裡是原子操作。影響筆數 0 代表
+		 這本書從讀到現在已經被別人改過（或已經被刪除），由呼叫端（BookServiceImpl）判斷要丟例外。 -->
 	<update id="update">
 		UPDATE books
 		SET title = #{title}, isbn = #{isbn},
-		author_id = #{authorId}, published_year = #{publishedYear}
-		WHERE id =
-		#{id}
+		author_id = #{authorId}, published_year = #{publishedYear},
+		version = version + 1
+		WHERE id = #{id} AND version = #{version}
 	</update>
 
 	<delete id="deleteById">

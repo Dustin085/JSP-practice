@@ -3,6 +3,7 @@ package com.example.jsppractice.config;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -66,33 +67,36 @@ public class DataSeeder {
 		Category architecture = categoryService.save(new Category(null, "Architecture"));
 		Category bestPractice = categoryService.save(new Category(null, "Best Practice"));
 
-		Book effectiveJava = bookService.save(new Book(null, "Effective Java", "9780134685991", joshua.getId(), 2018));
+		Book effectiveJava = bookService
+				.save(new Book(null, "Effective Java", "9780134685991", joshua.getId(), 2018, 0));
 		bookService.saveCategories(effectiveJava.getId(), List.of(programming.getId(), bestPractice.getId()));
 
-		Book cleanCode = bookService.save(new Book(null, "Clean Code", "9780132350884", martin.getId(), 2008));
+		Book cleanCode = bookService.save(new Book(null, "Clean Code", "9780132350884", martin.getId(), 2008, 0));
 		bookService.saveCategories(cleanCode.getId(), List.of(bestPractice.getId()));
 
-		Book ddd = bookService.save(new Book(null, "Domain-Driven Design", "9780321125217", eric.getId(), 2003));
+		Book ddd = bookService.save(new Book(null, "Domain-Driven Design", "9780321125217", eric.getId(), 2003, 0));
 		bookService.saveCategories(ddd.getId(), List.of(architecture.getId()));
 
 		Book cleanArchitecture = bookService
-				.save(new Book(null, "Clean Architecture", "9780134494166", martin.getId(), 2017));
+				.save(new Book(null, "Clean Architecture", "9780134494166", martin.getId(), 2017, 0));
 		bookService.saveCategories(cleanArchitecture.getId(), List.of(architecture.getId(), bestPractice.getId()));
 
 		for (int i = 0; i < 20; i++) {
 			Book javaConcurrency = bookService
-					.save(new Book(null, "Java Concurrency in Practice", "9780321349606", joshua.getId(), 2006));
+					.save(new Book(null, "Java Concurrency in Practice", "9780321349606", joshua.getId(), 2006, 0));
 			bookService.saveCategories(javaConcurrency.getId(), List.of(programming.getId()));
 		}
 
 		User requester = authService.register("user@example.com", "測試使用者", "password123");
 
 		User admin = User.builder().email("admin@example.com").name("管理員")
-				.passwordHash(passwordEncoder.encode("password123")).role(RoleType.ADMIN).build();
+				.passwordHash(passwordEncoder.encode("password123")).roles(Set.of(RoleType.ADMIN, RoleType.USER))
+				.build();
 		userService.save(admin);
 
 		User procurementStaff = User.builder().email("procurement@example.com").name("採購人員")
-				.passwordHash(passwordEncoder.encode("password123")).role(RoleType.PROCUREMENT).build();
+				.passwordHash(passwordEncoder.encode("password123"))
+				.roles(Set.of(RoleType.PROCUREMENT, RoleType.USER)).build();
 		userService.save(procurementStaff);
 
 		seedBookRequests(requester, admin);

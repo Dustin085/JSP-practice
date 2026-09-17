@@ -91,6 +91,19 @@
 			<version>5.8.13</version>
 		</dependency>
 
+		<!-- 換裝 Spring Security 用:5.8.x 是最後支援 javax.servlet 的版本線(6.x 起改用 jakarta.servlet,
+		     跟本專案的 Servlet API/Tomcat 9 不相容),版本要跟上面的 spring-security-crypto 對齊 -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>5.8.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>5.8.13</version>
+		</dependency>
+
 		<!-- H2:目前直接當作應用程式的嵌入式資料庫使用(見 RootConfig),同時也用於測試 -->
 		<dependency>
 			<groupId>com.h2database</groupId>

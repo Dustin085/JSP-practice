@@ -1,0 +1,133 @@
+package com.example.jsppractice.config;
+
+import javax.sql.DataSource;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+	private final UserDetailsService userDetailsService;
+	private final PasswordEncoder passwordEncoder;
+	private final DataSource dataSource;
+
+	public SecurityConfig(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder,
+			DataSource dataSource) {
+		this.userDetailsService = userDetailsService;
+		this.passwordEncoder = passwordEncoder;
+		this.dataSource = dataSource;
+	}
+
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
+	}
+
+	// PersistentTokenRepository（存 persistent_logins 表）比單純簽章 cookie 的
+	// TokenBasedRememberMeServices 多了偷竊偵測（series 固定、token 每次輪替）跟「登出單一裝置」
+	// 的能力，是 Spring Security 官方文件建議的正式做法。JdbcTokenRepositoryImpl 是內建實作，
+	// 直接塞 DataSource 就能用，不用自己刻 SQL。
+	@Bean
+	public PersistentTokenRepository persistentTokenRepository() {
+		JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
+		tokenRepository.setDataSource(dataSource);
+		return tokenRepository;
+	}
+
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.authorizeHttpRequests()
+				// 刻意維持 .antMatchers(...)（雖然標了 @Deprecated），不要換成非棄用的 .requestMatchers(String...)：
+				// 後者在偵測到 Spring MVC 存在時，預設會走 MvcRequestMatcher，需要 mvcHandlerMappingIntrospector
+				// 這個 bean（由 @EnableWebMvc 註冊）在「同一個」ApplicationContext 裡才能用。但這個專案的
+				// SecurityConfig 刻意放在 root context（DelegatingFilterProxy 找 bean 的地方），
+				// @EnableWebMvc 卻是在 WebConfig、屬於 servlet 的 child context，兩者本來就不共用，
+				// 跑起來會直接噴 NoSuchBeanDefinitionException。.antMatchers(...) 只走純 AntPathRequestMatcher，
+				// 不需要這個 bean，剛好也是舊 RoleAccessRule 用的同一套 AntPathMatcher 語意，翻譯起來更忠實。
+				// 舊系統的三個攔截器本來就沒註冊在這些路徑上，明確列出來維持原本不受限的行為
+				.antMatchers("/", "/login", "/login/**", "/register", "/register/**", "/logout", "/health")
+				.permitAll()
+
+				// ── books/authors/categories：GET 列表頁登入即可、不限角色，要排在下面的萬用規則之前
+				.antMatchers(HttpMethod.GET, "/books")
+				.authenticated()
+				.antMatchers(HttpMethod.GET, "/books/export")
+				.authenticated()
+				.antMatchers(HttpMethod.GET, "/authors")
+				.authenticated()
+				.antMatchers(HttpMethod.GET, "/categories")
+				.authenticated()
+				.antMatchers("/books/**")
+				.hasRole("ADMIN")
+				.antMatchers("/authors/**")
+				.hasRole("ADMIN")
+				.antMatchers("/categories/**")
+				.hasRole("ADMIN")
+
+				// ── requests：核准/駁回限 ADMIN，其餘登入即可
+				.antMatchers(HttpMethod.POST, "/requests/*/approve")
+				.hasRole("ADMIN")
+				.antMatchers(HttpMethod.POST, "/requests/*/reject")
+				.hasRole("ADMIN")
+				.antMatchers("/requests/**")
+				.authenticated()
+
+				// ── procurement：完成採購限 PROCUREMENT，其餘登入即可
+				.antMatchers(HttpMethod.POST, "/procurement/*/complete")
+				.hasRole("PROCUREMENT")
+				.antMatchers("/procurement/**")
+				.authenticated()
+
+				// ── 稽核紀錄、對帳、使用者列表：全部限 ADMIN
+				.antMatchers("/audit-logs/**")
+				.hasRole("ADMIN")
+				.antMatchers("/reconciliations/**")
+				.hasRole("ADMIN")
+				.antMatchers("/users/**")
+				.hasRole("ADMIN")
+
+				// 收尾用 authenticated() 而不是 permitAll()：以後不管漏加哪條規則，
+				// 新路徑預設「至少要登入」而不是「預設任何人都能看」
+				.anyRequest()
+				.authenticated()
+				.and()
+				.formLogin()
+				.loginPage("/login") // 沿用現有的 GET /login 頁面，不用 Security 內建的表單
+				.usernameParameter("email") // 表單欄位叫 email，不是預設的 username
+				.passwordParameter("password")
+				// 不用手動橋接 session 了：currentUser 現在改由 CurrentUserModelAdvice 從
+				// Authentication 取得，不用再自己塞 session attribute，直接用預設成功導向頁即可
+				.defaultSuccessUrl("/", false)
+				.permitAll()
+				.and()
+				// Day 6：Remember-me，勾了才會發 cookie（表單 checkbox name 要叫 remember-me，
+				// 這是 Security 預設讀的參數名稱）。key 只是簽章 cookie 結構完整性用的固定字串，
+				// 跟 persistent_logins 裡 series/token 的偷竊偵測是兩回事——這裡先寫死一個值，
+				// 風險遠低於 AES 金鑰（頂多讓舊 cookie 失效，不是資料外洩），沒有另外走環境變數。
+				.rememberMe()
+				.tokenRepository(persistentTokenRepository())
+				.userDetailsService(userDetailsService)
+				.key("jsp-practice-remember-me-key")
+				.and()
+				// Day 3：CSRF 改用 Security 自己的保護（預設 HttpSessionCsrfTokenRepository，
+				// 整個 session 共用同一個值，語意跟舊的 CsrfInterceptor 一樣），不再手動 disable
+				// Day 5：logout 也改交給 Security（原本手刻的 LogoutController 已刪除，不會再
+				// 跟這裡搶 POST /logout）——預設行為就是 invalidate session + 清空 SecurityContext，
+				// 比原本手刻版本多做了清 SecurityContext 這件事
+				.logout()
+				.logoutUrl("/logout")
+				.logoutSuccessUrl("/login")
+				.permitAll();
+	}
+}

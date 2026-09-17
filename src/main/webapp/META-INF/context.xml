@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Tomcat 9 / Servlet 4.0 沒有標準的 <session-config><cookie-config><same-site>（那是 Servlet 6.0
+	才加的），SameSite 只能靠 Tomcat 自己的 CookieProcessor 設定。這裡放在 webapp 範圍的 context.xml
+	（隨 war 一起部署），不用動 Tomcat 安裝目錄下的 conf/context.xml，才不會影響同一台 Tomcat 上的其他應用。
+
+	選 Lax 不選 Strict：Strict 連「使用者從外部網站點連結導覽進站」都不帶 cookie，Lax 只擋跨站的
+	POST/表單提交等非導覽請求，跟現有的 Spring Security CSRF token（Synchronizer Token Pattern）
+	疊加，屬於 defense-in-depth 的第二層，不是取代 CSRF token。
+
+	刻意不加 secure="true"：本機開發用 plain HTTP 起 Tomcat，加了會讓 JSESSIONID 不被送出、直接壞掉登入。
+	之後部署到有 HTTPS 的環境才需要另外開。
+
+	注意：sameSiteCookies 不是 <Context> 本身的屬性（拿 javap 對照這台機器實際裝的 Tomcat 9.0.121
+	查證過，StandardContext 只有 setCookieProcessor(CookieProcessor)，沒有 setSameSiteCookies 這個
+	直接寫在 Context 上的 setter），要包在巢狀的 <CookieProcessor> 裡才會生效
+	（sameSiteCookies 是 Rfc6265CookieProcessor/CookieProcessorBase 的屬性，不是 Context 的）。
+-->
+<Context>
+	<CookieProcessor className="org.apache.tomcat.util.http.Rfc6265CookieProcessor" sameSiteCookies="lax"/>
+</Context>

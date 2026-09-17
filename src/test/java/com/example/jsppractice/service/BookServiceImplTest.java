@@ -13,6 +13,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.dao.OptimisticLockingFailureException;
 
 import com.example.jsppractice.mapper.BookMapper;
 import com.example.jsppractice.model.Book;
@@ -27,7 +28,7 @@ public class BookServiceImplTest {
 
 	@Test
 	public void saveWithNullIdCallsInsert() {
-		Book book = new Book(null, "Effective Java", "978-0134685991", 1L, 2018);
+		Book book = new Book(null, "Effective Java", "978-0134685991", 1L, 2018, 0);
 		bookService.save(book);
 		verify(bookMapper).insert(book);
 		verify(bookMapper, never()).update(any());
@@ -35,15 +36,36 @@ public class BookServiceImplTest {
 
 	@Test
 	public void saveWithExsitingIdCallsUpdate() {
-		Book book = new Book(5L, "Effective Java", "978-0134685991", 1L, 2018);
+		Book book = new Book(5L, "Effective Java", "978-0134685991", 1L, 2018, 0);
+		when(bookMapper.update(book)).thenReturn(1);
+
 		bookService.save(book);
+
 		verify(bookMapper).update(book);
 		verify(bookMapper, never()).insert(any());
 	}
 
 	@Test
+	public void saveWithExistingIdIncrementsVersionOnSuccess() {
+		Book book = new Book(5L, "Effective Java", "978-0134685991", 1L, 2018, 0);
+		when(bookMapper.update(book)).thenReturn(1);
+
+		Book saved = bookService.save(book);
+
+		assertEquals(Integer.valueOf(1), saved.getVersion());
+	}
+
+	@Test(expected = OptimisticLockingFailureException.class)
+	public void saveWithStaleVersionThrowsOptimisticLockingFailureException() {
+		Book book = new Book(5L, "Effective Java", "978-0134685991", 1L, 2018, 0);
+		when(bookMapper.update(book)).thenReturn(0);
+
+		bookService.save(book);
+	}
+
+	@Test
 	public void findByIdReturnsBookWhenFound() {
-		Book book = new Book(1L, "Effective Java", "978-0134685991", 1L, 2018);
+		Book book = new Book(1L, "Effective Java", "978-0134685991", 1L, 2018, 0);
 		when(bookMapper.findById(1L)).thenReturn(book);
 
 		assertEquals(book.getId(), bookService.findById(1L).getId());

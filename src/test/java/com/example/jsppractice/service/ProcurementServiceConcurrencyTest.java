@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
@@ -25,6 +26,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.example.jsppractice.config.RootConfig;
+import com.example.jsppractice.crypto.AesEncryptor;
+import com.example.jsppractice.crypto.EmailLookupHasher;
 import com.example.jsppractice.exception.ProcurementAlreadyCompletedException;
 import com.example.jsppractice.helper.DataBaseCleaner;
 import com.example.jsppractice.mapper.BookRequestItemMapper;
@@ -76,10 +79,12 @@ public class ProcurementServiceConcurrencyTest {
 		SimpleJdbcInsert insert = new SimpleJdbcInsert(dataSource).withTableName("users")
 				.usingGeneratedKeyColumns("id");
 		java.util.Map<String, Object> params = new java.util.HashMap<>();
-		params.put("email", email);
+		params.put("email", AesEncryptor.encrypt(email));
+		params.put("email_lookup_hash", EmailLookupHasher.hash(email));
 		params.put("password_hash", "hashed-password");
-		params.put("role", "PROCUREMENT");
-		return insert.executeAndReturnKey(params).longValue();
+		Long id = insert.executeAndReturnKey(params).longValue();
+		jdbcTemplate.update("INSERT INTO user_roles (user_id, role) VALUES (?, ?)", id, "PROCUREMENT");
+		return id;
 	}
 
 	@Test
@@ -98,8 +103,8 @@ public class ProcurementServiceConcurrencyTest {
 
 		Long procurer1Id = insertUser("procurer1@example.com");
 		Long procurer2Id = insertUser("procurer2@example.com");
-		User procurer1 = User.builder().id(procurer1Id).role(RoleType.PROCUREMENT).build();
-		User procurer2 = User.builder().id(procurer2Id).role(RoleType.PROCUREMENT).build();
+		User procurer1 = User.builder().id(procurer1Id).roles(Set.of(RoleType.PROCUREMENT)).build();
+		User procurer2 = User.builder().id(procurer2Id).roles(Set.of(RoleType.PROCUREMENT)).build();
 
 		CountDownLatch readyLatch = new CountDownLatch(2);
 		CountDownLatch startLatch = new CountDownLatch(1);

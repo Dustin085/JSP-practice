@@ -1,7 +1,6 @@
 package com.example.jsppractice.controller;
 
-import javax.servlet.http.HttpSession;
-
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.jsppractice.exception.ProcurementAlreadyCompletedException;
 import com.example.jsppractice.model.ProcurementStatus;
 import com.example.jsppractice.model.User;
+import com.example.jsppractice.security.CustomUserDetails;
 import com.example.jsppractice.service.ProcurementService;
 
 @Controller
@@ -34,8 +34,9 @@ public class ProcurementController {
 	}
 
 	@PostMapping("/{id}/complete")
-	public String complete(@PathVariable Long id, HttpSession session, RedirectAttributes redirectAttributes) {
-		User currentUser = (User) session.getAttribute("currentUser");
+	public String complete(@PathVariable Long id, Authentication authentication,
+			RedirectAttributes redirectAttributes) {
+		User currentUser = CustomUserDetails.currentUser(authentication);
 		try {
 			procurementService.completeProcurement(id, currentUser);
 			redirectAttributes.addFlashAttribute("flashMessage", "採購已完成，書籍已入庫");
