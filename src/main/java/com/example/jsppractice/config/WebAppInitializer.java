@@ -21,7 +21,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 	protected Class<?>[] getRootConfigClasses() {
 		// SecurityConfig 一定要放 root context，不是 servlet context：
 		// DelegatingFilterProxy 預設只會去 root WebApplicationContext 找 springSecurityFilterChain 這個 bean
-		return new Class<?>[] { RootConfig.class, SecurityConfig.class };
+		return new Class<?>[] { RootConfig.class, SecurityConfig.class, SftpConfig.class };
 	}
 
 	@Override

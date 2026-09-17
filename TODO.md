@@ -35,8 +35,96 @@
       兩種追溯機制
 
 **第二級：值得做，但要先幫這個書籍系統「發明」一個合理情境，不是照搬**
-- SFTP + 固定長度電文解析：掰一個「廠商每天半夜丟一份採購到貨清單到 SFTP，排程去抓、解析、更新
-  `procurement_items`」的情境，可以跟上面的排程/批次練習串起來
+- SFTP + 固定長度電文解析：廠商每天半夜把前一天出貨的到貨清單丟到約定好的 SFTP 目錄，排程去抓檔、
+  解析、比對更新 `procurement_items`，可以跟上面的排程/批次練習串起來。編碼刻意選 Big5（不是
+  UTF-8），練習中文字 byte 長度（一個中文字佔 2 bytes）跟 `String.substring()` 用字元數切割不能
+  混用的坑。
+
+  比對鍵設計：不能只靠 ISBN 比對——同一本書可能因為不同申請單被採購兩次，此時 `procurement_items`
+  會有兩筆 PENDING、同一個 ISBN，光看 ISBN 分辨不出到貨的是哪一筆。仿真實 EDI/批次介接規格的做法，
+  下採購單給廠商時夾帶一個「我方參考編號」（`procurement_items.id`），廠商到貨清單原樣回填，比對
+  用主鍵而不是自然鍵，ISBN 只當人工核對用的輔助欄位。
+
+  電文規格書（編碼 Big5，換行 LF 分隔每筆記錄，每行第 1 個 byte 是「記錄別」，決定用哪個 layout
+  解析）：
+
+  檔頭 Header（每個檔案固定 1 筆，開頭 "H"，共 15 bytes）：
+  - 記錄別：起始 1，長度 1，AN，固定值 `H`
+  - 廠商代碼：起始 2，長度 6，AN，左靠右補空白，例 `V00001`
+  - 檔案日期：起始 8，長度 8，N，`YYYYMMDD`，清單產生日
+
+  明細 Detail（每筆到貨商品一行，開頭 "D"，共 112 bytes）：
+  - 記錄別：起始 1，長度 1，AN，固定值 `D`
+  - 我方單號：起始 2，長度 10，N，右靠左補零，對應 `procurement_items.id`，比對的主鍵
+  - ISBN：起始 12，長度 20，AN，左靠右補空白，對應 `book_request_items.isbn`，僅供人工核對，不做
+    比對鍵
+  - 到貨數量：起始 32，長度 4，N，右靠左補零，例 `0010`
+  - 實際單價：起始 36，長度 8，N，右靠左補零，隱含小數 2 位，例 `00012550` = 125.50
+  - 到貨日期：起始 44，長度 8，N，`YYYYMMDD`
+  - 狀態碼：起始 52，長度 1，N，`1`=正常到貨，`9`=缺貨/取消
+  - 書名：起始 53，長度 40，AN（Big5），左靠右補空白，中文書名，故意放中文測 byte 切割
+  - 備註：起始 93，長度 20，AN，左靠右補空白，選填
+
+  檔尾 Trailer（每個檔案固定 1 筆，開頭 "T"，共 7 bytes）：
+  - 記錄別：起始 1，長度 1，AN，固定值 `T`
+  - 明細筆數：起始 2，長度 6，N，右靠左補零，Detail 記錄總數（控制總數）
+
+  筆數控管：解析完檔案後要先確認實際讀到的 Detail 行數跟 Trailer 宣告的筆數一致，不一致整批判定
+  失敗、不寫入任何一筆（全有全無，不片段套用）——防的是傳輸過程中檔案被截斷卻沒人發現。
+
+  業務規則：狀態碼 `1` 讓對應的 `procurement_items` 從 `PENDING` 轉 `COMPLETED`；狀態碼 `9` 先不轉
+  狀態但要留紀錄；「我方單號」查無對應資料，或對應到的那筆狀態已經不是 `PENDING`，視為單筆異常，
+  不影響同批其他筆處理，但要記錄下來讓人工檢查。
+
+  - [x] 電文解析：`DeliveryRecord`（`model` package）sealed interface，`HeaderRecord`/`DetailRecord`/
+        `TrailerRecord` 三個 record，各自 `static parse(byte[])` 工廠方法照 byte 位移切欄位（不是
+        字元位移），記錄別判斷、未知狀態碼都丟 `InvalidDeliveryRecordException`。切行邏輯
+        （`DeliveryRecord.parse(byte[] file)`）用原始 byte 找 `0x0A`（LF），不是先解碼成 `String`
+        再切，同時處理「最後一行沒有結尾換行符」的情境。`DeliveryRecord.validate(List)` 做筆數控管
+        （Header/Trailer 剛好各 1 筆、Detail 實際筆數要跟 Trailer 宣告的一致），沒過直接丟例外
+        （改過一輪：原本設計回傳 `boolean`，但這樣呼叫端拿到 `false` 不知道是哪個規則沒過，改成跟
+        `revokeRole` 的防呆例外一樣的模式，每種失敗都丟帶著具體數字的訊息）。測試
+        `DeliveryRecordTest` 特別驗證了中文書名的 byte 切割（書名後面緊接著備註欄位，byte 位移算
+        錯的話備註會被切到錯的位置）
+  - [x] 匯入邏輯：新增 `DeliveryImportService`/`DeliveryImportServiceImpl`，解析、驗證完的
+        `List<DeliveryRecord>` 逐筆處理 `DetailRecord`，查無對應項目、狀態已不是 `PENDING`、狀態碼
+        缺貨/取消，都各自回傳略過原因（`DeliveryImportSkip` record），不丟例外中斷整批——只有檔案
+        結構本身有問題（`validate()` 那層）才整批失敗，單筆業務異常彼此獨立。完成的項目直接重用
+        `ProcurementService.completeProcurement(procurementItemId, currentUser)`（不是重寫一套一樣的
+        邏輯），`NoSuchElementException`/`ProcurementAlreadyCompletedException` 接住轉成略過原因，
+        順便連 `completeProcurement()` 內建的失敗嘗試也稽核（`REQUIRES_NEW` 那段）都一起拿到
+  - [x] 系統帳號：`SystemAccount`（`service` package）只放一個 email 常數，`DataSeeder` 用隨機密碼
+        建一個 `email=system@jsppractice.internal`、`roles=Set.of(USER)` 的帳號，永遠不會被拿去登入，
+        專門給排程/批次寫 `audit_logs` 時歸因（`user_id` 是 `NOT NULL` 外鍵，不能留空）。
+        `DeliveryImportServiceImpl` 用這個帳號當 `completeProcurement()` 的 `currentUser`，批次匯入
+        跟人工按「完成採購」按鈕走的是同一套稽核紀錄，`/audit-logs` 查得到、也看得出是系統做的
+        （email 直接顯示 `system@jsppractice.internal`）。
+        `ReconciliationServiceImpl` 的全自動排程方法（`reconcileBookRequestItems`/
+        `reconcileProcurementItems`）刻意沒有比照辦理：那兩個方法不改 `procurement_items`/
+        `book_request_items`，只寫自己專屬的 `reconciliations`/`reconciliation_items` 表——
+        `audit_logs` 是「哪個實體被誰改了」的紀錄，對帳檢查本身沒有改動任何業務實體，硬塞一筆
+        `audit_logs` 只是重複記錄同一件事，`reconciliations` 表已經是這個動作自己的、更完整的紀錄
+  - [x] SFTP 抓檔：新增 `com.example.jsppractice.sftp` package，`DeliveryFileFetcher` 介面 +
+        `SftpDeliveryFileFetcher` 實作，函式庫用 `com.github.mwiede:jsch`（不是原始的
+        `com.jcraft:jsch`——那個從 2019 年後沒再更新，連不上只接受新版金鑰交換演算法的 SSH
+        server，mwiede 的 fork 套件名稱一樣是 `com.jcraft.jsch`，程式碼不用改）。每個方法各自開一條
+        新連線、用完就關，不維持長連線（一天跑一次的批次，不需要連線池）。處理完的檔案用
+        `rename` 搬到 `processed/`（成功）或 `failed/`（失敗）子目錄，不會被下一輪排程重複抓到。
+        連線資訊（host/port/username/password/remoteDir）走環境變數 + 明確標記的本機開發預設值，
+        跟 `AesEncryptor` 讀 `AES_SECRET_KEY` 同一套慣例（`SftpConfig`）。
+        測試 `SftpDeliveryFileFetcherTest` 不 mock JSch，用 Apache MINA SSHD
+        （`org.apache.sshd:sshd-core`/`sshd-sftp`，測試相依）在測試裡啟動一個內嵌的假 SFTP
+        server（`VirtualFileSystemFactory` 把 SFTP 根目錄對應到一個本機暫存資料夾），驗證連線、
+        認證、下載、搬檔整套流程真的走得通，不是只測程式碼表面。
+        本機手動練習（不只是跑自動測試）可以開 Windows 11 內建的「OpenSSH 伺服器」選用功能，
+        `localhost:22` 就是一個真的 SFTP 端點，不用外部服務
+  - [x] 排程：`DeliveryImportScheduler`（`service` package，仿 `ReconciliationScheduler`），排在
+        對帳排程（02:00）前一小時（`0 0 1 * * *`），抓到的每個檔案各自 try/catch，單一檔案處理失敗
+        不影響同批其他檔案（跟單筆 Detail 失敗不影響同批其他筆同一個原則）。這個 bean **沒有**標
+        `@Component`：改成 `SftpConfig` 用 `@Bean` 方法組出來，不讓 `RootConfig` 的 component-scan
+        直接掃到——這樣沒有一起載入 `SftpConfig` 的既有測試（大多數測試只載入 `RootConfig`）就不會
+        因為找不到 `DeliveryFileFetcher` 這個 bean 而啟動失敗。`SftpConfig` 要另外加進
+        `WebAppInitializer.getRootConfigClasses()` 才會在真正部署時生效
 - [x] 資料遮罩：挑了 email，新增 `/users`（ADMIN 限定）使用者列表頁，`EmailMasker`（`util` package，
       跟 `DisplayTime` 同一種靜態工具類 pattern）+ `User.getMaskedEmail()`——只留本地部分第一/最後一個字，
       網域不遮。header 加了 ADMIN 才看得到的「使用者管理」連結

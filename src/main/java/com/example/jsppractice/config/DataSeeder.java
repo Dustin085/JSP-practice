@@ -27,6 +27,7 @@ import com.example.jsppractice.service.BookRequestService;
 import com.example.jsppractice.service.BookRequestService.BookRequestBookInfo;
 import com.example.jsppractice.service.BookService;
 import com.example.jsppractice.service.CategoryService;
+import com.example.jsppractice.service.SystemAccount;
 import com.example.jsppractice.service.UserService;
 
 public class DataSeeder {
@@ -98,6 +99,12 @@ public class DataSeeder {
 				.passwordHash(passwordEncoder.encode("password123"))
 				.roles(Set.of(RoleType.PROCUREMENT, RoleType.USER)).build();
 		userService.save(procurementStaff);
+
+		// 系統帳號：排程/批次寫 audit_logs 時歸因用，密碼是隨機值，沒有人知道、也不會拿去登入
+		User systemAccount = User.builder().email(SystemAccount.EMAIL).name("系統")
+				.passwordHash(passwordEncoder.encode(UUID.randomUUID().toString())).roles(Set.of(RoleType.USER))
+				.build();
+		userService.save(systemAccount);
 
 		seedBookRequests(requester, admin);
 		seedReconciliationDiscrepancies(requester);
