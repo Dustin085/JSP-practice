@@ -96,6 +96,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.hasRole("ADMIN")
 				.antMatchers("/users/**")
 				.hasRole("ADMIN")
+				.antMatchers("/deliveries/**")
+				.hasRole("ADMIN")
 
 				// 收尾用 authenticated() 而不是 permitAll()：以後不管漏加哪條規則，
 				// 新路徑預設「至少要登入」而不是「預設任何人都能看」

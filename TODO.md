@@ -125,6 +125,26 @@
         直接掃到——這樣沒有一起載入 `SftpConfig` 的既有測試（大多數測試只載入 `RootConfig`）就不會
         因為找不到 `DeliveryFileFetcher` 這個 bean 而啟動失敗。`SftpConfig` 要另外加進
         `WebAppInitializer.getRootConfigClasses()` 才會在真正部署時生效
+  - [x] 手動觸發頁面：`DeliveryImportController`（`/deliveries`，ADMIN 限定），仿
+        `ReconciliationController` 同時有排程跟手動觸發兩個入口的做法——「需要立即重跑」是真實
+        需求，不用等到每天 01:00。`DeliveryImportScheduler.importPendingDeliveries()` 改成回傳
+        `List<DeliveryFileImportOutcome>`（原本是 `void`），排程呼叫時 Spring 不理會回傳值，手動
+        觸發時 controller 拿這個結果組畫面，同一份邏輯兩邊共用，不重寫一次。畫面上會列出這次處理了
+        哪些檔案、每個檔案套用了幾筆、略過了哪些單號和原因。
+
+        踩到一個這個專案目前唯一一次的坑：`record` 自動產生的 accessor（例如
+        `DeliveryImportResult.appliedCount()`）**沒辦法**直接用 `${result.appliedCount}` 在 JSP
+        裡讀到——這個專案的 EL 實作版本（`javax.el 3.0.1-b12`）比 Java record 語法還早
+        （EL 3.0 spec 定案於 2017，record 是 Java 16 才定案），不認得這種沒有 `get`/`is` 前綴的
+        accessor，直接寫會在執行期丟 `PropertyNotFoundException`（有寫一個獨立的小程式用
+        `ELProcessor` 實際測過，不是憑印象判斷）。`DeliveryImportResult`/`DeliveryImportSkip`/
+        `DeliveryFileImportOutcome` 這三個原本設計成單純給 Java 程式內部傳資料用的 record，因為這次
+        要在 JSP 顯示，額外補了 `getAppliedCount()`/`getSkipped()`/`getReferenceId()`/`getReason()`/
+        `getFileName()`/`getResult()`/`getErrorMessage()`/`isSucceeded()` 這些 JavaBean 風格的
+        getter，Java 端程式碼本身還是用 record 原生的 `appliedCount()`/`skipped()` 等寫法，getter
+        純粹是為了 EL 讀取——這跟 `ProcurementSummary`/`AuditLogSummary`/`ReconciliationSummary`
+        這些本來就設計給畫面用、用 Lombok `@Data` 產生標準 getter 的 DTO 是同一個道理，只是這次是
+        先寫好 record 才發現要顯示，用補 getter 的方式修，而不是整組改寫成 Lombok class
 - [x] 資料遮罩：挑了 email，新增 `/users`（ADMIN 限定）使用者列表頁，`EmailMasker`（`util` package，
       跟 `DisplayTime` 同一種靜態工具類 pattern）+ `User.getMaskedEmail()`——只留本地部分第一/最後一個字，
       網域不遮。header 加了 ADMIN 才看得到的「使用者管理」連結

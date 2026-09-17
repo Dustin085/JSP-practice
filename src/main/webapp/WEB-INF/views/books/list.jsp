@@ -23,6 +23,9 @@
 		<c:if test="${currentUser.hasRole('ADMIN')}">
 			| <a href="${pageContext.request.contextPath}/reconciliations">資料對帳</a>
 		</c:if>
+		<c:if test="${currentUser.hasRole('ADMIN')}">
+			| <a href="${pageContext.request.contextPath}/deliveries">到貨清單匯入</a>
+		</c:if>
 	</p>
 	<form method="get" action="${pageContext.request.contextPath}/books">
 		<input type="text" name="keyword" value="${keyword}"

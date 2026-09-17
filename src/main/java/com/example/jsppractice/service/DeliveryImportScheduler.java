@@ -1,11 +1,13 @@
 package com.example.jsppractice.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 
+import com.example.jsppractice.dto.DeliveryFileImportOutcome;
 import com.example.jsppractice.dto.DeliveryImportResult;
 import com.example.jsppractice.sftp.DeliveryFileFetcher;
 
@@ -26,25 +28,32 @@ public class DeliveryImportScheduler {
 		this.deliveryImportService = deliveryImportService;
 	}
 
+	// 回傳每個檔案的處理結果：排程呼叫時 Spring 不會理會回傳值，但 DeliveryImportController
+	// 手動觸發時需要這個結果來組畫面，同一份邏輯給兩邊共用，不要各寫一次。
+	//
 	// 排在對帳排程（02:00）之前一小時：先讓到貨清單把 procurement_items 更新好，
 	// 對帳那邊才不會撈到理應已經處理掉、卻還沒處理的資料。
 	@Scheduled(cron = "0 0 1 * * *")
-	public void importPendingDeliveries() {
+	public List<DeliveryFileImportOutcome> importPendingDeliveries() {
 		log.info("到貨清單排程開始");
 		List<String> fileNames = deliveryFileFetcher.listPendingFileNames();
+		List<DeliveryFileImportOutcome> outcomes = new ArrayList<>();
 		for (String fileName : fileNames) {
 			try {
 				byte[] fileBytes = deliveryFileFetcher.download(fileName);
 				DeliveryImportResult result = deliveryImportService.importDeliveries(fileBytes);
 				deliveryFileFetcher.markProcessed(fileName);
+				outcomes.add(new DeliveryFileImportOutcome(fileName, result, null));
 				log.info("到貨清單處理完成：file={}, applied={}, skipped={}", fileName, result.appliedCount(),
 						result.skipped().size());
 			} catch (Exception e) {
 				// 單一檔案處理失敗不影響同批其他檔案，跟單筆 Detail 失敗不影響同批其他筆是同一個原則
 				log.error("到貨清單處理失敗：file={}", fileName, e);
 				deliveryFileFetcher.markFailed(fileName);
+				outcomes.add(new DeliveryFileImportOutcome(fileName, null, e.getMessage()));
 			}
 		}
 		log.info("到貨清單排程結束");
+		return outcomes;
 	}
 }
