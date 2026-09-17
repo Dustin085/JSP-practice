@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.example.jsppractice.dto.UserRoleRow;
 import com.example.jsppractice.model.RoleType;
 import com.example.jsppractice.model.User;
 
@@ -24,7 +25,11 @@ public interface UserMapper {
 
 	Set<RoleType> findRolesByUserId(Long userId);
 
+	List<UserRoleRow> findRolesForUserIds(@Param("userIds") Collection<Long> userIds);
+
 	void insertUserRoles(@Param("userId") Long userId, @Param("roles") Collection<RoleType> roles);
 
 	void deleteRolesByUserId(Long userId);
+
+	void deleteUserRole(@Param("userId") Long userId, @Param("role") RoleType role);
 }

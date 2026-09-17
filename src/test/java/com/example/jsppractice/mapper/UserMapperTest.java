@@ -149,4 +149,30 @@ public class UserMapperTest {
 		assertEquals(Set.of("alex@example.com", "carol@example.com"),
 				users.stream().map(User::getEmail).collect(java.util.stream.Collectors.toSet()));
 	}
+
+	@Test
+	public void deleteUserRoleRemovesOnlyThatRole() {
+		Long id = insertUser("alex@example.com", "Alex", "hashed-password", RoleType.USER);
+		userMapper.insertUserRoles(id, List.of(RoleType.ADMIN));
+
+		userMapper.deleteUserRole(id, RoleType.ADMIN);
+
+		assertEquals(Set.of(RoleType.USER), userMapper.findRolesByUserId(id));
+	}
+
+	@Test
+	public void findRolesForUserIdsGroupsRolesByUser() {
+		Long alexId = insertUser("alex@example.com", "Alex", "hashed-password", RoleType.USER);
+		userMapper.insertUserRoles(alexId, List.of(RoleType.ADMIN));
+		Long brianId = insertUser("brian@example.com", "Brian", "hashed-password", RoleType.PROCUREMENT);
+
+		List<com.example.jsppractice.dto.UserRoleRow> rows = userMapper.findRolesForUserIds(List.of(alexId, brianId));
+
+		Set<RoleType> alexRoles = rows.stream().filter(row -> row.userId().equals(alexId))
+				.map(com.example.jsppractice.dto.UserRoleRow::role).collect(java.util.stream.Collectors.toSet());
+		Set<RoleType> brianRoles = rows.stream().filter(row -> row.userId().equals(brianId))
+				.map(com.example.jsppractice.dto.UserRoleRow::role).collect(java.util.stream.Collectors.toSet());
+		assertEquals(Set.of(RoleType.USER, RoleType.ADMIN), alexRoles);
+		assertEquals(Set.of(RoleType.PROCUREMENT), brianRoles);
+	}
 }

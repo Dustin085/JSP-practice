@@ -62,6 +62,17 @@
 		WHERE user_id = #{userId}
 	</select>
 
+	<!-- 使用者列表頁批次查角色用：mapUnderscoreToCamelCase 已經在 RootConfig 開了，
+		 user_id 欄位會自動對應到 UserRoleRow 的 userId 參數，不用另外寫 AS -->
+	<select id="findRolesForUserIds" resultType="com.example.jsppractice.dto.UserRoleRow">
+		SELECT user_id, role
+		FROM user_roles
+		WHERE user_id IN
+		<foreach collection="userIds" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</select>
+
 	<insert id="insertUserRoles">
 		INSERT INTO user_roles (user_id, role)
 		VALUES
@@ -72,5 +83,9 @@
 
 	<delete id="deleteRolesByUserId">
 		DELETE FROM user_roles WHERE user_id = #{userId}
+	</delete>
+
+	<delete id="deleteUserRole">
+		DELETE FROM user_roles WHERE user_id = #{userId} AND role = #{role}
 	</delete>
 </mapper>

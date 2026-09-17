@@ -82,19 +82,33 @@ JSP 的 `currentUser` 也已經改成從 `Authentication`（透過 `CurrentUserM
 `TokenBasedRememberMeServices`，多了 series/token 輪替的偷竊偵測能力，是 Spring Security 建議的
 正式做法。登入頁多一個「記住我」checkbox（`name="remember-me"`，Security 預設參數名稱）。
 
-## 給其他人角色的功能（角色指派畫面）
+## ~~給其他人角色的功能（角色指派畫面）~~（已完成）
 
 一人多角色（`user_roles` 多對多）已經做完：`users.role` 單一欄位換成 `user_roles` 表，
 每個帳號一定有 `USER` 這個 baseline 角色，`ADMIN`/`PROCUREMENT` 是額外加掛的角色，
 `CustomUserDetails.getAuthorities()`/JSP 的 `currentUser.hasRole(...)` 都已經看的是角色集合。
 `role` 仍然是寫死的 `RoleType` enum，不是資料庫可以動態新增的東西（那是更大的「RBAC 資料庫化」題目）。
 
-目前 `user_roles` 只能靠 `DataSeeder`/直接改資料庫調整，還沒有「管理員在畫面上把某個角色加/移除到
-某個使用者身上」的功能。之後要做的話：
-- 找一支路徑，例如 `POST /users/{id}/roles`、`DELETE /users/{id}/roles/{role}`，限 `hasRole("ADMIN")`
-- 異動要記進 `audit_logs`（`AuditActionType` 加 `GRANT_ROLE`/`REVOKE_ROLE`，`AuditEntityType` 加 `USER`），
-  不要在 `user_roles` 本身加 `granted_by`/`granted_at` 欄位——跟其他異動一樣統一走 audit_log 機制
-- 要決定：可不可以拿掉自己身上最後一個角色、可不可以拿掉自己的 ADMIN（防呆，不然可能把自己鎖在外面）
+角色指派畫面也做完了：
+- UI 用兩個獨立表單（「新增角色」「移除角色」），各自用下拉選單選使用者 + 選角色，不是每一列每個角色
+  各放一個按鈕——按鈕排列一開始做出來不夠直觀，改成表單後 `userId`/`role` 都是表單欄位，端點也從
+  `POST /users/{id}/roles` 改成 `POST /users/roles/grant`、`POST /users/roles/revoke`（`userId` 當
+  表單參數，不是路徑變數，因為現在是共用同一個表單而不是每列各自的表單）
+- 異動記進 `audit_logs`：`AuditActionType` 加了 `GRANT_ROLE`/`REVOKE_ROLE`，`AuditEntityType` 加了 `USER`，
+  `user_roles` 本身沒有加 `granted_by`/`granted_at` 欄位，統一走 audit_log 機制
+- 防呆三條規則（`UserServiceImpl.revokeRole()`）：
+  1. USER 不能被移除，不管是誰動手、不管這個帳號現在還有沒有其他角色——USER 本來就不是使用者
+     手動掛上去的角色（註冊、`DataSeeder` 都是自動加的），下拉選單裡也直接不列出 USER 這個選項
+     （新增/移除都一樣，反正每個帳號一開始就有，沒有「手動加回來」的情境）
+  2. 不管是誰動的手，都不能把一個帳號的角色移除到只剩 0 個——理論上有規則 1 擋著不會再被觸發到，
+     但角色種類以後可能變動，留著當一層不依賴 USER 特例的保險
+  3. 不能移除**自己的** ADMIN 角色，就算自己還有其他角色、還有別的 ADMIN 存在也一樣——不用另外查
+     「是不是最後一個 ADMIN」，規則越單純越不會有 race condition，要拔某個 ADMIN 的權限一定要由
+     別的 ADMIN 動手
+- 順便補了一個先前沒注意到的缺口：`UserServiceImpl.findAll()` 原本沒有把 `roles` 帶出來（`/users`
+  列表頁角色欄位其實一直是空的），現在用跟 `AuditServiceImpl` 批次查 email 同一種 deferred join
+  手法（新增 `UserMapper.findRolesForUserIds()` + `UserRoleRow` DTO），一次查完整批使用者的角色，
+  不會 N+1
 
 ## Book 加上館藏數量（庫存管理）
 
