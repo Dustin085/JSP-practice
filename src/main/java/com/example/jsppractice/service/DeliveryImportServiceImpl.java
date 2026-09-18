@@ -8,7 +8,6 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.example.jsppractice.dto.DeliveryImportResult;
 import com.example.jsppractice.dto.DeliveryImportSkip;
@@ -30,8 +29,10 @@ public class DeliveryImportServiceImpl implements DeliveryImportService {
 		this.userService = userService;
 	}
 
+	// 沒有標 @Transactional：這個方法本身不直接寫資料庫，每一筆 Detail 的完成/略過都是獨立的，
+	// 靠 ProcurementService.completeProcurement() 自己的 REQUIRES_NEW 交易保證單筆的原子性，
+	// 不應該在這裡包一個假裝把它們綁在一起的外層交易
 	@Override
-	@Transactional
 	public DeliveryImportResult importDeliveries(byte[] fileBytes) {
 		List<DeliveryRecord> records = DeliveryRecord.parse(fileBytes);
 		DeliveryRecord.validate(records);

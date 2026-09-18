@@ -1,0 +1,20 @@
+# 本機手動測試「SFTP + 固定長度電文解析」功能用的內嵌 SFTP server，不是應用程式本身部署的一部分。
+# 帳密是隨便取的測試用值，不是真實密碼；跟 SftpConfig 的環境變數對應如下：
+#   SFTP_HOST=localhost
+#   SFTP_PORT=2222
+#   SFTP_USERNAME=deliveryuser
+#   SFTP_PASSWORD=deliverypass123
+#   SFTP_REMOTE_DIR=/delivery-notices
+#
+# 用法：
+#   docker compose -f docker-compose.sftp-test.yml up -d      啟動
+#   docker compose -f docker-compose.sftp-test.yml down       停止並移除
+services:
+  sftp:
+    image: atmoz/sftp
+    container_name: jsp-practice-sftp
+    ports:
+      - "2222:22"
+    volumes:
+      - "${USERPROFILE}/sftp-test/delivery-notices:/home/deliveryuser/delivery-notices"
+    command: deliveryuser:deliverypass123:1001

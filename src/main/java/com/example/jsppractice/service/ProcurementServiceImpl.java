@@ -9,6 +9,7 @@ import java.util.NoSuchElementException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.jsppractice.dto.ProcurementSummary;
@@ -44,8 +45,13 @@ public class ProcurementServiceImpl implements ProcurementService {
 		this.auditService = auditService;
 	}
 
+	// REQUIRES_NEW：這個方法代表「完成這一筆採購」這個完整、獨立的業務單位，永遠自己開一個交易，
+	// 不管呼叫端本身在不在交易裡。這對 DeliveryImportServiceImpl 批次匯入尤其重要——如果沿用預設
+	// 的 REQUIRED，這裡丟例外會把呼叫端外層的交易標記成 rollback-only，就算外層有 catch 住例外、
+	// 程式繼續往下跑，外層交易最後 commit 時還是會直接丟 UnexpectedRollbackException，等於「單筆
+	// 失敗不影響同批其他筆」這個設計整個失效
 	@Override
-	@Transactional
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public ProcurementItem completeProcurement(Long procurementItemId, User currentUser) {
 		// 上悲觀鎖
 		ProcurementItem procurementItem = procurementItemMapper.findByIdForUpdate(procurementItemId)

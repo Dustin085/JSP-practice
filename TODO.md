@@ -145,6 +145,33 @@
         純粹是為了 EL 讀取——這跟 `ProcurementSummary`/`AuditLogSummary`/`ReconciliationSummary`
         這些本來就設計給畫面用、用 Lombok `@Data` 產生標準 getter 的 DTO 是同一個道理，只是這次是
         先寫好 record 才發現要顯示，用補 getter 的方式修，而不是整組改寫成 Lombok class
+  - [x] 修一個實測跑出來的 bug：在 `/deliveries` 按「立即執行」，電文裡只要有一筆
+        Detail 查無對應的採購項目（或已經是 COMPLETED），整批就會失敗，噴
+        `UnexpectedRollbackException: Transaction rolled back because it has been marked as
+        rollback-only`，連本來該成功的那幾筆也一起消失——這不是 mock 測得出來的問題（之前
+        `DeliveryImportServiceImplTest` 全綠，因為 Mockito mock 根本不會經過 Spring 的交易
+        proxy），是接了真正的 Docker SFTP server、跑過真實流程才發現的。
+
+        根因：`DeliveryImportServiceImpl.importDeliveries()` 原本標了 `@Transactional`，裡面迴圈
+        呼叫的 `ProcurementService.completeProcurement()` 預設傳播行為是 `REQUIRED`，等於**加入外層
+        同一個交易**，不是自己開一個新的。只要有一筆 `completeProcurement()` 丟例外（查無項目/已完成
+        過），Spring 的交易攔截器就會把這個「共用的外層交易」標記成 rollback-only——即使
+        `DeliveryImportServiceImpl` 有 catch 住那個例外、程式繼續往下跑，這個標記也**沒辦法**被
+        清掉，等到 `importDeliveries()` 執行完準備 commit 時，Spring 發現交易已經被標記
+        rollback-only，直接拒絕 commit、整批改成 rollback，丟出 `UnexpectedRollbackException`。
+
+        修法：`completeProcurement()` 改成 `@Transactional(propagation = Propagation.REQUIRES_NEW)`
+        ——每次呼叫永遠自己開一條新交易，不管呼叫端在不在交易裡，失敗只會讓自己這筆的交易
+        rollback，不會波及呼叫端。`importDeliveries()` 對應拿掉 `@Transactional`（它本身沒有直接寫
+        資料庫，每一筆的原子性現在完全靠 `completeProcurement()` 自己保證）。這個改動也影響到
+        `ProcurementController` 原本人工按「完成採購」那條路徑，但那條路徑呼叫時通常沒有外層交易，
+        `REQUIRES_NEW` 跟原本的 `REQUIRED` 行為一致，不會有副作用。
+
+        新增 `DeliveryImportServiceIntegrationTest`（`service` package）：不用 Mockito，接真正的
+        Spring context/H2，模擬「一筆成功、一筆查無單號」同時出現在同一份電文裡，驗證整批不會被拖
+        累失敗、成功的那筆真的寫進資料庫。改 bug 之前有先用 `git stash` 把修正暫時拿掉，跑一次確認
+        這個測試真的會重現 `UnexpectedRollbackException`（不是憑空寫一個看起來合理但其實測不到問題
+        的測試），修好後再跑一次確認轉綠，才算真正驗證過這個測試有抓到問題的能力
 - [x] 資料遮罩：挑了 email，新增 `/users`（ADMIN 限定）使用者列表頁，`EmailMasker`（`util` package，
       跟 `DisplayTime` 同一種靜態工具類 pattern）+ `User.getMaskedEmail()`——只留本地部分第一/最後一個字，
       網域不遮。header 加了 ADMIN 才看得到的「使用者管理」連結
